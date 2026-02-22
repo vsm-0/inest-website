@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        /* ==================== CRITICAL MOBILE RESPONSIVE CSS ==================== */
+        @media screen and (max-width: 768px) {
+            .header {
+                height: auto !important;
+                padding: 15px !important;
+            }
+            
+            .header img {
+                height: 50px !important;
+            }
+            
+            .login-container {
+                margin-top: 120px !important;
+                padding: 0 15px !important;
+            }
+            
+            .login-box {
+                width: 95% !important;
+                max-width: 400px !important;
+                padding: 25px 20px !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .header {
+                height: 80px !important;
+                padding: 10px !important;
+            }
+            
+            .header img {
+                height: 40px !important;
+            }
+            
+            .login-container {
+                margin-top: 100px !important;
+                padding: 0 10px !important;
+            }
+            
+            .login-box {
+                width: 95% !important;
+                padding: 20px 15px !important;
+            }
+            
+            .login-title {
+                font-size: 20px !important;
+            }
+            
+            .input-container label {
+                font-size: 13px !important;
+            }
+            
+            .input-container input {
+                padding: 10px 10px 10px 35px !important;
+                font-size: 14px !important;
+            }
+            
+            .login-btn {
+                padding: 12px !important;
+                font-size: 15px !important;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            .login-box {
+                width: 100% !important;
+                padding: 15px 10px !important;
+            }
+            
+            .login-title {
+                font-size: 18px !important;
+            }
+        }
+        /* ==================== END CRITICAL MOBILE CSS ==================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .header {
+            width: 100%;
+            height: 120px; /* Increased height to accommodate text below logo */
+            background-color: #003366;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px; /* Space between logo and text */
+        }
+
+        .header img {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .header h2 {
+            color: white;
+            margin: 0;
+            font-size: 18px; /* Slightly smaller text */
+            font-weight: normal;
+        }
+
+        .login-container {
+            margin-top: 170px; /* Increased to account for taller header */
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-box {
+            background-color: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .input-container label {
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 10px;
+            top: 35px;
+            color: #004899;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 8px 8px 8px 35px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .input-container input:focus {
+            border-color: #004899;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #FFD700;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #FFC107;
+        }
+
+        .register-text {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo-container">
+            <a href="./index.html"><img src="./images/logo.png" alt="iNest Logo"></a>
+        </div>
+       
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-title">LOGIN / SIGN IN</div>
+            
+            <div class="input-container">
+                <label for="login-email">Email Address</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="login-email" placeholder="Enter your email ID">
+            </div>
+
+            <div class="input-container">
+                <label for="login-password">Password</label>
+                <i class="fas fa-lock"></i>
+                <input type="password" id="login-password" placeholder="Enter your password">
+            </div>
+
+            <button class="login-btn" onclick="loginUser()">Sign In</button>
+            
+            <p class="register-text">Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+    
+    <!-- Configurable API base without needing localStorage setup -->
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    
+    <script>
+        async function loginUser() {
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value.trim();
+            
+            if (!email || !password) {
+                alert("Please enter both email and password.");
+                return;
+            }
+            
+            try {
+                // Show loading state
+                const loginBtn = document.querySelector('.login-btn');
+                const originalText = loginBtn.textContent;
+                loginBtn.textContent = 'Signing In...';
+                loginBtn.disabled = true;
+                
+                // Call backend API
+                const response = await api.login({ email, password });
+                
+                // Store token and user data
+                api.setToken(response.token);
+                localStorage.setItem('user', JSON.stringify(response.user));
+                
+                alert("Login successful! Redirecting to home page...");
+                window.location.href = "index.html";
+                
+            } catch (error) {
+                alert(error.message || "Login failed. Please try again.");
+                
+                // Reset button state
+                const loginBtn = document.querySelector('.login-btn');
+                loginBtn.textContent = originalText;
+                loginBtn.disabled = false;
+            }
+        }
+        
+        // Check if user is already logged in
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     if (api.isAuthenticated()) {
+        //         window.location.href = "index.html";
+        //     }
+        // });
+    </script>
+</body>
+</html>

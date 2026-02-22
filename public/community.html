@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNest Community - Connect with Neighbors</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #0b3a7e;
+            padding: 20px;
+            color: white;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .search-bar {
+            margin-bottom: 10px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nav-bar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-bar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h3 {
+            color: #004080;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a.active,
+        .sidebar-menu a:hover {
+            background: #e3f2fd;
+            color: #004080;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .content-header {
+            background: linear-gradient(135deg, #c2185b, #8e24aa);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .content-body {
+            padding: 30px;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .panel-card h4 {
+            color: #004080;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Discussion Forum */
+        .forum-container {
+            display: none;
+        }
+
+        .forum-container.active {
+            display: block;
+        }
+
+        .create-post {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .post-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .post-form input,
+        .post-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .post-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .post-btn {
+            background: #c2185b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+
+        .post-btn:hover {
+            background: #ad1457;
+        }
+
+        .forum-post {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .forum-post:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .post-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h5 {
+            color: #004080;
+            margin-bottom: 2px;
+        }
+
+        .author-info small {
+            color: #666;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #f0f0f0;
+            color: #004080;
+        }
+
+        /* Events Section */
+        .events-container {
+            display: none;
+        }
+
+        .events-container.active {
+            display: block;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-date {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .event-day {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .event-month {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .event-info {
+            padding-right: 100px;
+        }
+
+        .event-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            margin-bottom: 15px;
+        }
+
+        .event-details i {
+            margin-right: 8px;
+        }
+
+        .event-btn {
+            background: white;
+            color: #4caf50;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Residents Directory */
+        .residents-container {
+            display: none;
+        }
+
+        .residents-container.active {
+            display: block;
+        }
+
+        .residents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resident-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .resident-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .resident-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+        }
+
+        .resident-name {
+            color: #004080;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .resident-location {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .resident-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .interest-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+
+        .contact-resident {
+            background: #c2185b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* Chat Integration */
+        .chat-container {
+            display: none;
+        }
+
+        .chat-container.active {
+            display: block;
+        }
+
+        .chat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-item:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .chat-info {
+            flex: 1;
+        }
+
+        .chat-name {
+            font-weight: bold;
+            color: #004080;
+        }
+
+        .chat-last-message {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 2px;
+        }
+
+        .chat-meta {
+            text-align: right;
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        /* Notifications */
+        .notification-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-left: 4px solid #c2185b;
+            background: #fce4ec;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #c2185b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 2px;
+        }
+
+        .notification-text {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .residents-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="iNest Logo">
+            </div>
+            
+            <div class="right-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search community...">
+                    <button>Search</button>
+                </div>
+                
+                <nav class="nav-bar">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./PG page.html">PG Listings</a></li>
+                        <li><a href="./home-foods.html">Home Foods</a></li>
+                        <li><a href="./laundry.html">Laundry</a></li>
+                        <li><a href="./medical-support.html">Medical</a></li>
+                        <li><a href="./login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <h3><i class="fas fa-users"></i> Community</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" onclick="showSection('forum')">
+                    <i class="fas fa-comments"></i> Discussion Forum
+                </a></li>
+                <li><a href="#" onclick="showSection('events')">
+                    <i class="fas fa-calendar-alt"></i> Events
+                </a></li>
+                <li><a href="#" onclick="showSection('residents')">
+                    <i class="fas fa-address-book"></i> Residents Directory
+                </a></li>
+                <li><a href="#" onclick="showSection('chat')">
+                    <i class="fas fa-message"></i> Direct Messages
+                </a></li>
+                <li><a href="#" onclick="showSection('marketplace')">
+                    <i class="fas fa-shopping-cart"></i> Marketplace
+                </a></li>
+                <li><a href="#" onclick="showSection('announcements')">
+                    <i class="fas fa-bullhorn"></i> Announcements
+                </a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Discussion Forum -->
+            <div class="forum-container active" id="forum-section">
+                <div class="content-header">
+                    <h1><i class="fas fa-comments"></i> Community Discussion Forum</h1>
+                    <p>Connect with your neighbors, share ideas, and stay informed</p>
+                </div>
+                
+                <div class="content-body">
+                    <div class="create-post">
+                        <h4><i class="fas fa-edit"></i> Start a Discussion</h4>
+                        <form class="post-form" id="post-form">
+                            <input type="text" placeholder="Post title..." id="post-title" required>
+                            <textarea placeholder="What's on your mind? Share with your community..." id="post-content" required></textarea>
+                            <button type="submit" class="post-btn">Post to Community</button>
+                        </form>
+                    </div>
+
+                    <div id="forum-posts">
+                        <div class="forum-post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img src="./images/user-avatar.jpg" alt="User" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VTwvdGV4dD48L3N2Zz4='">
+                                    <div class="author-info">
+                                        <h5>Priya Sharma</h5>
+                                        <small>Room 301, Block A • 2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="post-meta">
+                                    <span><i class="fas fa-thumbs-up"></i> 12</span>
+                                    <span><i class="fas fa-comment"></i> 5</span>
+                                </div>
+                            </div>
+                            <h4>Looking for a workout partner 💪</h4>
+                            <p>Hey everyone! I'm planning to start morning workouts and would love a gym buddy. Anyone interested in joining me for early morning sessions? Let's stay fit together!</p>
+                            <div class="post-actions">
+                                <button class="action-btn" onclick="likePost(this)">
+                                    <i class="fas fa-thumbs-up"></i> Like
+                                </button>
+                                <button class="action-btn" onclick="toggleComments(this)">
+                                    <i class="fas fa-comment"></i> Comment
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="forum-post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img src="./images/user-avatar2.jpg" alt="User" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VTwvdGV4dD48L3N2Zz4='">
+                                    <div class="author-info">
+                                        <h5>Rajesh Kumar</h5>
+                                        <small>Room 205, Block B • 5 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="post-meta">
+                                    <span><i class="fas fa-thumbs-up"></i> 18</span>
+                                    <span><i class="fas fa-comment"></i> 8</span>
+                                </div>
+                            </div>
+                            <h4>Community Garden Update 🌱</h4>
+                            <p>Great news! The community garden project is finally approved. We'll be starting this weekend with basic setup. Volunteers needed for planting and maintenance. Let's make our space greener!</p>
+                            <div class="post-actions">
+                                <button class="action-btn" onclick="likePost(this)">
+                                    <i class="fas fa-thumbs-up"></i> Like
+                                </button>
+                                <button class="action-btn" onclick="toggleComments(this)">
+                                    <i class="fas fa-comment"></i> Comment
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events Section -->
+            <div class="events-container" id="events-section">
+                <div class="content-header">
+                    <h1><i class="fas fa-calendar-alt"></i> Community Events</h1>
+                    <p>Join exciting events and activities in your neighborhood</p>
+                </div>
+                
+                <div class="content-body">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <div class="event-day">25</div>
+                            <div class="event-month">NOV</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Community Diwali Celebration</div>
+                            <div class="event-details">
+                                <div><i class="fas fa-clock"></i> 6:00 PM - 10:00 PM</div>
+                                <div><i class="fas fa-map-marker-alt"></i> Community Hall, Ground Floor</div>
+                                <div><i class="fas fa-users"></i> 50+ people attending</div>
+                            </div>
+                            <p>Join us for a spectacular Diwali celebration with traditional food, music, and fireworks!</p>
+                            <button class="event-btn">Join Event</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
+                        <div class="event-date">
+                            <div class="event-day">28</div>
+                            <div class="event-month">NOV</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Health & Fitness Workshop</div>
+                            <div class="event-details">
+                                <div><i class="fas fa-clock"></i> 10:00 AM - 12:00 PM</div>
+                                <div><i class="fas fa-map-marker-alt"></i> Rooftop Garden</div>
+                                <div><i class="fas fa-users"></i> 25+ people attending</div>
+                            </div>
+                            <p>Learn about healthy living, nutrition tips, and basic yoga with certified instructors.</p>
+                            <button class="event-btn">Join Event</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                        <div class="event-date">
+                            <div class="event-day">02</div>
+                            <div class="event-month">DEC</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-title">Weekend Movie Night</div>
+                            <div class="event-details">
+                                <div><i class="fas fa-clock"></i> 7:00 PM - 10:00 PM</div>
+                                <div><i class="fas fa-map-marker-alt"></i> Community Hall</div>
+                                <div><i class="fas fa-users"></i> 75+ people attending</div>
+                            </div>
+                            <p>Enjoy a great movie with neighbors, popcorn, and refreshments included!</p>
+                            <button class="event-btn">Join Event</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Residents Directory -->
+            <div class="residents-container" id="residents-section">
+                <div class="content-header">
+                    <h1><i class="fas fa-address-book"></i> Residents Directory</h1>
+                    <p>Get to know your neighbors and build connections</p>
+                </div>
+                
+                <div class="content-body">
+                    <div class="residents-grid" id="residents-grid">
+                        <!-- Residents will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Section -->
+            <div class="chat-container" id="chat-section">
+                <div class="content-header">
+                    <h1><i class="fas fa-message"></i> Direct Messages</h1>
+                    <p>Private conversations with your neighbors</p>
+                </div>
+                
+                <div class="content-body">
+                    <div class="chat-list">
+                        <div class="chat-item" onclick="openChat('Priya Sharma')">
+                            <img src="./images/user-avatar.jpg" alt="Priya" class="chat-avatar" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyNSIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSIjOTk5IiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UDwvdGV4dD48L3N2Zz4='">
+                            <div class="chat-info">
+                                <div class="chat-name">Priya Sharma</div>
+                                <div class="chat-last-message">Thanks for joining the workout group!</div>
+                            </div>
+                            <div class="chat-meta">
+                                <div>2:30 PM</div>
+                                <div style="background: #c2185b; color: white; border-radius: 50%; width: 20px; height: 20px; text-align: center; font-size: 0.8em; margin-top: 5px;">2</div>
+                            </div>
+                        </div>
+
+                        <div class="chat-item" onclick="openChat('Rajesh Kumar')">
+                            <img src="./images/user-avatar2.jpg" alt="Rajesh" class="chat-avatar" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyNSIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSIjOTk5IiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UjwvdGV4dD48L3N2Zz4='">
+                            <div class="chat-info">
+                                <div class="chat-name">Rajesh Kumar</div>
+                                <div class="chat-last-message">Garden tools are available at the office</div>
+                            </div>
+                            <div class="chat-meta">
+                                <div>1:15 PM</div>
+                            </div>
+                        </div>
+
+                        <div class="chat-item" onclick="openChat('Community Admin')">
+                            <img src="./images/admin-avatar.jpg" alt="Admin" class="chat-avatar" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyNSIgZmlsbD0iIzAwNDA4MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgZHk9Ii4zZW0iIHRleHQtYW5jaG9yPSJtaWRkbGUiPkE8L3RleHQ+PC9zdmc+'>">
+                            <div class="chat-info">
+                                <div class="chat-name">Community Admin</div>
+                                <div class="chat-last-message">Maintenance schedule updated</div>
+                            </div>
+                            <div class="chat-meta">
+                                <div>Yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Notifications -->
+            <div class="panel-card">
+                <h4><i class="fas fa-bell"></i> Recent Notifications</h4>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Diwali Event Reminder</div>
+                        <div class="notification-text">Tomorrow at 6:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">New Resident</div>
+                        <div class="notification-text">Sarah joined Block C</div>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Maintenance Alert</div>
+                        <div class="notification-text">Water supply: 10 AM - 2 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="panel-card">
+                <h4><i class="fas fa-zap"></i> Quick Actions</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="post-btn" onclick="showSection('forum')" style="width: 100%;">
+                        <i class="fas fa-edit"></i> Create Post
+                    </button>
+                    <button class="post-btn" onclick="reportIssue()" style="width: 100%; background: #ff9800;">
+                        <i class="fas fa-flag"></i> Report Issue
+                    </button>
+                    <button class="post-btn" onclick="showSection('events')" style="width: 100%; background: #4caf50;">
+                        <i class="fas fa-calendar-plus"></i> Create Event
+                    </button>
+                </div>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="panel-card">
+                <h4><i class="fas fa-chart-bar"></i> Community Stats</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Total Residents:</span>
+                        <strong>156</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Active Today:</span>
+                        <strong>42</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Upcoming Events:</span>
+                        <strong>3</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Open Discussions:</span>
+                        <strong>12</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample residents data
+        const residentsData = [
+            {
+                name: "Priya Sharma",
+                location: "Room 301, Block A",
+                interests: ["Fitness", "Cooking", "Reading"],
+                avatar: "./images/user-avatar.jpg",
+                online: true
+            },
+            {
+                name: "Rajesh Kumar",
+                location: "Room 205, Block B",
+                interests: ["Gardening", "Photography", "Travel"],
+                avatar: "./images/user-avatar2.jpg",
+                online: false
+            },
+            {
+                name: "Anjali Singh",
+                location: "Room 102, Block A",
+                interests: ["Music", "Dancing", "Yoga"],
+                avatar: "./images/user-avatar3.jpg",
+                online: true
+            },
+            {
+                name: "Vikram Patel",
+                location: "Room 405, Block C",
+                interests: ["Tech", "Gaming", "Movies"],
+                avatar: "./images/user-avatar4.jpg",
+                online: true
+            },
+            {
+                name: "Meera Gupta",
+                location: "Room 203, Block B",
+                interests: ["Art", "Books", "Meditation"],
+                avatar: "./images/user-avatar5.jpg",
+                online: false
+            },
+            {
+                name: "Arjun Reddy",
+                location: "Room 304, Block C",
+                interests: ["Sports", "Cycling", "Food"],
+                avatar: "./images/user-avatar6.jpg",
+                online: true
+            }
+        ];
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.forum-container, .events-container, .residents-container, .chat-container').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(`${sectionName}-section`).classList.add('active');
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Load content based on section
+            if (sectionName === 'residents') {
+                loadResidents();
+            }
+        }
+
+        function loadResidents() {
+            const grid = document.getElementById('residents-grid');
+            grid.innerHTML = '';
+
+            residentsData.forEach(resident => {
+                const residentCard = document.createElement('div');
+                residentCard.className = 'resident-card fade-in';
+                
+                const onlineStatus = resident.online ? '<div style="width: 10px; height: 10px; background: #4caf50; border-radius: 50%; position: absolute; top: 5px; right: 5px;"></div>' : '';
+                
+                residentCard.innerHTML = `
+                    <div style="position: relative;">
+                        <img src="${resident.avatar}" alt="${resident.name}" class="resident-avatar" 
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOTk5IiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+JHtyZXNpZGVudC5uYW1lLmNoYXJBdCgwKX08L3RleHQ+PC9zdmc+'">
+                        ${onlineStatus}
+                    </div>
+                    <div class="resident-name">${resident.name}</div>
+                    <div class="resident-location">${resident.location}</div>
+                    <div class="resident-interests">
+                        ${resident.interests.map(interest => `<span class="interest-tag">${interest}</span>`).join('')}
+                    </div>
+                    <button class="contact-resident" onclick="contactResident('${resident.name}')">
+                        <i class="fas fa-message"></i> Message
+                    </button>
+                `;
+                
+                grid.appendChild(residentCard);
+            });
+        }
+
+        function contactResident(name) {
+            showNotification(`Opening chat with ${name}...`);
+            showSection('chat');
+        }
+
+        function openChat(name) {
+            showNotification(`Opening chat with ${name}...`);
+            // In a real app, this would open a full chat interface
+        }
+
+        function likePost(button) {
+            const icon = button.querySelector('i');
+            const text = button.childNodes[1];
+            
+            if (icon.classList.contains('fas')) {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                button.style.color = '#666';
+            } else {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                button.style.color = '#c2185b';
+            }
+        }
+
+        function toggleComments(button) {
+            showNotification('Comments feature coming soon!');
+        }
+
+        function reportIssue() {
+            window.location.href = './report-box.html';
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'error' ? '#dc3545' : '#28a745'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 10000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResidents();
+            
+            // Handle post form submission
+            document.getElementById('post-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('post-title').value;
+                const content = document.getElementById('post-content').value;
+                
+                if (title && content) {
+                    addNewPost(title, content);
+                    this.reset();
+                    showNotification('Post created successfully!');
+                }
+            });
+        });
+
+        function addNewPost(title, content) {
+            const postsContainer = document.getElementById('forum-posts');
+            const newPost = document.createElement('div');
+            newPost.className = 'forum-post fade-in';
+            
+            newPost.innerHTML = `
+                <div class="post-header">
+                    <div class="post-author">
+                        <img src="./images/current-user.jpg" alt="You" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iIzAwNDA4MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgZHk9Ii4zZW0iIHRleHQtYW5jaG9yPSJtaWRkbGUiPlk8L3RleHQ+PC9zdmc+'>
+                        <div class="author-info">
+                            <h5>You</h5>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <span><i class="fas fa-thumbs-up"></i> 0</span>
+                        <span><i class="fas fa-comment"></i> 0</span>
+                    </div>
+                </div>
+                <h4>${title}</h4>
+                <p>${content}</p>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="likePost(this)">
+                        <i class="far fa-thumbs-up"></i> Like
+                    </button>
+                    <button class="action-btn" onclick="toggleComments(this)">
+                        <i class="fas fa-comment"></i> Comment
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            `;
+            
+            postsContainer.insertBefore(newPost, postsContainer.firstChild);
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

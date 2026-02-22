@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        /* ==================== CRITICAL MOBILE RESPONSIVE CSS ==================== */
+        @media screen and (max-width: 768px) {
+            .header {
+                height: auto !important;
+                padding: 15px !important;
+            }
+            
+            .header img {
+                height: 35px !important;
+            }
+            
+            .container {
+                width: 95% !important;
+                max-width: 400px !important;
+                margin-top: 80px !important;
+                padding: 20px !important;
+            }
+            
+            h2 {
+                font-size: 18px !important;
+            }
+            
+            .subtext {
+                font-size: 11px !important;
+            }
+            
+            .social-icons {
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .header {
+                height: 70px !important;
+                padding: 10px !important;
+            }
+            
+            .header img {
+                height: 30px !important;
+            }
+            
+            .logo-text {
+                font-size: 18px !important;
+            }
+            
+            .container {
+                width: 95% !important;
+                margin-top: 85px !important;
+                padding: 20px 15px !important;
+            }
+            
+            h2 {
+                font-size: 16px !important;
+            }
+            
+            .input-group {
+                margin-bottom: 10px !important;
+            }
+            
+            .input-group label {
+                font-size: 12px !important;
+            }
+            
+            .input-group input {
+                padding: 8px 8px 8px 30px !important;
+                font-size: 12px !important;
+                height: 35px !important;
+            }
+            
+            .btn {
+                padding: 10px !important;
+                font-size: 14px !important;
+            }
+            
+            .social-btn {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 14px !important;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            .container {
+                width: 100% !important;
+                padding: 15px 10px !important;
+            }
+            
+            .social-icons {
+                gap: 5px !important;
+            }
+            
+            .social-btn {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 12px !important;
+            }
+        }
+        /* ==================== END CRITICAL MOBILE CSS ==================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #003366;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            height: 40px;
+            margin-right: 8px;
+        }
+
+        .logo-text {
+            color: #7EC8E3;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            color: white;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+
+        h2 {
+            margin-bottom: 5px;
+            color: #0056b3;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .subtext {
+            color: orange;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 12px;
+            top: 32px;
+            color: #004899;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 40px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #FFD700;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .social-login {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .social-text {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .social-text::before,
+        .social-text::after {
+            content: "";
+            display: inline-block;
+            width: 25%;
+            height: 1px;
+            background: #ddd;
+            position: absolute;
+            top: 50%;
+        }
+
+        .social-text::before {
+            left: 0;
+        }
+
+        .social-text::after {
+            right: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .google {
+            background-color: #DB4437;
+            color: white;
+        }
+
+        .facebook {
+            background-color: #4267B2;
+            color: white;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+
+        .linkedin {
+            background-color: #0077B5;
+            color: white;
+        }
+
+        .login-text {
+            margin-top: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .login-text a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Compact Header -->
+    <div class="header">
+        <div class="logo-container">
+            <a href="./index.html"><img src="./images/logo.png" alt="iNest Logo"></a>
+            <span class="logo-text">iNest</span>
+        </div>
+    </div>
+
+    <!-- Compact Registration Form -->
+    <div class="container">
+        <h2>Registration</h2>
+        <p class="subtext">Sign up your account</p>
+        
+        <form id="registrationForm">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Enter your password" required minlength="6">
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <div class="social-login">
+            <div class="social-text">or sign up with</div>
+            <div class="social-icons">
+                <button type="button" class="social-btn google" id="googleBtn">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button type="button" class="social-btn facebook" id="facebookBtn">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button type="button" class="social-btn instagram" id="instagramBtn">
+                    <i class="fab fa-instagram"></i>
+                </button>
+                <button type="button" class="social-btn linkedin" id="linkedinBtn">
+                    <i class="fab fa-linkedin-in"></i>
+                </button>
+            </div>
+        </div>
+
+        <p class="login-text">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <!-- Social Auth Modal -->
+    <div id="socialModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Social Login</h3>
+            <div id="modalContent">
+                <p>This would redirect to the social platform's login page in a real implementation.</p>
+                <div class="input-group" style="margin-top: 20px;">
+                    <label for="socialEmail">Email (demo purposes)</label>
+                    <input type="email" id="socialEmail" placeholder="Enter your email">
+                </div>
+                <button id="confirmSocialLogin" class="btn" style="margin-top: 15px;">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configurable API base without needing localStorage setup -->
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const modal = document.getElementById('socialModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const closeBtn = document.querySelector('.close');
+            const confirmBtn = document.getElementById('confirmSocialLogin');
+            const socialEmail = document.getElementById('socialEmail');
+            
+            let currentProvider = '';
+
+            // Form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (!name || !email || !phone || !password) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                if (!/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return;
+                }
+
+                try {
+                    // Show loading state
+                    const submitBtn = document.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Creating Account...';
+                    submitBtn.disabled = true;
+
+                    // Call backend API
+                    const userData = { name, email, password, role: 'student' };
+                    const response = await api.register(userData);
+
+                    // Store user data (without password)
+                    const user = { ...response.user, phone };
+                    localStorage.setItem("user", JSON.stringify(user));
+
+                    alert("Registration successful!");
+                    window.location.href = "login.html";
+                } catch (error) {
+                    alert(error.message || "Registration failed. Please try again.");
+                    
+                    // Reset button state
+                    const submitBtn = document.querySelector('button[type="submit"]');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Social media buttons - now with working modals
+            document.getElementById('googleBtn').addEventListener('click', function() {
+                currentProvider = 'Google';
+                showSocialModal('Sign in with Google');
+            });
+            
+            document.getElementById('facebookBtn').addEventListener('click', function() {
+                currentProvider = 'Facebook';
+                showSocialModal('Sign in with Facebook');
+            });
+            
+            document.getElementById('instagramBtn').addEventListener('click', function() {
+                currentProvider = 'Instagram';
+                showSocialModal('Sign in with Instagram');
+            });
+            
+            document.getElementById('linkedinBtn').addEventListener('click', function() {
+                currentProvider = 'LinkedIn';
+                showSocialModal('Sign in with LinkedIn');
+            });
+
+            // Modal functions
+            function showSocialModal(title) {
+                modalTitle.textContent = title;
+                modal.style.display = 'block';
+            }
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Confirm social login
+            confirmBtn.addEventListener('click', function() {
+                const email = socialEmail.value.trim();
+                if (!email) {
+                    alert("Please enter your email");
+                    return;
+                }
+
+                // In a real app, this would verify with the social provider's API
+                const user = { 
+                    name: currentProvider + ' User', 
+                    email: email,
+                    phone: '',
+                    password: '',
+                    provider: currentProvider.toLowerCase()
+                };
+                
+                localStorage.setItem("user", JSON.stringify(user));
+                modal.style.display = 'none';
+                alert(`Signed in with ${currentProvider} successfully!`);
+                window.location.href = "login.html";
+            });
+        });
+    </script>
+</body>
+</html>

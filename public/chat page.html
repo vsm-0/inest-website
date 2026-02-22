@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        /* ==================== CRITICAL MOBILE RESPONSIVE CSS ==================== */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column !important;
+                padding-left: 0 !important;
+            }
+            
+            .sidebar {
+                width: 100% !important;
+                padding: 15px !important;
+                position: relative !important;
+            }
+            
+            .home-link {
+                position: static !important;
+                margin-bottom: 10px !important;
+                display: block !important;
+                text-align: center !important;
+            }
+            
+            .sidebar h2 {
+                text-align: center !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .chat-list {
+                display: flex !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                gap: 10px !important;
+            }
+            
+            .chat-item {
+                min-width: 80px !important;
+                text-align: center !important;
+                flex-direction: column !important;
+                padding: 8px !important;
+            }
+            
+            .chat-item img {
+                width: 40px !important;
+                height: 40px !important;
+                margin: 0 auto 5px !important;
+            }
+            
+            .chat-container {
+                padding: 10px !important;
+            }
+            
+            .chat-box {
+                width: 100% !important;
+                height: 60vh !important;
+            }
+            
+            .chat-header {
+                padding: 10px !important;
+                font-size: 16px !important;
+            }
+            
+            .chat-messages {
+                padding: 15px !important;
+            }
+            
+            .message {
+                max-width: 85% !important;
+                padding: 8px !important;
+                margin: 8px 0 !important;
+                font-size: 14px !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .sidebar {
+                padding: 10px !important;
+            }
+            
+            .chat-item {
+                min-width: 60px !important;
+                padding: 5px !important;
+                font-size: 11px !important;
+            }
+            
+            .chat-item img {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            .chat-box {
+                height: 50vh !important;
+            }
+            
+            .chat-header {
+                padding: 8px !important;
+                font-size: 14px !important;
+            }
+            
+            .chat-header img {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            .chat-messages {
+                padding: 10px !important;
+            }
+            
+            .message {
+                max-width: 90% !important;
+                padding: 6px !important;
+                margin: 5px 0 !important;
+                font-size: 12px !important;
+            }
+            
+            .chat-input {
+                padding: 5px !important;
+            }
+            
+            .chat-input input {
+                padding: 6px 30px 6px 8px !important;
+                font-size: 14px !important;
+            }
+            
+            .chat-input button {
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            .chat-item {
+                min-width: 50px !important;
+                font-size: 10px !important;
+            }
+            
+            .chat-item img {
+                width: 25px !important;
+                height: 25px !important;
+            }
+            
+            .chat-box {
+                height: 45vh !important;
+            }
+        }
+        /* ==================== END CRITICAL MOBILE CSS ==================== */
+        
+        body {
+            margin: 0;
+            padding-left:5%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background: #003366;
+        }
+        .sidebar {
+            width: 18%;
+            background: #003366;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .home-link {
+            position: absolute;
+            top: 10px;
+            left: 70px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+        .chat-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .chat-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .chat-item img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .chat-container {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        .chat-box {
+            width: 90%;
+            height: 80vh;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background: #7b68ee;
+            padding: 15px;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            max-width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .received {
+            background: #e0e0e0;
+            align-self: flex-start;
+        }
+        .sent {
+            background: #6a5acd;
+            color: white;
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .chat-input {
+            display: flex;
+            padding: 8px;
+            background: white;
+            border-top: 1px solid #ddd;
+            align-items: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: relative;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 8px 40px 8px 10px;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            background: #f1f1f1;
+        }
+        .chat-input button {
+            padding: 8px 12px;
+            background: #7b68ee;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="./index.html" class="home-link">Home</a>
+        <h2>Chats</h2>
+        <ul class="chat-list">
+            <li class="chat-item" onclick="selectChat('./images/leela_palace.jpg', 'ABC')"><img src="./images/leela_palace.jpg" alt="Profile">ABC</li>
+            <li class="chat-item" onclick="selectChat('./images/sea_view_lodge.jpg', 'XYZ')"><img src="./images/sea_view_lodge.jpg" alt="Profile">XYZ</li>
+            <li class="chat-item" onclick="selectChat('./images/green_valley.jpg', 'LMN')"><img src="./images/green_valley.jpg" alt="Profile">LMN</li>
+        </ul>
+    </aside>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="chat-header">
+                <img id="chatProfile" src="./images/leela_palace.jpg" alt="Profile Picture">
+                <span id="chatName">ABC</span>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function selectChat(profileSrc, name) {
+            document.getElementById("chatProfile").src = profileSrc;
+            document.getElementById("chatName").textContent = name;
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById("chatInput");
+            const messageText = input.value.trim();
+            if (messageText === "") return;
+            
+            const chatMessages = document.getElementById("chatMessages");
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", "sent");
+            messageDiv.textContent = messageText;
+            chatMessages.appendChild(messageDiv);
+            
+            input.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            setTimeout(() => {
+                const botReply = document.createElement("div");
+                botReply.classList.add("message", "received");
+                botReply.textContent = "I'm here to chat!";
+                chatMessages.appendChild(botReply);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

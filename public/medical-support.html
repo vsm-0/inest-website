@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Support - iNest Services</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #0b3a7e;
+            padding: 20px;
+            color: white;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .search-bar {
+            margin-bottom: 10px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nav-bar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-bar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #e91e63, #8e24aa);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .emergency-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .emergency-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .emergency-btn.ambulance {
+            background: #dc3545;
+        }
+
+        .emergency-btn.police {
+            background: #007bff;
+        }
+
+        .emergency-btn.fire {
+            background: #fd7e14;
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            color: #004080;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon.hospitals {
+            background: #ffebee;
+        }
+
+        .service-icon.pharmacies {
+            background: #e8f5e8;
+        }
+
+        .service-icon.doctors {
+            background: #e3f2fd;
+        }
+
+        .service-icon.labs {
+            background: #fff3e0;
+        }
+
+        .service-icon i {
+            font-size: 36px;
+        }
+
+        .service-icon.hospitals i {
+            color: #e91e63;
+        }
+
+        .service-icon.pharmacies i {
+            color: #4caf50;
+        }
+
+        .service-icon.doctors i {
+            color: #2196f3;
+        }
+
+        .service-icon.labs i {
+            color: #ff9800;
+        }
+
+        .service-card h3 {
+            color: #004080;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .view-btn:hover {
+            background: #c2185b;
+        }
+
+        /* Medical Facilities List */
+        .facilities-section {
+            background: white;
+            margin: 20px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .facility-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .facility-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .facility-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .facility-info h4 {
+            color: #004080;
+            margin-bottom: 5px;
+        }
+
+        .facility-info p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .facility-rating {
+            color: #ffc107;
+        }
+
+        .facility-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .call-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .direction-btn {
+            background: #007bff;
+            color: white;
+        }
+
+        .call-btn:hover {
+            background: #218838;
+        }
+
+        .direction-btn:hover {
+            background: #0056b3;
+        }
+
+        /* First Aid Section */
+        .first-aid-section {
+            background: white;
+            margin: 20px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .first-aid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .first-aid-card {
+            border: 2px solid #e91e63;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fce4ec;
+        }
+
+        .first-aid-card h4 {
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .first-aid-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .first-aid-steps li {
+            padding: 5px 0;
+            color: #666;
+        }
+
+        .first-aid-steps li:before {
+            content: "✓";
+            color: #e91e63;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Emergency Contacts */
+        .emergency-contacts {
+            background: #dc3545;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .contact-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #dc3545;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #004b9b;
+            color: white;
+            padding: 40px 80px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 100px;
+        }
+
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e91e63;
+            color: #e91e63;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: #e91e63;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .emergency-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .facility-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .facility-info {
+                margin: 20px 0;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="iNest Logo">
+            </div>
+            
+            <div class="right-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search medical services">
+                    <button>Search</button>
+                </div>
+                
+                <nav class="nav-bar">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./PG page.html">PG Listings</a></li>
+                        <li><a href="./home-foods.html">Home Foods</a></li>
+                        <li><a href="./laundry.html">Laundry</a></li>
+                        <li><a href="./chat page.html">Community</a></li>
+                        <li><a href="./login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>24/7 Medical Support</h1>
+        <p>Your health and safety are our top priority. Get instant access to emergency services and nearby medical facilities.</p>
+        
+        <div class="emergency-buttons">
+            <a href="tel:108" class="emergency-btn ambulance">
+                <i class="fas fa-ambulance"></i>
+                Ambulance - 108
+            </a>
+            <a href="tel:100" class="emergency-btn police">
+                <i class="fas fa-shield-alt"></i>
+                Police - 100
+            </a>
+            <a href="tel:101" class="emergency-btn fire">
+                <i class="fas fa-fire-extinguisher"></i>
+                Fire - 101
+            </a>
+        </div>
+    </section>
+
+    <!-- Medical Services -->
+    <section class="services-section">
+        <h2>Medical Services Near You</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon hospitals">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3>Hospitals</h3>
+                <p>Find nearby hospitals with emergency services, ICU facilities, and specialized departments.</p>
+                <button class="view-btn" onclick="showFacilities('hospitals')">View Hospitals</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon pharmacies">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <h3>Pharmacies</h3>
+                <p>Locate 24/7 pharmacies for medicines, medical supplies, and prescription services.</p>
+                <button class="view-btn" onclick="showFacilities('pharmacies')">View Pharmacies</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon doctors">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>Doctors</h3>
+                <p>Connect with general practitioners, specialists, and telemedicine services.</p>
+                <button class="view-btn" onclick="showFacilities('doctors')">View Doctors</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon labs">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <h3>Diagnostic Labs</h3>
+                <p>Book tests, get reports, and access pathology services with home collection.</p>
+                <button class="view-btn" onclick="showFacilities('labs')">View Labs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Facilities List -->
+    <section class="facilities-section" id="facilities-section">
+        <h2 id="facilities-title">Medical Facilities</h2>
+        
+        <div class="filter-tabs">
+            <div class="filter-tab active" onclick="filterByDistance('all')">All</div>
+            <div class="filter-tab" onclick="filterByDistance('nearby')">Nearby (< 2km)</div>
+            <div class="filter-tab" onclick="filterByDistance('24hours')">24/7 Open</div>
+            <div class="filter-tab" onclick="filterByDistance('emergency')">Emergency</div>
+        </div>
+
+        <div id="facilities-list">
+            <!-- Facilities will be populated here -->
+        </div>
+    </section>
+
+    <!-- First Aid Guide -->
+    <section class="first-aid-section">
+        <h2 style="text-align: center; color: #004080; margin-bottom: 30px;">Basic First Aid Guide</h2>
+        
+        <div class="first-aid-grid">
+            <div class="first-aid-card">
+                <h4><i class="fas fa-heart-broken"></i> Heart Attack</h4>
+                <ul class="first-aid-steps">
+                    <li>Call 108 immediately</li>
+                    <li>Help person sit down and rest</li>
+                    <li>Loosen tight clothing</li>
+                    <li>Give aspirin if available</li>
+                    <li>Stay with them until help arrives</li>
+                </ul>
+            </div>
+
+            <div class="first-aid-card">
+                <h4><i class="fas fa-band-aid"></i> Cuts & Wounds</h4>
+                <ul class="first-aid-steps">
+                    <li>Clean your hands first</li>
+                    <li>Stop bleeding with clean cloth</li>
+                    <li>Clean wound with water</li>
+                    <li>Apply antibiotic ointment</li>
+                    <li>Cover with sterile bandage</li>
+                </ul>
+            </div>
+
+            <div class="first-aid-card">
+                <h4><i class="fas fa-fire"></i> Burns</h4>
+                <ul class="first-aid-steps">
+                    <li>Remove from heat source</li>
+                    <li>Cool with running water</li>
+                    <li>Remove tight items quickly</li>
+                    <li>Don't break blisters</li>
+                    <li>Seek medical attention</li>
+                </ul>
+            </div>
+
+            <div class="first-aid-card">
+                <h4><i class="fas fa-lungs"></i> Choking</h4>
+                <ul class="first-aid-steps">
+                    <li>Encourage coughing</li>
+                    <li>Give 5 back blows</li>
+                    <li>Give 5 abdominal thrusts</li>
+                    <li>Repeat until object clears</li>
+                    <li>Call 108 if unconscious</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contacts -->
+    <section class="emergency-contacts">
+        <h2>Emergency Contact Numbers</h2>
+        <p>Save these important numbers for quick access during emergencies</p>
+        
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <h4>Ambulance</h4>
+                <div class="contact-number">108</div>
+                <button class="contact-btn" onclick="callNumber('108')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h4>Police</h4>
+                <div class="contact-number">100</div>
+                <button class="contact-btn" onclick="callNumber('100')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h4>Fire Service</h4>
+                <div class="contact-number">101</div>
+                <button class="contact-btn" onclick="callNumber('101')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h4>Women Helpline</h4>
+                <div class="contact-number">1091</div>
+                <button class="contact-btn" onclick="callNumber('1091')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h4>Child Helpline</h4>
+                <div class="contact-number">1098</div>
+                <button class="contact-btn" onclick="callNumber('1098')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+
+            <div class="contact-card">
+                <h4>Senior Citizen</h4>
+                <div class="contact-number">1291</div>
+                <button class="contact-btn" onclick="callNumber('1291')">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+        </div>
+        
+        <div class="footer-links">
+            <div>
+                <h3>Medical Services</h3>
+                <a href="#hospitals">Hospitals</a>
+                <a href="#pharmacies">Pharmacies</a>
+                <a href="#doctors">Doctors</a>
+                <a href="#labs">Diagnostic Labs</a>
+            </div>
+            
+            <div>
+                <h3>Emergency</h3>
+                <a href="tel:108">Ambulance - 108</a>
+                <a href="tel:100">Police - 100</a>
+                <a href="tel:101">Fire - 101</a>
+                <a href="#first-aid">First Aid Guide</a>
+            </div>
+            
+            <div>
+                <h3>Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Medical Insurance</a>
+                <a href="#">Health Tips</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample medical facilities data
+        const medicalData = {
+            hospitals: [
+                {
+                    name: "Apollo Hospital",
+                    address: "Jubilee Hills, Hyderabad",
+                    distance: "1.2 km",
+                    phone: "+91-40-23607777",
+                    rating: 4.8,
+                    services: "Multi-specialty, Emergency, ICU",
+                    hours: "24/7",
+                    emergency: true
+                },
+                {
+                    name: "KIMS Hospital",
+                    address: "Kondapur, Hyderabad",
+                    distance: "2.5 km",
+                    phone: "+91-88865-22222",
+                    rating: 4.6,
+                    services: "Cardiology, Oncology, Neurology",
+                    hours: "24/7",
+                    emergency: true
+                },
+                {
+                    name: "Yashoda Hospital",
+                    address: "Malakpet, Hyderabad",
+                    distance: "3.8 km",
+                    phone: "+91-40-44221122",
+                    rating: 4.5,
+                    services: "Multi-specialty, Maternity",
+                    hours: "24/7",
+                    emergency: true
+                }
+            ],
+            pharmacies: [
+                {
+                    name: "Apollo Pharmacy",
+                    address: "Gachibowli Road",
+                    distance: "0.8 km",
+                    phone: "+91-40-12345678",
+                    rating: 4.7,
+                    services: "Medicines, Home Delivery",
+                    hours: "24/7",
+                    emergency: false
+                },
+                {
+                    name: "MedPlus",
+                    address: "HITEC City",
+                    distance: "1.5 km",
+                    phone: "+91-40-87654321",
+                    rating: 4.4,
+                    services: "Prescription, OTC Drugs",
+                    hours: "7 AM - 11 PM",
+                    emergency: false
+                },
+                {
+                    name: "Wellness Forever",
+                    address: "Madhapur",
+                    distance: "2.1 km",
+                    phone: "+91-40-11223344",
+                    rating: 4.3,
+                    services: "Medicines, Health Products",
+                    hours: "8 AM - 10 PM",
+                    emergency: false
+                }
+            ],
+            doctors: [
+                {
+                    name: "Dr. Rajesh Kumar - Cardiologist",
+                    address: "Care Hospital, Banjara Hills",
+                    distance: "2.0 km",
+                    phone: "+91-40-66778899",
+                    rating: 4.9,
+                    services: "Heart Diseases, Consultation",
+                    hours: "9 AM - 6 PM",
+                    emergency: false
+                },
+                {
+                    name: "Dr. Priya Sharma - General Physician",
+                    address: "Rainbow Hospital, Kondapur",
+                    distance: "1.8 km",
+                    phone: "+91-40-99887766",
+                    rating: 4.6,
+                    services: "General Health, Family Doctor",
+                    hours: "10 AM - 8 PM",
+                    emergency: false
+                },
+                {
+                    name: "Dr. Amit Singh - Pediatrician",
+                    address: "Continental Hospital, Gachibowli",
+                    distance: "3.2 km",
+                    phone: "+91-40-55443322",
+                    rating: 4.7,
+                    services: "Child Health, Vaccination",
+                    hours: "8 AM - 5 PM",
+                    emergency: false
+                }
+            ],
+            labs: [
+                {
+                    name: "SRL Diagnostics",
+                    address: "Cyber City, Hyderabad",
+                    distance: "1.1 km",
+                    phone: "+91-40-33221100",
+                    rating: 4.5,
+                    services: "Blood Tests, Imaging, Reports",
+                    hours: "6 AM - 10 PM",
+                    emergency: false
+                },
+                {
+                    name: "Dr. Lal PathLabs",
+                    address: "HITEC City",
+                    distance: "1.9 km",
+                    phone: "+91-40-77665544",
+                    rating: 4.4,
+                    services: "Pathology, Home Collection",
+                    hours: "7 AM - 9 PM",
+                    emergency: false
+                },
+                {
+                    name: "Thyrocare",
+                    address: "Madhapur Junction",
+                    distance: "2.3 km",
+                    phone: "+91-40-99881122",
+                    rating: 4.2,
+                    services: "Wellness Packages, Tests",
+                    hours: "8 AM - 8 PM",
+                    emergency: false
+                }
+            ]
+        };
+
+        let currentCategory = 'all';
+        let currentFilter = 'all';
+
+        function showFacilities(category) {
+            currentCategory = category;
+            const section = document.getElementById('facilities-section');
+            const title = document.getElementById('facilities-title');
+            const list = document.getElementById('facilities-list');
+
+            // Update title
+            const titles = {
+                hospitals: 'Hospitals Near You',
+                pharmacies: 'Pharmacies Near You', 
+                doctors: 'Doctors Near You',
+                labs: 'Diagnostic Labs Near You'
+            };
+            title.textContent = titles[category];
+
+            // Show section
+            section.style.display = 'block';
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            // Reset filter
+            currentFilter = 'all';
+            updateFilterTabs();
+
+            // Render facilities
+            renderFacilities(medicalData[category]);
+        }
+
+        function renderFacilities(facilities) {
+            const list = document.getElementById('facilities-list');
+            list.innerHTML = '';
+
+            facilities.forEach(facility => {
+                const facilityCard = document.createElement('div');
+                facilityCard.className = 'facility-card';
+                facilityCard.innerHTML = `
+                    <div class="facility-info">
+                        <h4>${facility.name}</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> ${facility.address} • ${facility.distance}</p>
+                        <p><i class="fas fa-clock"></i> ${facility.hours}</p>
+                        <p><i class="fas fa-stethoscope"></i> ${facility.services}</p>
+                        <div class="facility-rating">
+                            ${'★'.repeat(Math.floor(facility.rating))} ${facility.rating} (200+ reviews)
+                        </div>
+                    </div>
+                    <div class="facility-actions">
+                        <button class="action-btn call-btn" onclick="callFacility('${facility.phone}', '${facility.name}')">
+                            <i class="fas fa-phone"></i> Call
+                        </button>
+                        <button class="action-btn direction-btn" onclick="getDirections('${facility.address}')">
+                            <i class="fas fa-directions"></i> Directions
+                        </button>
+                    </div>
+                `;
+                list.appendChild(facilityCard);
+            });
+        }
+
+        function filterByDistance(filterType) {
+            currentFilter = filterType;
+            updateFilterTabs();
+
+            let filteredData = [...medicalData[currentCategory]];
+
+            switch (filterType) {
+                case 'nearby':
+                    filteredData = filteredData.filter(f => parseFloat(f.distance) < 2);
+                    break;
+                case '24hours':
+                    filteredData = filteredData.filter(f => f.hours === '24/7');
+                    break;
+                case 'emergency':
+                    filteredData = filteredData.filter(f => f.emergency);
+                    break;
+            }
+
+            renderFacilities(filteredData);
+        }
+
+        function updateFilterTabs() {
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const activeTab = Array.from(tabs).find(tab => 
+                tab.textContent.toLowerCase().includes(currentFilter === 'all' ? 'all' : currentFilter)
+            );
+            if (activeTab) activeTab.classList.add('active');
+        }
+
+        function callFacility(phone, name) {
+            if (confirm(`Call ${name}?\nPhone: ${phone}`)) {
+                window.open(`tel:${phone}`);
+                showNotification(`Calling ${name}...`);
+            }
+        }
+
+        function callNumber(number) {
+            if (confirm(`Make emergency call to ${number}?`)) {
+                window.open(`tel:${number}`);
+                showNotification(`Calling emergency number ${number}...`);
+            }
+        }
+
+        function getDirections(address) {
+            const encodedAddress = encodeURIComponent(address);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+            showNotification('Opening directions in Google Maps...');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            
+            if (type === 'error') {
+                notification.style.background = '#dc3545';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize geolocation for better distance accuracy
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    console.log('Location detected:', position.coords);
+                    showNotification('Location detected! Showing nearby medical facilities.');
+                },
+                error => {
+                    console.log('Location access denied');
+                }
+            );
+        }
+    </script>
+</body>
+</html>

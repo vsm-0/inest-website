@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your City - iNest</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .city-selection-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #004080, #0066cc);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            padding: 40px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #004080;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #003366;
+        }
+
+        .location-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .location-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .cities-section {
+            padding: 40px;
+        }
+
+        .cities-section h2 {
+            text-align: center;
+            color: #004080;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .city-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: #004080;
+        }
+
+        .city-card.available {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+        }
+
+        .city-card.coming-soon {
+            background: linear-gradient(135deg, #fff3e0, #fafafa);
+            opacity: 0.8;
+        }
+
+        .city-image {
+            height: 200px;
+            background: linear-gradient(135deg, #004080, #0066cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .city-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .city-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            color: #004080;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .city-badge.available {
+            background: #28a745;
+            color: white;
+        }
+
+        .city-badge.coming-soon {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .city-content {
+            padding: 25px;
+        }
+
+        .city-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        .city-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #004080;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .city-features {
+            margin: 15px 0;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .select-city-btn {
+            width: 100%;
+            background: #004080;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .select-city-btn:hover {
+            background: #003366;
+        }
+
+        .select-city-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .coming-soon-overlay {
+            position: relative;
+        }
+
+        .coming-soon-overlay::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .popular-cities {
+            background: #004080;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .popular-cities h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .quick-select {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-city-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .quick-city-btn:hover {
+            background: white;
+            color: #004080;
+        }
+
+        .footer-info {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        .expansion-timeline {
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-date {
+            background: #004080;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-city {
+            font-weight: bold;
+            color: #004080;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-select {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .city-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="city-selection-container">
+        <div class="header">
+            <h1><i class="fas fa-map-marker-alt"></i> Select Your City</h1>
+            <p>Choose your city to discover PGs, home food services, and community features near you</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="citySearch" placeholder="Search for your city..." onkeyup="searchCities()">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="location-btn" onclick="detectLocation()">
+                <i class="fas fa-location-arrow"></i>
+                Use Current Location
+            </button>
+        </div>
+
+        <div class="cities-section">
+            <h2>Available Cities</h2>
+            <div class="cities-grid" id="citiesGrid">
+                <!-- Cities will be populated here -->
+            </div>
+        </div>
+
+        <div class="popular-cities">
+            <h3>Quick Select Popular Cities</h3>
+            <div class="quick-select">
+                <button class="quick-city-btn" onclick="selectCity('hyderabad')">Hyderabad</button>
+                <button class="quick-city-btn" onclick="selectCity('bangalore')">Bangalore</button>
+                <button class="quick-city-btn" onclick="selectCity('delhi')">New Delhi</button>
+                <button class="quick-city-btn" onclick="selectCity('mumbai')">Mumbai</button>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <h3>Expansion Roadmap</h3>
+            <div class="expansion-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Q4 2024</div>
+                    <div class="timeline-city">Mumbai & Pune</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q1 2025</div>
+                    <div class="timeline-city">Chennai & Kolkata</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q2 2025</div>
+                    <div class="timeline-city">Ahmedabad & Jaipur</div>
+                </div>
+            </div>
+            <p>Don't see your city? <a href="mailto:support@inest.com" style="color: #004080;">Request expansion</a> to your area!</p>
+        </div>
+    </div>
+
+    <script>
+        const citiesData = [
+            {
+                id: 'hyderabad',
+                name: 'Hyderabad',
+                state: 'Telangana',
+                available: true,
+                image: './images/hyderabad-city.jpg',
+                icon: '🏙️',
+                stats: {
+                    pgs: '1,200+',
+                    foodProviders: '800+',
+                    areas: '25+',
+                    residents: '15,000+'
+                },
+                features: ['IT Hub', 'HITEC City', 'Gachibowli', 'Madhapur', '24/7 Services'],
+                description: 'Tech capital with excellent PG facilities and food services'
+            },
+            {
+                id: 'bangalore',
+                name: 'Bangalore',
+                state: 'Karnataka',
+                available: true,
+                image: './images/bangalore-city.jpg',
+                icon: '🌳',
+                stats: {
+                    pgs: '2,000+',
+                    foodProviders: '1,200+',
+                    areas: '35+',
+                    residents: '25,000+'
+                },
+                features: ['Garden City', 'IT Capital', 'Weather', 'Koramangala', 'Indiranagar'],
+                description: 'India\'s Silicon Valley with great weather and food culture'
+            },
+            {
+                id: 'delhi',
+                name: 'New Delhi',
+                state: 'Delhi',
+                available: true,
+                image: './images/delhi-city.jpg',
+                icon: '🏛️',
+                stats: {
+                    pgs: '1,800+',
+                    foodProviders: '1,000+',
+                    areas: '40+',
+                    residents: '20,000+'
+                },
+                features: ['Capital City', 'Metro Connectivity', 'Delhi University', 'Connaught Place', 'Historical'],
+                description: 'The heart of India with rich culture and connectivity'
+            },
+            {
+                id: 'mumbai',
+                name: 'Mumbai',
+                state: 'Maharashtra',
+                available: false,
+                image: './images/mumbai-city.jpg',
+                icon: '🏢',
+                stats: {
+                    pgs: '2,500+',
+                    foodProviders: '1,500+',
+                    areas: '45+',
+                    residents: '30,000+'
+                },
+                features: ['Financial Capital', 'Local Trains', 'Bollywood', 'Street Food', 'Never Sleeps'],
+                description: 'The city of dreams - Coming December 2024!'
+            },
+            {
+                id: 'chennai',
+                name: 'Chennai',
+                state: 'Tamil Nadu',
+                available: false,
+                image: './images/chennai-city.jpg',
+                icon: '🌊',
+                stats: {
+                    pgs: '1,500+',
+                    foodProviders: '900+',
+                    areas: '30+',
+                    residents: '18,000+'
+                },
+                features: ['Detroit of India', 'Marina Beach', 'IT Corridor', 'South Indian Food', 'Cultural Hub'],
+                description: 'Gateway to South India - Coming March 2025!'
+            },
+            {
+                id: 'pune',
+                name: 'Pune',
+                state: 'Maharashtra',
+                available: false,
+                image: './images/pune-city.jpg',
+                icon: '🎓',
+                stats: {
+                    pgs: '1,000+',
+                    foodProviders: '600+',
+                    areas: '20+',
+                    residents: '12,000+'
+                },
+                features: ['Oxford of East', 'IT Hub', 'Pleasant Weather', 'Student Friendly', 'Cultural Center'],
+                description: 'Education and IT hub - Coming January 2025!'
+            }
+        ];
+
+        let filteredCities = [...citiesData];
+
+        function renderCities(cities = filteredCities) {
+            const grid = document.getElementById('citiesGrid');
+            grid.innerHTML = '';
+
+            cities.forEach(city => {
+                const cityCard = document.createElement('div');
+                cityCard.className = `city-card ${city.available ? 'available' : 'coming-soon'} fade-in`;
+                
+                cityCard.innerHTML = `
+                    <div class="city-image ${!city.available ? 'coming-soon-overlay' : ''}">
+                        <div style="font-size: 4em;">${city.icon}</div>
+                        <div class="city-badge ${city.available ? 'available' : 'coming-soon'}">
+                            ${city.available ? '✓ Available' : 'Coming Soon'}
+                        </div>
+                    </div>
+                    <div class="city-content">
+                        <div class="city-name">${city.name}</div>
+                        <div style="color: #666; margin-bottom: 15px;">${city.state}</div>
+                        <div style="color: #666; margin-bottom: 15px; font-style: italic;">${city.description}</div>
+                        
+                        <div class="city-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">${city.stats.pgs}</div>
+                                <div class="stat-label">PGs Available</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${city.stats.foodProviders}</div>
+                                <div class="stat-label">Food Providers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${city.stats.areas}</div>
+                                <div class="stat-label">Areas Covered</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${city.stats.residents}</div>
+                                <div class="stat-label">Active Users</div>
+                            </div>
+                        </div>
+
+                        <div class="city-features">
+                            <div class="feature-list">
+                                ${city.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <button class="select-city-btn" onclick="selectCity('${city.id}')" ${!city.available ? 'disabled' : ''}>
+                            ${city.available ? 'Select ' + city.name : 'Notify When Available'}
+                        </button>
+                    </div>
+                `;
+
+                if (city.available) {
+                    cityCard.onclick = () => selectCity(city.id);
+                }
+
+                grid.appendChild(cityCard);
+            });
+        }
+
+        function searchCities() {
+            const searchTerm = document.getElementById('citySearch').value.toLowerCase();
+            filteredCities = citiesData.filter(city => 
+                city.name.toLowerCase().includes(searchTerm) || 
+                city.state.toLowerCase().includes(searchTerm) ||
+                city.features.some(feature => feature.toLowerCase().includes(searchTerm))
+            );
+            renderCities(filteredCities);
+        }
+
+        function selectCity(cityId) {
+            const city = citiesData.find(c => c.id === cityId);
+            
+            if (!city) {
+                showNotification('City not found!', 'error');
+                return;
+            }
+
+            if (!city.available) {
+                // Handle coming soon cities
+                if (confirm(`${city.name} is coming soon! Would you like to be notified when we launch?`)) {
+                    showNotification(`Great! We'll notify you when iNest launches in ${city.name}`, 'info');
+                    // In real implementation, this would save email for notifications
+                }
+                return;
+            }
+
+            // Store selected city
+            localStorage.setItem('selectedCity', JSON.stringify({
+                id: city.id,
+                name: city.name,
+                state: city.state
+            }));
+
+            showNotification(`Welcome to iNest ${city.name}! Redirecting...`, 'success');
+
+            // Redirect to cities page with city context
+            setTimeout(() => {
+                window.location.href = `./cities.html?city=${city.id}`;
+            }, 1500);
+        }
+
+        function detectLocation() {
+            if (!navigator.geolocation) {
+                showNotification('Geolocation is not supported by this browser.', 'error');
+                return;
+            }
+
+            showNotification('Detecting your location...', 'info');
+
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const { latitude, longitude } = position.coords;
+                    
+                    // Simple city detection based on coordinates
+                    const detectedCity = detectCityFromCoordinates(latitude, longitude);
+                    
+                    if (detectedCity) {
+                        showNotification(`Detected: ${detectedCity.name}`, 'success');
+                        setTimeout(() => selectCity(detectedCity.id), 1000);
+                    } else {
+                        showNotification('Unable to detect your city. Please select manually.', 'info');
+                    }
+                },
+                error => {
+                    showNotification('Unable to get your location. Please select manually.', 'error');
+                }
+            );
+        }
+
+        function detectCityFromCoordinates(lat, lon) {
+            // Simple coordinate-based city detection
+            const cityBounds = {
+                hyderabad: { lat: [17.2, 17.6], lon: [78.2, 78.7] },
+                bangalore: { lat: [12.8, 13.2], lon: [77.4, 77.8] },
+                delhi: { lat: [28.4, 28.9], lon: [76.8, 77.5] },
+                mumbai: { lat: [18.9, 19.3], lon: [72.7, 73.1] }
+            };
+
+            for (const [cityId, bounds] of Object.entries(cityBounds)) {
+                if (lat >= bounds.lat[0] && lat <= bounds.lat[1] && 
+                    lon >= bounds.lon[0] && lon <= bounds.lon[1]) {
+                    return citiesData.find(city => city.id === cityId);
+                }
+            }
+
+            return null;
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                border-radius: 10px;
+                color: white;
+                font-weight: bold;
+                z-index: 10000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+            `;
+
+            switch (type) {
+                case 'success':
+                    notification.style.background = '#28a745';
+                    break;
+                case 'error':
+                    notification.style.background = '#dc3545';
+                    break;
+                case 'info':
+                    notification.style.background = '#17a2b8';
+                    break;
+                default:
+                    notification.style.background = '#6c757d';
+            }
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 4000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCities();
+
+            // Check if user has already selected a city
+            const savedCity = localStorage.getItem('selectedCity');
+            if (savedCity) {
+                const city = JSON.parse(savedCity);
+                const confirmed = confirm(`Continue with ${city.name}? Or select a different city?`);
+                if (confirmed) {
+                    window.location.href = `./cities.html?city=${city.id}`;
+                }
+            }
+
+            // Add pulse animation to available cities
+            setTimeout(() => {
+                document.querySelectorAll('.city-card.available').forEach(card => {
+                    card.classList.add('pulse');
+                    setTimeout(() => card.classList.remove('pulse'), 2000);
+                });
+            }, 1000);
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+
+
+On clicking hyderabad, banglore, newdelhi, mumbai
+the pages are blank
+what to do

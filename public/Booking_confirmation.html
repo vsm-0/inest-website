@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #004a99;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+        .property-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .property-image {
+            width: 40%;
+            border-radius: 10px;
+            order: 2; /* Move image to the right */
+        }
+        .property-details {
+            width: 60%;
+            order: 1;
+        }
+        .property-details h2, .property-rules h2, .booking-form h2 {
+            color: #004a99;
+            border-bottom: 2px solid #004a99;
+            padding-bottom: 5px;
+        }
+        .booking-form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .booking-form input, .booking-form select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            display: block;
+        }
+        .booking-form .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .booking-form button {
+            background-color: #004a99;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .name-fields, .contact-fields {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .name-fields select, .name-fields input {
+            flex: 1;
+        }
+        .contact-fields select {
+            width: 25%;
+        }
+        .contact-fields input {
+            flex: 1;
+        }
+        .footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #004b9b; /* Match the blue background */
+    color: white;
+    padding: 40px 80px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px; /* Space between columns */
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Hover effect */
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Booking Confirmation</h1>
+    </header>
+    <main>
+        <section class="container">
+            <div class="property-container">
+                <img src="images/images.jpeg" alt="Property Image" class="property-image">
+                <div class="property-details">
+                    <h2>Property Details</h2>
+                    <p>Type: <span style="color: orange;">House</span></p>
+                    <p>Room Type: <span style="color: orange;">Private Room</span></p>
+                    <p>Security Deposit: <span style="color: orange;">500</span></p>
+                    <p>Attached Bathroom: <span style="color: orange;">Yes</span></p>
+                    <p>Preferred Tenants: <span style="color: orange;">Students</span></p>
+                    <p>Availability: <span style="color: orange;">January 2024</span></p>
+                </div>
+            </div>
+            <div class="property-rules">
+                <h2>Property Rules</h2>
+                <p>* You will not be allowed to edit your name post booking.</p>
+                <p style="color: orange; cursor: pointer;">View All</p>
+            </div>
+            <div class="booking-form">
+                <h2>I Am Booking For</h2>
+                <div class="radio-group">
+                    <label><input type="radio" name="bookingFor" checked> Myself</label>
+                    <label><input type="radio" name="bookingFor"> Someone Else</label>
+                </div>
+                <div class="name-fields">
+                    <label for="title">Title</label>
+                    <select id="title">
+                        <option>Ms.</option>
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                    </select>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                </div>
+                <label for="email">Email ID</label>
+                <input type="email" id="email" placeholder="Email ID">
+                <label for="phone">Phone Number</label>
+                <div class="contact-fields">
+                    <select>
+                        <option>+1</option>
+                        <option>+44</option>
+                        <option>+91</option>
+                        <option>+61</option>
+                    </select>
+                    <input type="tel" id="phone" placeholder="Phone Number">
+                </div>
+                <button><a href="./qr.html">Confirm Booking</a></button>
+                <p style="font-size: small; text-align: center;">
+                    By proceeding, I agree to The Inest's <span style="color: orange; cursor: pointer;">User Agreement</span>, <span style="color: orange; cursor: pointer;">Terms Of Service</span> And <span style="color: orange; cursor: pointer;">Cancellation & Property Booking Policies</span>
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+           
+        </div>
+    
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+    
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+    
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,3308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNest - Find Your Perfect Nest</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        /* ==================== CRITICAL MOBILE RESPONSIVE CSS ==================== */
+        /* Force mobile responsive behavior for all screens 768px and below */
+        @media screen and (max-width: 768px) {
+            html body header .header-container {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            html body header .right-section {
+                width: 100% !important;
+                align-items: center !important;
+                flex-direction: column !important;
+            }
+            
+            html body header .search-bar {
+                width: 100% !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                margin-bottom: 15px !important;
+            }
+            
+            html body header .search-bar input {
+                width: 70% !important;
+                max-width: 250px !important;
+                flex: 1 !important;
+                min-width: 150px !important;
+            }
+            
+            html body header .search-bar button {
+                width: 25% !important;
+                max-width: 80px !important;
+                margin-left: 5px !important;
+            }
+            
+            html body header .nav-bar ul {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 5px !important;
+                width: 100% !important;
+            }
+            
+            html body header .nav-bar ul li a {
+                font-size: 12px !important;
+                padding: 5px 8px !important;
+            }
+            
+            html body .house-listing,
+            html body .content-section,
+            html body .filter-section {
+                width: 95% !important;
+                padding: 15px !important;
+                margin: 15px auto !important;
+            }
+            
+            html body .property,
+            html body .pg-card,
+            html body .house-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 15px !important;
+            }
+            
+            html body .property img,
+            html body .pg-card img,
+            html body .house-card img {
+                width: 100px !important;
+                height: 100px !important;
+                margin: 0 auto 15px !important;
+            }
+            
+            html body .banner-container {
+                width: 95% !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            html body header {
+                padding: 10px !important;
+            }
+            
+            html body header .logo img {
+                height: 50px !important;
+            }
+            
+            html body header .search-bar {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            
+            html body header .search-bar input {
+                width: 100% !important;
+                margin-bottom: 10px !important;
+            }
+            
+            html body header .search-bar button {
+                width: 100% !important;
+            }
+            
+            html body header .nav-bar ul {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 5px !important;
+            }
+            
+            html body header .nav-bar ul li {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            html body header .nav-bar ul li a {
+                display: block !important;
+                width: 100% !important;
+                padding: 10px !important;
+                text-align: center !important;
+            }
+            
+            html body .house-listing,
+            html body .content-section,
+            html body .filter-section {
+                width: 95% !important;
+                padding: 10px !important;
+            }
+            
+            html body .property img,
+            html body .pg-card img,
+            html body .house-card img {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            
+            html body .banner {
+                padding: 10px !important;
+            }
+            
+            html body .banner-info {
+                padding: 10px !important;
+            }
+            
+            html body .banner-info h2 {
+                font-size: 16px !important;
+            }
+            
+            html body .banner-info p {
+                font-size: 12px !important;
+            }
+        }
+        
+        @media screen and (max-width: 360px) {
+            html body header .logo img {
+                height: 40px !important;
+            }
+            
+            html body .property img,
+            html body .pg-card img,
+            html body .house-card img {
+                width: 70px !important;
+                height: 70px !important;
+            }
+        }
+        
+        /* ==================== ENHANCED NAVBAR MOBILE CSS ==================== */
+        @media screen and (max-width: 768px) {
+            /* Force navbar to be fully responsive */
+            html body header {
+                padding: 15px 10px !important;
+            }
+            
+            html body header .header-container {
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                gap: 15px !important;
+            }
+            
+            html body header .logo {
+                order: 1 !important;
+                text-align: center !important;
+            }
+            
+            html body header .logo img {
+                height: 60px !important;
+                max-height: 60px !important;
+            }
+            
+            html body header .right-section {
+                order: 2 !important;
+                width: 100% !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+            
+            html body header .search-bar {
+                order: 1 !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 0 !important;
+                gap: 10px !important;
+            }
+            
+            html body header .search-bar input {
+                width: 70% !important;
+                max-width: 300px !important;
+                padding: 10px !important;
+                border-radius: 5px !important;
+                border: none !important;
+                font-size: 14px !important;
+            }
+            
+            html body header .search-bar button {
+                width: 25% !important;
+                max-width: 80px !important;
+                padding: 10px !important;
+                background-color: #1a73e8 !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 5px !important;
+                cursor: pointer !important;
+                font-size: 14px !important;
+            }
+            
+            html body header .nav-bar {
+                order: 2 !important;
+                width: 100% !important;
+            }
+            
+            html body header .nav-bar ul {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                list-style: none !important;
+                width: 100% !important;
+            }
+            
+            html body header .nav-bar ul li {
+                position: relative !important;
+                display: inline-block !important;
+            }
+            
+            html body header .nav-bar ul li a {
+                color: white !important;
+                text-decoration: none !important;
+                padding: 8px 12px !important;
+                border-radius: 5px !important;
+                font-size: 13px !important;
+                white-space: nowrap !important;
+                display: block !important;
+                transition: background-color 0.3s !important;
+            }
+            
+            html body header .nav-bar ul li a:hover {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+            }
+            
+            html body header .auth-buttons {
+                display: flex !important;
+                gap: 10px !important;
+                margin: 0 !important;
+                justify-content: center !important;
+            }
+            
+            html body header .auth-buttons a {
+                padding: 8px 16px !important;
+                border: 1px solid white !important;
+                border-radius: 4px !important;
+                font-size: 13px !important;
+                text-decoration: none !important;
+                color: white !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            html body header {
+                padding: 10px 5px !important;
+            }
+            
+            html body header .logo img {
+                height: 50px !important;
+            }
+            
+            html body header .search-bar {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+            html body header .search-bar input {
+                width: 100% !important;
+                max-width: none !important;
+            }
+            
+            html body header .search-bar button {
+                width: 100% !important;
+                max-width: none !important;
+            }
+            
+            html body header .nav-bar ul {
+                flex-direction: column !important;
+                gap: 5px !important;
+            }
+            
+            html body header .nav-bar ul li {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            html body header .nav-bar ul li a {
+                width: 100% !important;
+                padding: 12px !important;
+                font-size: 14px !important;
+            }
+            
+            html body header .auth-buttons {
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 10px !important;
+            }
+            
+            html body header .auth-buttons a {
+                width: 100% !important;
+                text-align: center !important;
+                padding: 12px !important;
+            }
+        }
+        
+        /* ==================== ENHANCED FOOTER MOBILE CSS ==================== */
+        @media screen and (max-width: 768px) {
+            html body .footer {
+                display: flex !important;
+                flex-direction: column !important;
+                background-color: #004b9b !important;
+                color: white !important;
+                padding: 30px 20px !important;
+                gap: 30px !important;
+                text-align: center !important;
+            }
+            
+            html body .footer-left {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 15px !important;
+                order: 2 !important;
+            }
+            
+            html body .footer-left p {
+                margin: 0 !important;
+                font-size: 16px !important;
+                text-align: center !important;
+            }
+            
+            html body .footer-left .social-icons {
+                display: flex !important;
+                justify-content: center !important;
+                gap: 15px !important;
+                margin: 10px 0 !important;
+            }
+            
+            html body .footer-left .social-icons a {
+                margin: 0 !important;
+                font-size: 24px !important;
+                color: white !important;
+                text-decoration: none !important;
+                padding: 5px !important;
+            }
+            
+            html body .footer-left img {
+                max-width: 120px !important;
+                height: auto !important;
+                margin: 10px 0 !important;
+            }
+            
+            html body .footer-links {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 25px !important;
+                order: 1 !important;
+                width: 100% !important;
+            }
+            
+            html body .footer-links > div {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            html body .footer-links h3 {
+                font-size: 18px !important;
+                margin: 0 0 15px 0 !important;
+                color: white !important;
+                font-weight: bold !important;
+            }
+            
+            html body .footer-links a {
+                display: block !important;
+                color: white !important;
+                text-decoration: none !important;
+                margin: 5px 0 !important;
+                padding: 5px !important;
+                font-size: 14px !important;
+                transition: color 0.3s !important;
+            }
+            
+            html body .footer-links a:hover {
+                color: #FFD700 !important;
+                text-decoration: underline !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            html body .footer {
+                padding: 20px 15px !important;
+                gap: 20px !important;
+            }
+            
+            html body .footer-left img {
+                max-width: 100px !important;
+            }
+            
+            html body .footer-left .social-icons a {
+                font-size: 20px !important;
+            }
+            
+            html body .footer-links {
+                gap: 20px !important;
+            }
+            
+            html body .footer-links h3 {
+                font-size: 16px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            html body .footer-links a {
+                font-size: 13px !important;
+                margin: 3px 0 !important;
+            }
+        }
+        /* ==================== END CRITICAL MOBILE CSS ==================== */
+        
+        /* Header Styling */
+header {
+    background-color: #0b3a7e;
+    padding: 20px;
+    color: white;
+}
+
+/* Flex container for header */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Logo left, rest right */
+    align-items: flex-start; /* Align search bar at the top */
+}
+
+/* Logo styling */
+.logo img {
+    height: 80px; /* Adjust logo size */
+}
+
+/* Right section (Search + Nav) */
+.right-section {
+    display: flex;
+    flex-direction: column; /* Stack search bar on top */
+    align-items: flex-end; /* Align to the right */
+}
+
+/* Search bar styling */
+.search-bar {
+    margin-bottom: 10px; /* Space between search and nav */
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Navigation bar styling */
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-bar ul li {
+    position: relative;
+}
+
+.nav-bar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-bar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: #333 !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 0;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown > a:after {
+    content: ' ▼';
+    font-size: 10px;
+}
+
+/* Auth buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.auth-buttons a {
+    padding: 6px 12px !important;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 13px !important;
+}
+
+.auth-buttons .login-btn:hover {
+    background-color: white;
+    color: #0b3a7e !important;
+}
+
+.auth-buttons .register-btn {
+    background-color: #FFD700;
+    color: #333 !important;
+    border-color: #FFD700;
+}
+
+.auth-buttons .register-btn:hover {
+    background-color: #FFC107;
+}
+
+.house-listing {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.listing-header button {
+    padding: 10px;
+    border: none;
+    background: #1a73e8;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.house {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.listing-header{
+    text-align: center;
+
+}
+.banner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.banner-container {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.banner-container img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.banner-info {
+    width: 100%;
+    max-width: 1170px;
+    background-color: #0b3a7e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.banner-info h2, .banner-info p {
+    margin: 5px 0;
+}
+
+.sort-button-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: auto; 
+margin: 20px 0; 
+}
+
+.sort-button-container button {
+background-color: #094080;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+text-align: center;
+}
+
+.sort-button-container button:hover {
+background-color: #094080;
+}
+/* Enhanced Property Types Section */
+.book-now {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 20px;
+    margin: 40px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.book-now h3 {
+    color: #004080;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.property-types-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 30px 25px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 180px;
+}
+
+.book-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.book-item:hover::before {
+    left: 100%;
+}
+
+.book-item:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 64, 128, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+.book-item img {
+    width: 90px;
+    height: 90px;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    margin-bottom: 15px;
+}
+
+.book-item:hover img {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 8px 15px rgba(0, 64, 128, 0.3));
+}
+
+.book-item p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #004080;
+    margin: 0;
+    transition: color 0.3s ease;
+    text-align: center;
+}
+
+.book-item:hover p {
+    color: #0056b3;
+}
+.popular-cities{
+    padding-left: 20px;
+}
+.city{
+    padding-left: 20px;
+}
+
+/* General styling for the recommended properties section */
+.recommended-properties {
+padding: 50px;
+background-color: #fff;
+border-radius: 10px;
+max-width: 1200px;
+margin: auto;
+}
+
+.recommended-properties h2 {
+font-size: 28px;
+font-weight: bold;
+
+}
+
+/* Property card styling */
+.property {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: #fff;
+margin-bottom: 5px;
+border-bottom: 1.5px solid #ccc; /* Add line between each house */
+}
+
+.property img {
+width: 100px;
+height: 100px;
+border-radius: 5px;
+object-fit: cover;
+margin-right: 15px;
+}
+
+.property div {
+flex: 1;
+}
+
+.property h3 {
+padding-left:15%;
+font-size: 18px;
+margin-bottom: 5px;
+color: #333;
+}
+
+.property p {
+padding-left:15%;
+font-size: 16px;
+color: #666;
+}
+
+.property span {
+padding-right:30%;
+font-size: 16px;
+color:black;
+}
+
+/* Heart button for favorites */
+button.heart {
+padding-right:2%;
+background: none;
+border: none;
+font-size: 20px;
+cursor: pointer;
+transition: color 0.3s;
+}
+
+button.heart:hover {
+color: red;
+}
+
+/* Hidden properties (initially hidden) */
+.property.hidden {
+display: none;
+}
+
+/* View All button */
+#viewAll {
+display: block;
+background-color: #094080;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+margin: 20px auto;
+text-align: center;
+}
+
+#viewAll:hover {
+background-color: #094080;
+}
+
+/* ======================== RESPONSIVE DESIGN ======================== */
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    height: 18px;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+    transition: 0.3s;
+}
+
+/* Large Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 20px;
+    }
+    
+    .search-bar input {
+        width: 250px;
+    }
+    
+    .nav-bar ul {
+        gap: 10px;
+    }
+    
+    .nav-bar ul li a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    .feedback-carousel h2 {
+        font-size: 28px;
+    }
+    
+    .footer {
+        padding: 30px 40px;
+    }
+    
+    .footer-links {
+        gap: 60px;
+    }
+}
+.logo img {
+    height: 80px; /* Adjust logo size */
+}
+
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    /* Header Responsive */
+    header {
+        padding: 15px 20px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .logo img {
+        height: 60px;
+    }
+    
+    .right-section {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .search-bar {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .search-bar input {
+        width: 70%;
+        max-width: 300px;
+    }
+    
+    .nav-bar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .nav-bar ul li a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+    
+    .auth-buttons {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    /* Welcome Section */
+    section[style*="text-align: center"] h1 {
+        font-size: 32px !important;
+    }
+    
+    section[style*="text-align: center"] p {
+        font-size: 16px !important;
+        padding: 0 20px;
+    }
+    
+    /* Property Cards */
+    .property {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .property img {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px;
+    }
+    
+    .property h3 {
+        padding-left: 0;
+        font-size: 16px;
+    }
+    
+    .property p {
+        padding-left: 0;
+        font-size: 14px;
+    }
+    
+    .property span {
+        padding-right: 0;
+        margin: 10px 0;
+    }
+    
+    .button.heart {
+        padding-right: 0;
+        margin-top: 10px;
+    }
+    
+    /* House Listing */
+    .house-listing {
+        width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+    
+    .recommended-properties {
+        padding: 20px;
+    }
+    
+    .recommended-properties h2 {
+        font-size: 22px;
+    }
+    
+    /* Property Types Container */
+    .property-types-container {
+        gap: 20px;
+    }
+    
+    .book-item {
+        min-width: 150px;
+        padding: 20px 15px;
+    }
+    
+    .book-item img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .book-item p {
+        font-size: 14px;
+    }
+    
+    /* Cities Section */
+    .popular-cities {
+        padding: 15px;
+    }
+    
+    .city img {
+        width: 200px !important;
+        height: 120px !important;
+    }
+    
+    /* Feedback Carousel */
+    .feedback-carousel {
+        padding: 20px 0;
+    }
+    
+    .feedback-carousel h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .review {
+        width: 250px;
+        padding: 20px;
+    }
+    
+    /* Footer */
+    .footer {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+    
+    .footer-links {
+        gap: 30px;
+    }
+    
+    .footer-links h3 {
+        font-size: 16px;
+    }
+    
+    /* Demo Features */
+    #feature-demo {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    
+    .demo-form {
+        max-width: 100%;
+    }
+}
+
+/* Small Tablets / Large Phones (600px and below) */
+@media (max-width: 600px) {
+    /* Header */
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .search-bar button {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .nav-bar ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+    
+    .nav-bar ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dropdown-content {
+        position: static;
+        display: block;
+        box-shadow: none;
+        background: rgba(255,255,255,0.1);
+        margin: 5px 0;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    /* Quick Access Grid */
+    div[style*="grid-template-columns"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    /* Property Types */
+    .property-types-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Cities Section */
+    .city {
+        margin-right: 15px !important;
+    }
+    
+    .city img {
+        width: 180px !important;
+        height: 100px !important;
+    }
+    
+    /* Footer */
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .social-icons {
+        text-align: center;
+    }
+}
+
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        padding: 10px 15px;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    /* Welcome Section */
+    section[style*="text-align: center"] {
+        padding: 20px 15px !important;
+        margin: 15px 0 !important;
+    }
+    
+    section[style*="text-align: center"] h1 {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    section[style*="text-align: center"] p {
+        font-size: 14px !important;
+    }
+    
+    /* Quick Access Grid */
+    div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        max-width: 300px !important;
+    }
+    
+    a[style*="padding: 30px 20px"] {
+        padding: 20px 15px !important;
+    }
+    
+    /* Property Cards */
+    .property {
+        padding: 10px;
+    }
+    
+    .property img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .property h3 {
+        font-size: 14px;
+    }
+    
+    .property p {
+        font-size: 12px;
+    }
+    
+    /* Book Now Section */
+    .book-now {
+        padding: 20px 15px;
+        margin: 20px 10px;
+    }
+    
+    .book-now h3 {
+        font-size: 20px;
+    }
+    
+    .book-item {
+        min-width: 120px;
+        padding: 15px 10px;
+    }
+    
+    .book-item img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .book-item p {
+        font-size: 12px;
+    }
+    
+    /* Cities */
+    .popular-cities h2 {
+        font-size: 18px;
+        padding-left: 15px;
+    }
+    
+    .city {
+        margin-right: 10px !important;
+    }
+    
+    .city img {
+        width: 150px !important;
+        height: 90px !important;
+    }
+    
+    .city p {
+        font-size: 12px;
+    }
+    
+    /* Sort Button */
+    .sort-button-container button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* Recommended Properties */
+    .recommended-properties h2 {
+        font-size: 18px;
+    }
+    
+    /* Feedback Carousel */
+    .feedback-carousel h2 {
+        font-size: 20px;
+    }
+    
+    .review {
+        width: 220px;
+        padding: 15px;
+    }
+    
+    .review h4 {
+        font-size: 16px;
+    }
+    
+    .review p {
+        font-size: 12px;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 20px 15px;
+    }
+    
+    .footer-left img {
+        max-width: 120px;
+    }
+}
+
+/* Extra Small Phones (360px and below) */
+@media (max-width: 360px) {
+    /* Header */
+    .logo img {
+        height: 40px;
+    }
+    
+    .search-bar input {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .search-bar button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    /* Welcome Section */
+    section[style*="text-align: center"] h1 {
+        font-size: 20px !important;
+    }
+    
+    section[style*="text-align: center"] p {
+        font-size: 12px !important;
+    }
+    
+    /* Quick Access Cards */
+    a[style*="padding: 30px 20px"] {
+        padding: 15px 10px !important;
+    }
+    
+    div[style*="width: 60px; height: 60px"] {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    /* Cities */
+    .city img {
+        width: 130px !important;
+        height: 80px !important;
+    }
+    
+    /* Review Cards */
+    .review {
+        width: 200px;
+        padding: 12px;
+    }
+    
+    /* Demo Forms */
+    .demo-form {
+        padding: 15px;
+    }
+    
+    .demo-form input,
+    .demo-form textarea {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .right-section {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .search-bar {
+        margin-bottom: 0;
+    }
+    
+    .nav-bar ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    section[style*="text-align: center"] {
+        padding: 20px !important;
+    }
+    
+    div[style*="grid-template-columns"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+        .feedback-carousel {
+            width: 95%;
+            margin: 40px auto;
+            margin-bottom: 60px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-carousel h2 {
+            text-align: center;
+            color: #004080;
+            margin-bottom: 30px;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        /* Enhanced Carousel styling */
+        .carousel {
+            display: flex;
+            padding: 20px 0;
+            gap: 30px;
+            overflow: visible;
+            animation: smoothSlide 45s linear infinite;
+            will-change: transform;
+        }
+        
+        @keyframes smoothSlide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .carousel:hover {
+            animation-play-state: paused;
+        }
+    
+        /* Enhanced Review card styling */
+        .review {
+            flex: 0 0 auto;
+            width: 280px;
+            background: linear-gradient(135deg, #004080 0%, #0056b3 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0, 64, 128, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .review:hover::before {
+            opacity: 1;
+        }
+        
+        .review:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 64, 128, 0.4);
+        }
+        
+        .review span {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 15px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .review h4 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #FFD700;
+        }
+        
+        .review p {
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .review p:last-child {
+            margin-bottom: 0;
+            font-size: 12px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        /* Footer styling */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #004b9b; /* Match the blue background */
+    color: white;
+    padding: 40px 80px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px; /* Space between columns */
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Hover effect */
+}
+.demo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f5f7fa;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.demo-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.demo-form input[type="text"],
+.demo-form input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 15px;
+}
+.demo-form input[type="checkbox"] {
+  margin-right: 8px;
+}
+.demo-form button {
+  background: #094080;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.demo-form button:hover {
+  background: #0b3a7e;
+}
+.demo-form textarea {
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 15px;
+  min-height: 80px;
+  resize: vertical;
+}
+/* ===== MOBILE NAV / HAMBURGER ===== */
+
+.mobile-menu-toggle {
+  display: none;           /* hidden on desktop */
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 10px;
+}
+
+/* Use the existing .hamburger styling you already have */
+.mobile-menu-toggle .hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 22px;
+  height: 16px;
+  justify-content: space-between;
+}
+
+.mobile-menu-toggle .hamburger span {
+  height: 2px;
+  background: white;
+  border-radius: 999px;
+}
+
+/* Mobile nav backdrop + panel */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;            /* JS will toggle */
+  z-index: 1100;
+}
+
+.mobile-nav.open {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-nav-panel {
+  width: 280px;
+  max-width: 80%;
+  background: #004080;
+  color: white;
+  padding: 20px 18px;
+  height: 100%;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Links inside mobile nav */
+.mobile-nav-panel ul {
+  list-style: none;
+  padding: 40px 0 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-nav-panel a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 4px;
+  border-radius: 6px;
+  display: block;
+  font-size: 15px;
+}
+
+.mobile-nav-panel a:hover,
+.mobile-nav-panel a:focus {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Only show hamburger on small screens, hide normal nav */
+@media (max-width: 768px) {
+  .nav-bar {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Optional: center right-section on mobile */
+  .right-section {
+    align-items: flex-end;
+  }
+}
+/* Cities we serve strip below hero */
+.cities-serve {
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  padding: 12px 20px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.cities-serve-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  align-items: center;
+}
+
+.cities-serve-title {
+  margin: 0;
+  font-weight: 600;
+  color: #004080;
+}
+
+.cities-serve-list {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+}
+
+.cities-serve-list a {
+  color: #004080;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cities-serve-list a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile tweak */
+@media (max-width: 480px) {
+  .cities-serve {
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin: 0 12px 24px 12px;
+  }
+
+  .cities-serve-inner {
+    flex-direction: column;
+  }
+}
+/* ===== Customer Overview / Trust Section ===== */
+
+.customer-overview {
+  max-width: 1100px;
+  margin: 0 auto 30px auto;
+  padding: 24px 24px 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.customer-overview-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.customer-overview-header h2 {
+  margin: 0 0 6px 0;
+  font-size: 24px;
+  color: #004080;
+  font-weight: 700;
+}
+
+.customer-overview-header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Cards layout */
+.customer-overview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.customer-card {
+  flex: 1 1 230px;
+  min-width: 220px;
+  display: flex;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: #f8f9fa;
+  align-items: flex-start;
+}
+
+.customer-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.customer-card-icon i {
+  font-size: 16px;
+  color: #004080;
+}
+
+.customer-card-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  color: #004080;
+  font-weight: 600;
+}
+
+.customer-card-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Stats row */
+.customer-overview-stats {
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .customer-overview {
+    margin: 0 16px 24px 16px;
+    padding: 18px 14px;
+  }
+
+  .customer-overview-grid {
+    flex-direction: column;
+  }
+
+  .customer-card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-overview-header h2 {
+    font-size: 20px;
+  }
+
+  .customer-overview-header p {
+    font-size: 13px;
+  }
+}
+
+/* ===== Hero section ===== */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+  margin: 20px 0;
+  border-radius: 15px;
+}
+
+.hero h1 {
+  color: #004080;
+  font-size: 38px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.hero p {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 24px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #004080;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #0952aa;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #004080;
+  border: 1px solid #004080;
+}
+
+.btn-secondary:hover {
+  background: #f0f4ff;
+}
+
+.hero-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Hero mobile tweaks */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+}
+/* ===== Cities strip under hero ===== */
+.cities-strip {
+  text-align: center;
+  margin: 0 auto 24px auto;
+  padding: 8px 16px;
+  max-width: 800px;
+  font-size: 14px;
+  color: #444;
+}
+
+.cities-strip-label {
+  font-weight: 600;
+  color: #004080;
+  margin-right: 4px;
+}
+
+.cities-strip a {
+  color: #004080;
+  text-decoration: none;
+  margin: 0 2px;
+}
+
+.cities-strip a:hover {
+  text-decoration: underline;
+}
+/* ===== Feature Highlights ===== */
+.feature-highlights {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px 16px 10px;
+}
+
+.feature-highlights h2 {
+  text-align: center;
+  color: #004080;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 12px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.feature-card i {
+  font-size: 20px;
+  color: #004080;
+  margin-bottom: 8px;
+}
+
+.feature-card h3 {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  color: #004080;
+}
+
+.feature-card p {
+  font-size: 13px;
+  margin: 0;
+  color: #555;
+}
+
+/* ===== How It Works ===== */
+.how-it-works {
+  max-width: 900px;
+  margin: 20px auto 30px auto;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  color: #004080;
+  margin-bottom: 18px;
+  font-size: 22px;
+}
+
+.how-steps {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.how-step {
+  flex: 1 1 220px;
+  max-width: 260px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.how-step-number {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #004080;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #004080;
+  margin-bottom: 8px;
+}
+
+.how-step h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  color: #004080;
+}
+
+.how-step p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+/* ===== CTA Banner ===== */
+.cta-banner {
+  margin: 30px auto 20px auto;
+  max-width: 1100px;
+  padding: 18px 16px;
+}
+
+.cta-banner-inner {
+  background: linear-gradient(135deg, #004080, #0066cc);
+  border-radius: 18px;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.cta-banner h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+}
+
+.cta-banner p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.cta-banner-btn {
+  background: #ffffff;
+  color: #004080;
+  border: none;
+  text-align: center;
+}
+
+.cta-banner-btn:hover {
+  background: #f0f4ff;
+}
+
+@media (max-width: 600px) {
+  .cta-banner-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.logo img {
+  height: 60px;      /* or whatever design says */
+  max-height: 60px;
+  width: auto;
+}
+:root {
+  --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-primary: #0b3a7e;
+  --color-primary-dark: #004080;
+  --color-accent: #FFD700;
+  --color-text-main: #333333;
+  --color-text-muted: #666666;
+  --color-bg: #ffffff;
+}
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+}
+
+header {
+  background-color: var(--color-primary);
+}
+
+.banner-info,
+.book-now h3,
+.feedback-carousel h2 {
+  color: var(--color-primary-dark);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+  <img src="./images/logo.svg" alt="Inest logo">
+</div>
+
+
+    <!-- Right side: search + desktop nav + mobile hamburger -->
+    <div class="right-section">
+
+      <!-- Search bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search by City, Area, Landmark">
+        <button>Search</button>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-bar" aria-label="Primary navigation">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+
+          <!-- Housing Dropdown -->
+          <li class="dropdown">
+            <a href="#">Housing</a>
+            <div class="dropdown-content">
+              <a href="./PG page.html"><i class="fas fa-bed"></i> PG & Hostels</a>
+              <a href="./House.html"><i class="fas fa-home"></i> Houses</a>
+              <a href="./Flats page.html"><i class="fas fa-building"></i> Flats</a>
+            </div>
+          </li>
+
+          <!-- Services Dropdown -->
+          <li class="dropdown">
+            <a href="#">Services</a>
+            <div class="dropdown-content">
+              <a href="./home-foods.html"><i class="fas fa-utensils"></i> Home Foods</a>
+              <a href="./laundry.html"><i class="fas fa-tshirt"></i> Laundry</a>
+              <a href="./medical-support.html"><i class="fas fa-stethoscope"></i> Medical Support</a>
+            </div>
+          </li>
+
+          <!-- Cities Dropdown -->
+<li class="dropdown">
+    <a href="#">📍 Cities</a>
+    <div class="dropdown-content">
+        <a href="/cities.html?city=hyderabad">Hyderabad</a>
+        <a href="/cities.html?city=chennai">Chennai</a>
+        <a href="/cities.html?city=bangalore">Bangalore</a>
+        <a href="/cities.html?city=newdelhi">New Delhi</a>
+
+    </div>
+</li>
+
+
+          <!-- Community Dropdown -->
+          <li class="dropdown">
+            <a href="#">Community</a>
+            <div class="dropdown-content">
+              <a href="./chat page.html"><i class="fas fa-comments"></i> Chat & Connect</a>
+              <a href="./community.html"><i class="fas fa-users"></i> Community Hub</a>
+              <a href="./report-box.html"><i class="fas fa-flag"></i> Report Issues</a>
+            </div>
+          </li>
+
+          <!-- More Dropdown -->
+          <li class="dropdown">
+            <a href="#">More</a>
+            <div class="dropdown-content">
+              <a href="./payment.html"><i class="fas fa-credit-card"></i> Payment</a>
+              <a href="./Booking_confirmation.html"><i class="fas fa-check-circle"></i> Booking Status</a>
+              <a href="./qr.html"><i class="fas fa-qrcode"></i> QR Code</a>
+              <a href="./admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+            </div>
+          </li>
+
+          <!-- Auth buttons -->
+          <li class="auth-buttons">
+            <a href="./login.html" class="login-btn">Login</a>
+            <a href="./register.html" class="register-btn">Sign Up</a>
+          </li>
+
+          <li id="nav-user"></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button
+        class="mobile-menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button> 
+    </div>
+  </div>
+</header>
+
+    <!-- 🔹 Mobile slide-in menu -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+  <div class="mobile-nav-panel">
+    <button type="button" class="mobile-nav-close" aria-label="Close menu">✕</button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./PG page.html">PG & Hostels</a></li>
+      <li><a href="./House.html">Houses</a></li>
+      <li><a href="./Flats page.html">Flats</a></li>
+      <li><a href="./home-foods.html">Home Foods</a></li>
+      <li><a href="./laundry.html">Laundry</a></li>
+      <li><a href="./medical-support.html">Medical Support</a></li>
+      <li><a href="./chat page.html">Community Chat</a></li>
+      <li><a href="./community.html">Community Hub</a></li>
+      <li><a href="./report-box.html">Report Box</a></li>
+      <li><a href="./payment.html">Payment</a></li>
+      <li><a href="./Booking_confirmation.html">Booking Status</a></li>
+      <li><a href="./qr.html">QR Code</a></li>
+      <li><a href="./admin-dashboard.html">Admin Dashboard</a></li>
+      <li><a href="./login.html">Login</a></li>
+      <li><a href="./register.html">Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
+
+    
+    <!-- Welcome Section -->
+    <section class="hero">
+  <h1>Find verified PGs &amp; co-living near your college or office</h1>
+  <p>Safe, community-driven stays with home food, laundry &amp; 24/7 support.</p>
+
+  <div class="hero-cta">
+    <a href="./PG page.html" class="btn-primary">Search Stays</a>
+    <a href="#how-it-works" class="btn-secondary">How It Works</a>
+  </div>
+
+  <!-- Quick Access Buttons / Tiles (keep your existing tiles) -->
+  <div class="hero-tiles">
+    <!-- 👇 paste your existing 6 tiles here (PG Listings, Home Foods, Laundry, etc.) -->
+    <!-- (from <a href="./PG page.html" ...> till last </a>) -->
+    <!-- I’m keeping your tile HTML exactly as is, just wrapped in this div -->
+  </div>
+</section>
+
+    <!-- Cities we serve – below hero -->
+<section class="cities-serve">
+  <div class="cities-serve-inner">
+    <p class="cities-serve-title">Available now in:</p>
+    <p class="cities-serve-list">
+      <a href="./cities.html?city=hyderabad">Hyderabad</a> ·
+      <a href="./cities.html?city=chennai">Chennai</a> ·
+      <a href="./cities.html?city=coimbatore">Coimbatore</a> ·
+      <a href="./cities.html?city=delhi">New Delhi</a>
+    </p>
+  </div>
+</section>
+<!-- Customer Overview / Why iNest section -->
+<section class="customer-overview">
+  <div class="customer-overview-header">
+    <h2>Why residents choose iNest</h2>
+    <p>Built for students, working professionals, and founders who need trusted stays and services.</p>
+  </div>
+
+  <div class="customer-overview-grid">
+    <!-- Card 1 -->
+    <article class="customer-card">
+      <div class="customer-card-icon">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+      </div>
+      <div class="customer-card-content">
+        <h3>Verified Listings</h3>
+        <p>All properties vetted for safety &amp; authenticity.</p>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="customer-card">
+      <div class="customer-card-icon">
+        <i class="fas fa-headset" aria-hidden="true"></i>
+      </div>
+      <div class="customer-card-content">
+        <h3>24/7 Support</h3>
+        <p>Medical &amp; grievance support round the clock.</p>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="customer-card">
+      <div class="customer-card-icon">
+        <i class="fas fa-utensils" aria-hidden="true"></i>
+      </div>
+      <div class="customer-card-content">
+        <h3>Home Foods &amp; Laundry</h3>
+        <p>Order fresh meals and schedule laundry pickup.</p>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="customer-card">
+      <div class="customer-card-icon">
+        <i class="fas fa-users" aria-hidden="true"></i>
+      </div>
+      <div class="customer-card-content">
+        <h3>Community</h3>
+        <p>Events, chats, and startup-friendly co-living.</p>
+      </div>
+    </article>
+  </div>
+
+  <!-- Optional small stats row -->
+  <div class="customer-overview-stats">
+    <span>5,200+ users</span>
+    <span>•</span>
+    <span>1,000+ verified stays</span>
+    <span>•</span>
+    <span>24/7 support</span>
+  </div>
+</section>
+
+<!-- Cities strip: Available now in -->
+<section class="cities-strip">
+  <p>
+    <span class="cities-strip-label">Available now in:</span>
+    <a href="./hyderabad.html">Hyderabad</a>
+    <span>·</span>
+    <a href="./chennai_central.html">Chennai</a>
+    <span>·</span>
+    <a href="./coimbatore.html">Coimbatore</a>
+    <span>·</span>
+    <a href="./new_delhi.html">New Delhi</a>
+  </p>
+</section>
+
+    
+    <!-- Additional Property Types -->
+    <section class="book-now">
+        <h3>Other Property Types →</h3>
+        <div class="property-types-container">
+            <a href="./House.html" class="book-item">
+                <img src="./images/home.png" alt="Home">
+                <p>Rental House</p>
+            </a>
+            <a href="./Flats page.html" class="book-item">
+                <img src="./images/Apartment.png" alt="Apartment">
+                <p>Apartment</p>
+            </a>
+        </div>
+    </section>
+    
+    
+    
+    <section class="popular-cities" style="overflow-x: auto; white-space: nowrap; padding: 20px 0;">
+        <h2>Prime Areas in Hyderabad →</h2>
+        <a href="./gachibowli.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/gachibowli.jpg" alt="Gachibowli" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Gachibowli<br><small style="color: #666;">Financial District</small></p>
+        </a>
+    
+        <a href="hitec_city.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/hitec_city.jpg" alt="HITEC City" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>HITEC City<br><small style="color: #666;">IT Hub</small></p>
+        </a>
+    
+        <a href="./madhapur.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/madhapur.jpg" alt="Madhapur" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Madhapur<br><small style="color: #666;">IT Corridor</small></p>
+        </a>
+    
+        <a href="kondapur.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/kondapur.jpg" alt="Kondapur" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Kondapur<br><small style="color: #666;">Emerging Suburb</small></p>
+        </a>
+    
+        <a href="jubilee_hills.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/jubilee_hills.jpg" alt="Jubilee Hills" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Jubilee Hills<br><small style="color: #666;">Premium Residential</small></p>
+        </a>
+        <a href="banjara_hills.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/banjara_hills.jpg" alt="Banjara Hills" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Banjara Hills<br><small style="color: #666;">Upscale Area</small></p>
+        </a>
+    
+        <a href="ameerpet.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/ameerpet.jpg" alt="Ameerpet" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Ameerpet<br><small style="color: #666;">Central Hub</small></p>
+        </a>
+    
+        <a href="./manikonda.html" class="city" style="display: inline-block; text-align: center; margin-right: 20px; text-decoration: none; color: inherit;">
+            <img src="./images/manikonda.jpg" alt="Manikonda" style="width: 250px; height: 150px; border-radius: 10px;">
+            <p>Manikonda<br><small style="color: #666;">Posh Suburb</small></p>
+        </a>
+    
+        
+    </section>
+
+    <div class="sort-button-container">
+        <button onclick="sortHousesByDistance()">Sort by Distance</button>
+    </div>
+    
+    <section class="house-listing">
+        <div class="listing-header">
+        </div>
+    
+        <section class="recommended-properties">
+            <h2>Featured Listings </h2>
+            
+            <div class="property" onclick="navigateTo('./description.html')">
+                <img src="./images/ab_house.jpg" alt="Ab House">
+                <div>
+                    <h3>Ab House</h3>
+                    <p>Category: House - 1.2 km away<br>Luxury stay with premium amenities.</p>
+                </div>
+                <span>★★★★★</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property" onclick="navigateTo('bc_house.html')">
+                <img src="./images/bc_house.jpg" alt="BC House">
+                <div>
+                    <h3>BC House</h3>
+                    <p>Category: Rental House - 3.4 km away<br>Spacious rooms with a beautiful garden.</p>
+                </div>
+                <span>★★★★☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property" onclick="navigateTo('cd_house.html')">
+                <img src="./images/cd_house.jpg" alt="CD House">
+                <div>
+                    <h3>CD House</h3>
+                    <p>Category: Individual House - 2.0 km away<br>Peaceful neighborhood with modern interiors.</p>
+                </div>
+                <span>★★★★☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property" onclick="navigateTo('ijk_house.html')">
+                <img src="./images/ijk_house.jpg" alt="IJK House">
+                <div>
+                    <h3>IJK House</h3>
+                    <p>Category: Individual House - 4.1 km away<br>Spacious duplex with ample parking.</p>
+                </div>
+                <span>★★★☆☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property" onclick="navigateTo('de_house.html')">
+                <img src="./images/de_house.jpg" alt="DE House">
+                <div>
+                    <h3>DE House</h3>
+                    <p>Category: Rental House - 1.7 km away<br>Cozy and well-maintained residence.</p>
+                </div>
+                <span>★★★★☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property" onclick="navigateTo('fgh_house.html')">
+                <img src="./images/fgh_house.jpg" alt="FGH House">
+                <div>
+                    <h3>UK House</h3>
+                    <p>Category: Rental House - 2.5 km away<br>Affordable and well-connected location.</p>
+                </div>
+                <span>★★★☆☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property hidden" onclick="navigateTo('grand_tower_house.html')">
+                <img src="./images/grand_tower.jpg" alt="House A">
+                <div>
+                    <h3>Grand Tower</h3>
+                    <p>Category: Villa - 5.2 km away<br>Modern design with spacious outdoor area.</p>
+                </div>
+                <span>★★★★★</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property hidden" onclick="navigateTo('green_valley_house.html')">
+                <img src="./images/green_valley.jpg" alt="House B">
+                <div>
+                    <h3>Green Valley</h3>
+                    <p>Category: Rental House - 6.1 km away<br>Perfect for families with nearby parks.</p>
+                </div>
+                <span>★★★★☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property hidden" onclick="navigateTo('leela_palace.html')">
+                <img src="./images/leela_palace.jpg" alt="Leela Palace">
+                <div>
+                    <h3>Leela Palace</h3>
+                    <p>Category: House - 1.2 km away<br>Luxury stay with premium amenities.</p>
+                </div>
+                <span>★★★★☆</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <div class="property hidden" onclick="navigateTo('rent_my_stay_html')">
+                <img src="./images/rentmystay.jpg" alt="Rent My Stay">
+                <div>
+                    <h3>LK House</h3>
+                    <p>Category: Rental House - 8.0 km away<br>Elegant House with Proper Interiors.</p>
+                </div>
+                <span>★★★★★</span>
+<button
+  class="heart"
+  aria-label="Add to favourites"
+  aria-pressed="false"
+>
+  ♡
+</button>
+            </div>
+            
+            <button id="viewAll" onclick="showAll()">View All</button>
+        </section>
+        
+        
+        
+    </section>
+    <section class="feedback-carousel">
+        <h2>Customer Feedback for iNest</h2>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="review">
+                    <span>★★★★★</span>
+                    <h4>Great Service!</h4>
+                    <p>Excellent experience. Highly recommend!</p>
+                    <p>John Doe<br>March 2025</p>
+                </div>
+                <div class="review">
+                    <span>★★★★★</span>
+                    <h4>Great Service!</h4>
+                    <p>Excellent experience. Highly recommend!</p>
+                    <p>John Doe<br>March 2025</p>
+                </div>
+                <div class="review">
+                    <span>★★★★★</span>
+                    <h4>Great Service!</h4>
+                    <p>Excellent experience. Highly recommend!</p>
+                    <p>John Doe<br>March 2025</p>
+                </div>
+                <div class="review">
+                    <span>★★★★★</span>
+                    <h4>Great Service!</h4>
+                    <p>Excellent experience. Highly recommend!</p>
+                    <p>John Doe<br>March 2025</p>
+                </div>
+    
+                <div class="review">
+                    <span>★★★★☆</span>
+                    <h4>Good Quality!</h4>
+                    <p>Nice product and fast delivery.</p>
+                    <p>Jane Smith<br>April 2025</p>
+                </div>
+    
+                <div class="review">
+                    <span>★★★☆☆</span>
+                    <h4>Okay Experience!</h4>
+                    <p>Average service, but good support.</p>
+                    <p>Alex Brown<br>May 2025</p>
+                </div>
+    
+                <div class="review">
+                    <span>★★★★★</span>
+                    <h4>Outstanding!</h4>
+                    <p>Top-notch service. Will buy again.</p>
+                    <p>Emma Davis<br>June 2025</p>
+                </div>
+    
+                <div class="review">
+                    <span>★★★★☆</span>
+                    <h4>Fast Delivery!</h4>
+                    <p>Quick and reliable delivery service.</p>
+                    <p>Chris Evans<br>July 2025</p>
+                </div>
+
+                <div class="review">
+                    <span>★★★★☆</span>
+                    <h4>Fast Delivery!</h4>
+                    <p>Quick and reliable delivery service.</p>
+                    <p>Chris Evans<br>July 2025</p>
+                </div>
+                <div class="review">
+                    <span>★★★★☆</span>
+                    <h4>Fast Delivery!</h4>
+                    <p>Quick and reliable delivery service.</p>
+                    <p>Chris Evans<br>July 2025</p>
+                </div>
+                <div class="review">
+                    <span>★★★★☆</span>
+                    <h4>Fast Delivery!</h4>
+                    <p>Quick and reliable delivery service.</p>
+                    <p>Chris Evans<br>July 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Services / Feature Highlights -->
+<section class="feature-highlights" id="features">
+  <h2>Everything you need in one place</h2>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Verified Listings</h3>
+      <p>All properties vetted for safety &amp; authenticity.</p>
+    </article>
+    <article class="feature-card">
+      <i class="fas fa-utensils"></i>
+      <h3>Home Foods</h3>
+      <p>Order homely meals from trusted providers.</p>
+    </article>
+    <article class="feature-card">
+      <i class="fas fa-tshirt"></i>
+      <h3>Laundry</h3>
+      <p>Doorstep pickup &amp; delivery of your clothes.</p>
+    </article>
+    <article class="feature-card">
+      <i class="fas fa-flag"></i>
+      <h3>Report Box</h3>
+      <p>Raise issues anonymously with WhistleNest.</p>
+    </article>
+    <article class="feature-card">
+      <i class="fas fa-stethoscope"></i>
+      <h3>Medical Support</h3>
+      <p>Access nearby clinics, pharmacies &amp; help.</p>
+    </article>
+    <article class="feature-card">
+      <i class="fas fa-users"></i>
+      <h3>Community</h3>
+      <p>Events, chats and co-living for founders &amp; students.</p>
+    </article>
+  </div>
+</section>
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+  <h2>How It Works</h2>
+  <div class="how-steps">
+    <article class="how-step">
+      <span class="how-step-number">1</span>
+      <h3>Search</h3>
+      <p>Filter PGs &amp; co-living spaces by city, budget, and preferences.</p>
+    </article>
+    <article class="how-step">
+      <span class="how-step-number">2</span>
+      <h3>Verify &amp; Book</h3>
+      <p>Check verified details, amenities, and reviews, then reserve your stay.</p>
+    </article>
+    <article class="how-step">
+      <span class="how-step-number">3</span>
+      <h3>Move In &amp; Connect</h3>
+      <p>Shift in, access home foods, laundry &amp; join your new community.</p>
+    </article>
+  </div>
+</section>
+
+    <!-- DEMO FEATURE SECTIONS -->
+<section id="feature-demo" style="margin: 40px auto; max-width: 900px; background: #fff; border-radius: 10px; padding: 30px;">
+  <h2 style="color:#094080;">Demo: Connected Features</h2>
+  <div id="laundry-section">
+    <h3 style="color: #004080; margin-bottom: 15px;">Hassle-Free Laundry</h3>
+    <p style="color: #666; margin-bottom: 20px;">Request pickup and delivery at your convenience.</p>
+    <ul id="laundry-list"></ul>
+    <form id="laundry-form" class="demo-form" style="display:none;">
+      <label for="laundry-name">Name</label>
+      <input type="text" id="laundry-name" placeholder="Laundry Name" required>
+      <label for="laundry-contact">Contact</label>
+      <input type="text" id="laundry-contact" placeholder="Contact" required>
+      <label for="laundry-price">Price</label>
+      <input type="number" id="laundry-price" placeholder="Price" required>
+      <label for="laundry-timing">Timing</label>
+      <input type="text" id="laundry-timing" placeholder="Timing" required>
+      <label><input type="checkbox" id="laundry-pickup"> Pickup Available</label>
+      <button type="submit">Add Laundry</button>
+    </form>
+    <div id="laundry-msg"></div>
+  </div>
+  <hr>
+  <div id="baker-section" id="home-foods">
+    <h3 style="color: #004080; margin-bottom: 15px;">Fresh Home-Cooked Meals</h3>
+    <p style="color: #666; margin-bottom: 20px;">Order food from trusted providers nearby.</p>
+    <ul id="baker-list"></ul>
+    <form id="baker-form" style="display:none; margin-top:10px;">
+      <input type="text" id="baker-name" placeholder="Name" required>
+      <input type="text" id="baker-contact" placeholder="Contact" required>
+      <input type="text" id="baker-specialty" placeholder="Specialty" required>
+      <button type="submit">Add Baker</button>
+    </form>
+    <div id="baker-msg"></div>
+  </div>
+  <hr>
+  <div id="medical-section">
+    <h3 style="color: #004080; margin-bottom: 15px;">Medical Assistance Anytime</h3>
+    <p style="color: #666; margin-bottom: 20px;">Get emergency medical support or contact nearby pharmacies and clinics.</p>
+    <button
+  type="button"
+  style="margin-bottom: 15px; padding: 8px 16px; border-radius: 6px; border:none; background:#d32f2f; color:#fff; font-weight:600; cursor:pointer;"
+  onclick="window.location.href='tel:+911234567890';">
+  Call Now
+</button>
+
+    <ul id="medical-list"></ul>
+    <form id="medical-form" style="display:none; margin-top:10px;">
+      <input type="text" id="medical-name" placeholder="Name" required>
+      <input type="text" id="medical-contact" placeholder="Contact" required>
+      <input type="text" id="medical-type" placeholder="Type" required>
+      <button type="submit">Add Medical</button>
+    </form>
+    <div id="medical-msg"></div>
+  </div>
+  <hr>
+  <div id="whistlenest-section">
+    <h3>WhistleNest Reports</h3>
+    <ul id="whistlenest-list"></ul>
+    <form id="whistlenest-form" class="demo-form" style="margin-top:10px;">
+      <label for="whistle-title">Title</label>
+      <input type="text" id="whistle-title" placeholder="Title" required>
+      <label for="whistle-desc">Description</label>
+      <textarea id="whistle-desc" placeholder="Description" required></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+    <div id="whistlenest-msg"></div>
+  </div>
+</section>
+<!-- Final CTA Banner -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <div>
+      <h2>Get started with iNest</h2>
+      <p>Find your next nest today — verified, community-first, and student-friendly.</p>
+    </div>
+    <a href="./PG page.html" class="btn-primary cta-banner-btn">Search Stays</a>
+  </div>
+</section>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+  <a href="#" aria-label="Visit us on X (Twitter)">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+  <a href="#" aria-label="Visit us on Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="#" aria-label="Visit our YouTube channel">
+    <i class="fab fa-youtube"></i>
+  </a>
+</div>
+
+            <img src="./images/logo.png" alt="INest Logo">
+           
+        </div>
+    
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+    
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+    
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const propertiesContainer = document.querySelector(".recommended-properties");
+        const viewAllButton = document.getElementById("viewAll");
+        const sortButton = document.querySelector(".sort-button-container button");
+    
+        let allVisible = false; // Track if all houses are visible
+    
+        function sortHousesByDistance() {
+            let propertyElements = Array.from(propertiesContainer.querySelectorAll(".property")); // Get all properties
+    
+            propertyElements.sort((a, b) => {
+                const distanceA = parseFloat(a.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+                const distanceB = parseFloat(b.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+                return distanceA - distanceB;
+            });
+    
+            // Clear container and append sorted elements
+            propertiesContainer.innerHTML = '<h2>Recommended properties across Chennai &rarr;</h2>';
+            propertyElements.forEach(property => {
+                propertiesContainer.appendChild(property);
+            });
+    
+            // If user has clicked "View All" before, show everything
+            if (allVisible) {
+                propertyElements.forEach(property => property.classList.remove("hidden"));
+                viewAllButton.style.display = "none"; // Hide "View All"
+            } else {
+                // Show only first 4, hide the rest
+                propertyElements.forEach((property, index) => {
+                    if (index >= 4) {
+                        property.classList.add("hidden");
+                    } else {
+                        property.classList.remove("hidden");
+                    }
+                });
+                viewAllButton.style.display = "block"; // Show "View All"
+            }
+    
+            propertiesContainer.appendChild(viewAllButton);
+        }
+    
+        function showAll() {
+            document.querySelectorAll(".property").forEach(property => property.classList.remove("hidden"));
+            viewAllButton.style.display = "none"; // Hide "View All"
+            allVisible = true; // Mark that all houses are visible
+        }
+    
+        function toggleHeart(event) {
+  event.stopPropagation();
+  const heart = event.currentTarget || event.target;
+  const isActive = heart.textContent.trim() === "❤️";
+
+  // Toggle icon
+  heart.textContent = isActive ? "♡" : "❤️";
+
+  // Update ARIA state
+  heart.setAttribute("aria-pressed", String(!isActive));
+  heart.setAttribute(
+    "aria-label",
+    !isActive ? "Remove from favourites" : "Add to favourites"
+  );
+}
+
+    
+        function navigateTo(event) {
+            let property = event.currentTarget;
+            let pageUrl = property.getAttribute("onclick")?.match(/'(.+?)'/)?.[1];
+            if (pageUrl) {
+                window.location.href = pageUrl;
+            }
+        }
+    
+        if (sortButton) {
+            sortButton.addEventListener("click", sortHousesByDistance);
+        }
+        if (viewAllButton) {
+            viewAllButton.addEventListener("click", showAll);
+        }
+    
+        document.querySelectorAll(".heart").forEach(heart => {
+            heart.addEventListener("click", toggleHeart);
+        });
+    
+        document.querySelectorAll(".property").forEach(property => {
+            property.addEventListener("click", navigateTo);
+        });
+    
+        
+        document.querySelectorAll(".property").forEach((property, index) => {
+            if (index >= 4) {
+                property.classList.add("hidden");
+            }
+        });
+    });
+        const carousel = document.getElementById("carousel");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    const scrollStep = 300; // Adjust scrolling speed
+
+    if (prevBtn && carousel) {
+      prevBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: -scrollStep, behavior: "smooth" });
+      });
+    }
+    if (nextBtn && carousel) {
+      nextBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: scrollStep, behavior: "smooth" });
+      });
+    }
+    if (carousel && prevBtn && nextBtn) {
+      carousel.addEventListener("scroll", () => {
+        prevBtn.style.visibility = carousel.scrollLeft === 0 ? "hidden" : "visible";
+        nextBtn.style.visibility = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth ? "hidden" : "visible";
+      });
+      window.addEventListener("load", () => {
+        prevBtn.style.visibility = "hidden"; // Hide left arrow initially
+      });
+    }
+
+// User info display
+(function() {
+  const userInfoDiv = document.getElementById('user-info');
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.name) {
+    userInfoDiv.innerHTML = `
+      <span>Welcome, <b>${user.name}</b>! (Role: <b>${user.role}</b>)</span>
+      <button id="logout-btn" style="margin-left:20px; padding:5px 15px; border-radius:5px; background:#094080; color:white; border:none; cursor:pointer;">Logout</button>
+    `;
+    document.getElementById('logout-btn').onclick = function() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('authToken');
+      window.location.href = 'login.html';
+    };
+  } else {
+    userInfoDiv.innerHTML = '<span>Welcome, Guest! <a href="login.html">Login</a> to access more features.</span>';
+  }
+})();
+
+// Dynamic nav user display
+// Ensure this runs after DOM is loaded
+
+document.addEventListener('DOMContentLoaded', function() {
+  const navUser = document.getElementById('nav-user');
+  const authButtons = document.querySelector('.auth-buttons');
+  const user = JSON.parse(localStorage.getItem('user'));
+  
+  if (navUser) {
+    if (user && user.name) {
+      // User is logged in - hide auth buttons and show user info
+      if (authButtons) authButtons.style.display = 'none';
+      navUser.innerHTML = `
+        <span style="color: #FFD700; font-weight: bold; margin-right: 10px;">${user.name}</span>
+        <button id="nav-logout-btn" style="padding:6px 12px; border-radius:4px; background:#dc3545; color:white; border:none; cursor:pointer; font-size:13px;">Logout</button>
+      `;
+      document.getElementById('nav-logout-btn').onclick = function() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('authToken');
+        window.location.href = 'login.html';
+      };
+    } else {
+      // User is not logged in - show auth buttons
+      if (authButtons) authButtons.style.display = 'flex';
+      navUser.innerHTML = '';
+    }
+  }
+});
+    </script>
+    <!-- Configurable API base without manual localStorage setup -->
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // --- Laundry ---
+  function loadLaundry() {
+    api.get('/laundry')
+      .then(data => {
+        const list = document.getElementById('laundry-list');
+        list.innerHTML = data.map(l => `<li>${l.name} (${l.contact}) - Rs.${l.price} | ${l.timing} | Pickup: ${l.pickupAvailable ? 'Yes' : 'No'}</li>`).join('');
+      })
+      .catch(() => {
+        const list = document.getElementById('laundry-list');
+        list.innerHTML = '<li>Unable to load laundry services.</li>';
+      });
+  }
+  loadLaundry();
+  // Show form for owner
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.role === 'owner') document.getElementById('laundry-form').style.display = '';
+  document.getElementById('laundry-form').onsubmit = function(e) {
+    e.preventDefault();
+    api.post('/laundry', {
+      name: document.getElementById('laundry-name').value,
+      contact: document.getElementById('laundry-contact').value,
+      price: document.getElementById('laundry-price').value,
+      timing: document.getElementById('laundry-timing').value,
+      pickupAvailable: document.getElementById('laundry-pickup').checked
+    })
+    .then(r => {
+      document.getElementById('laundry-msg').textContent = r.message || 'Added!';
+      loadLaundry();
+    })
+    .catch(err => {
+      document.getElementById('laundry-msg').textContent = err.message || 'Failed to add.';
+    });
+  };
+  // --- Baker ---
+  function loadBaker() {
+    api.get('/bakers')
+      .then(data => {
+        const list = document.getElementById('baker-list');
+        list.innerHTML = data.map(b => `<li>${b.name} (${b.contact}) - ${b.specialty || ''}</li>`).join('');
+      })
+      .catch(() => {
+        const list = document.getElementById('baker-list');
+        list.innerHTML = '<li>Unable to load bakers.</li>';
+      });
+  }
+  loadBaker();
+  if (user && user.role === 'cook') document.getElementById('baker-form').style.display = '';
+  document.getElementById('baker-form').onsubmit = function(e) {
+    e.preventDefault();
+    api.post('/bakers', {
+      name: document.getElementById('baker-name').value,
+      contact: document.getElementById('baker-contact').value,
+      specialty: document.getElementById('baker-specialty').value
+    })
+    .then(r => {
+      document.getElementById('baker-msg').textContent = r.message || 'Added!';
+      loadBaker();
+    })
+    .catch(err => {
+      document.getElementById('baker-msg').textContent = err.message || 'Failed to add.';
+    });
+  };
+  // --- Medical ---
+  function loadMedical() {
+    api.get('/medicals')
+      .then(data => {
+        const list = document.getElementById('medical-list');
+        list.innerHTML = data.map(m => `<li>${m.name} (${m.contact}) - ${m.type || ''}</li>`).join('');
+      })
+      .catch(() => {
+        const list = document.getElementById('medical-list');
+        list.innerHTML = '<li>Unable to load medical services.</li>';
+      });
+  }
+  loadMedical();
+  if (user && user.role === 'admin') document.getElementById('medical-form').style.display = '';
+  document.getElementById('medical-form').onsubmit = function(e) {
+    e.preventDefault();
+    api.post('/medicals', {
+      name: document.getElementById('medical-name').value,
+      contact: document.getElementById('medical-contact').value,
+      type: document.getElementById('medical-type').value
+    })
+    .then(r => {
+      document.getElementById('medical-msg').textContent = r.message || 'Added!';
+      loadMedical();
+    })
+    .catch(err => {
+      document.getElementById('medical-msg').textContent = err.message || 'Failed to add.';
+    });
+  };
+  // --- WhistleNest ---
+  function loadWhistleNest() {
+    api.get('/whistlenest/user')
+      .then(data => {
+        const list = document.getElementById('whistlenest-list');
+        if (Array.isArray(data)) {
+          list.innerHTML = data.map(w => `<li>${w.title || w.subject || 'Report'} - ${w.description || ''}</li>`).join('');
+        } else {
+          list.innerHTML = '<li>No reports found or not logged in.</li>';
+        }
+      })
+      .catch(() => {
+        const list = document.getElementById('whistlenest-list');
+        list.innerHTML = '<li>Unable to load reports.</li>';
+      });
+  }
+  loadWhistleNest();
+  document.getElementById('whistlenest-form').onsubmit = function(e) {
+    e.preventDefault();
+    api.post('/whistlenest', {
+      title: document.getElementById('whistle-title').value,
+      description: document.getElementById('whistle-desc').value
+    })
+    .then(r => {
+      document.getElementById('whistlenest-msg').textContent = r.message || 'Submitted!';
+      loadWhistleNest();
+    })
+    .catch(err => {
+      document.getElementById('whistlenest-msg').textContent = err.message || 'Failed to submit.';
+    });
+  };
+});
+
+(function() {
+  const toggle   = document.querySelector('.mobile-menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const panel    = mobileNav ? mobileNav.querySelector('.mobile-nav-panel') : null;
+  const closeBtn = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
+
+  if (!toggle || !mobileNav || !panel) return;
+
+  const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let lastFocused = null;
+
+  function getFocusable() {
+    return Array.from(panel.querySelectorAll(FOCUSABLE));
+  }
+
+  function openMenu() {
+    lastFocused = document.activeElement;
+    mobileNav.classList.add('open');
+    mobileNav.removeAttribute('hidden');
+    toggle.setAttribute('aria-expanded', 'true');
+
+    const f = getFocusable();
+    if (f.length) f[0].focus();
+
+    document.addEventListener('keydown', onKeyDown);
+  }
+
+  function closeMenu() {
+    mobileNav.classList.remove('open');
+    mobileNav.setAttribute('hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    document.removeEventListener('keydown', onKeyDown);
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+  }
+
+  function onKeyDown(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    if (e.key !== 'Tab') return;
+
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) closeMenu(); else openMenu();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
+
+  // Optional: click outside panel closes menu
+  mobileNav.addEventListener('click', (e) => {
+    if (e.target === mobileNav) closeMenu();
+  });
+})();
+</script>
+
+</body>
+</html>

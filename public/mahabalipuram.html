@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabalipuram - Accomodation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>        
+        header {
+            background-color: #0b3a7e;
+            padding: 20px;
+            color: white;
+        }
+        
+        /* Flex container for header */
+        .header-container {
+            display: flex;
+            justify-content: space-between; /* Logo left, rest right */
+            align-items: flex-start; /* Align search bar at the top */
+        }
+        
+        /* Logo styling */
+        .logo img {
+            height: 80px; /* Adjust logo size */
+        }
+        
+        /* Right section (Search + Nav) */
+        .right-section {
+            display: flex;
+            flex-direction: column; /* Stack search bar on top */
+            align-items: flex-end; /* Align to the right */
+        }
+        
+        /* Search bar styling */
+        .search-bar {
+            margin-bottom: 10px; /* Space between search and nav */
+        }
+        
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .search-bar button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Navigation bar styling */
+        .nav-bar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* Space between links */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-bar ul li a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            padding: 20px 0;
+        }
+    
+        .banner-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    
+        .banner-container img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+    
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+        .banner-text button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .house-listing {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .listing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .listing-header button {
+            padding: 10px;
+            border: none;
+            background: #1a73e8;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .house {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .listing-header{
+            text-align: center;
+    
+        }
+        .banner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px 0;
+        }
+    
+        .banner-container {
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    
+        .banner-container img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+    
+        .banner-info {
+            width: 100%;
+            max-width: 1170px;
+            background-color: #0b3a7e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    
+        .banner-info h2, .banner-info p {
+            margin: 5px 0;
+        }
+        
+        .sort-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto; 
+        margin: 20px 0; 
+    }
+    
+    .sort-button-container button {
+        background-color: #094080;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .sort-button-container button:hover {
+        background-color: #094080;
+    }
+    
+    /* General styling for the recommended properties section */
+    .recommended-properties {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    .recommended-properties h2 {
+        font-size: 28px;
+        font-weight: bold;
+        
+    }
+    
+    /* Property card styling */
+    .property {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        margin-bottom: 5px;
+        border-bottom: 1.5px solid #ccc; /* Add line between each house */
+    }
+    
+    .property img {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+    
+    .property div {
+        flex: 1;
+    }
+    
+    .property h3 {
+        padding-left:15%;
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    
+    .property p {
+        padding-left:15%;
+        font-size: 16px;
+        color: #666;
+    }
+    
+    .property span {
+        padding-right:30%;
+        font-size: 16px;
+        color:black;
+    }
+    
+    /* Heart button for favorites */
+    button.heart {
+        padding-right:2%;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    
+    button.heart:hover {
+        color: red;
+    }
+    
+    /* Hidden properties (initially hidden) */
+    .property.hidden {
+        display: none;
+    }
+    
+    /* View All button */
+    #viewAll {
+        display: block;
+        background-color: #094080;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 20px auto;
+        text-align: center;
+    }
+    
+    #viewAll:hover {
+        background-color: #094080;
+    }
+    
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+        .property {
+            flex-direction: column;
+            text-align: center;
+        }
+        .property img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+    }
+    .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #004b9b; /* Match the blue background */
+            color: white;
+            padding: 40px 80px;
+        }
+        
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 100px; /* Space between columns */
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline; /* Hover effect */
+        }
+        
+            </style>
+        </head>
+        <body>
+            <header>
+                <div class="header-container">
+                    
+                    <!-- Logo on the left -->
+                    <div class="logo">
+                        <img src="./images/logo.png" alt="iNest Logo">
+                    </div>
+            
+                    <div class="right-section">
+            
+                        <!-- Search bar above nav -->
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search by City, Area, Landmark">
+                            <button>Search</button>
+                        </div>
+            
+                        <!-- Nav bar on the right -->
+                        <nav class="nav-bar">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>                                <li><a href="./chat page.html">Chats</a></li>
+                                <li><a href="#features">Features</a></li>
+                                <li><a href="#booking">View Booking</a></li>
+                                <li><a href="./login.html">Login / Sign-up</a></li>
+                            </ul>
+                        </nav>
+            
+                    </div>
+            
+                </div>
+            </header>
+            
+        <div class="sort-button-container">
+            <button onclick="sortHousesByDistance()">Sort by Distance</button>
+        </div>
+        
+        <section class="house-listing">
+            <div class="listing-header">
+                
+            </div>
+        
+            <section class="recommended-properties">
+                <h2>Recommended properties across Mahabalipuram &rarr;</h2>
+                
+                <div class="property" onclick="navigateTo('abe_villa.html')">
+                    <img src="./images/ab_house.jpg" alt="Ab House">
+                    <div>
+                        <h3>Ab House</h3>
+                        <p>Category: House - 1.2 km away<br>Luxury stay with premium amenities.</p>
+                    </div>
+                    <span>★★★★★</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property" onclick="navigateTo('bc_house.html')">
+                    <img src="./images/bc_house.jpg" alt="BC House">
+                    <div>
+                        <h3>BC House</h3>
+                        <p>Category: Rental House - 3.4 km away<br>Spacious rooms with a beautiful garden.</p>
+                    </div>
+                    <span>★★★★☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property" onclick="navigateTo('cd_house.html')">
+                    <img src="./images/cd_house.jpg" alt="CD House">
+                    <div>
+                        <h3>CD House</h3>
+                        <p>Category: Individual House - 2.0 km away<br>Peaceful neighborhood with modern interiors.</p>
+                    </div>
+                    <span>★★★★☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property" onclick="navigateTo('ijk_house.html')">
+                    <img src="./images/ijk_house.jpg" alt="IJK House">
+                    <div>
+                        <h3>IJK House</h3>
+                        <p>Category: Individual House - 4.1 km away<br>Spacious duplex with ample parking.</p>
+                    </div>
+                    <span>★★★☆☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property" onclick="navigateTo('de_house.html')">
+                    <img src="./images/de_house.jpg" alt="DE House">
+                    <div>
+                        <h3>DE House</h3>
+                        <p>Category: Rental House - 1.7 km away<br>Cozy and well-maintained residence.</p>
+                    </div>
+                    <span>★★★★☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property" onclick="navigateTo('fgh_house.html')">
+                    <img src="./images/fgh_house.jpg" alt="FGH House">
+                    <div>
+                        <h3>UK House</h3>
+                        <p>Category: Rental House - 2.5 km away<br>Affordable and well-connected location.</p>
+                    </div>
+                    <span>★★★☆☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property hidden" onclick="navigateTo('grand_tower_house.html')">
+                    <img src="./images/grand_tower.jpg" alt="House A">
+                    <div>
+                        <h3>Grand Tower</h3>
+                        <p>Category: Villa - 5.2 km away<br>Modern design with spacious outdoor area.</p>
+                    </div>
+                    <span>★★★★★</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property hidden" onclick="navigateTo('green_valley_house.html')">
+                    <img src="./images/green_valley.jpg" alt="House B">
+                    <div>
+                        <h3>Green Valley</h3>
+                        <p>Category: Rental House - 6.1 km away<br>Perfect for families with nearby parks.</p>
+                    </div>
+                    <span>★★★★☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property hidden" onclick="navigateTo('leela_palace.html')">
+                    <img src="./images/leela_palace.jpg" alt="Leela Palace">
+                    <div>
+                        <h3>Leela Palace</h3>
+                        <p>Category: House - 1.2 km away<br>Luxury stay with premium amenities.</p>
+                    </div>
+                    <span>★★★★☆</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                
+                <div class="property hidden" onclick="navigateTo('rent_my_stay_html')">
+                    <img src="./images/rentmystay.jpg" alt="Rent My Stay">
+                    <div>
+                        <h3>LK House</h3>
+                        <p>Category: Rental House - 8.0 km away<br>Elegant House with Proper Interiors.</p>
+                    </div>
+                    <span>★★★★★</span>
+                    <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+                </div>
+                <button id="viewAll" onclick="showAll()">View All</button>
+            </section>
+            
+            
+            
+        </section>
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+        </div>
+    
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+    
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+    
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Individual House for Rent</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .navbar {
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+        
+        .back-button {
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .property-header {
+            background-color: var(--primary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            color: white;
+            margin-bottom: 20px;
+            padding: 20px; /* Adjust padding for better spacing */
+            height: 300px; /* Reduce height */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .main-image img {
+            width: 75px;  /* Adjust width */
+            height: 100px; /* Adjust height */
+            border-radius: 10px; /* Optional: rounded corners */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+        
+        
+        .header-content {
+            flex-grow: 1;
+            padding-left: 20px;
+        }
+        
+        .header-content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+        
+        .action-buttons {
+            margin-top: 15px;
+        }
+        .action-buttons-bottom {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            max-width:150px;
+            flex: 1;
+        }
+        
+        .primary {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .secondary {
+            background-color: white;
+            color: #ff9800;
+            border: 1px solid #ff9800;
+        }
+        
+        
+        .main-image img {
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .header-content {
+            padding: 20px;
+        }
+        
+        .header-content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .action-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .primary {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .secondary {
+            background-color: white;
+            border: 1px solid #ff9800;
+            color: #ff9800;
+        }
+        
+        
+        
+        .info-section, .features-section {
+            flex: 1;
+        }
+        .info-section h2, .features-section h2 {
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            color: #ffa500;
+        }
+        .label {
+            color:white;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .feature-item {
+            background-color: yellow;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .owner-info {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .owner-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+        
+        .owner-details h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .location-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .action-buttons-bottom {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        
+            .gallery-section {
+                flex-direction: column;
+            }
+        
+            .thumbnail-container {
+                flex-wrap: wrap;
+            }
+        
+            .thumbnail-container img {
+                width: calc(33.33% - 7px);
+            }
+        }
+        .gallery-section {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%; /* Adjust as needed */
+            max-width: 1400px; /* Increase width */
+            margin: auto;
+        
+            
+        }
+        
+        .gallery-container {
+            display: flex;
+            gap: 10px;
+            justify-content: left;
+            width:100%;
+            justify-content: space-between;
+            padding-right: 20px;
+        }
+        
+        .image-box {
+            display: flex;
+            gap: 10px;
+            background-color: #004c9b;
+            border-radius: 12px;
+            padding: 10px;
+            border: 3px solid #004c9b;
+        }
+        
+        .image-box img {
+            width: 100px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            width: 100px;
+            height: 80px;
+        }
+        
+        .view-3d {
+            display:right;
+            background-color: white;
+            border-radius: 12px;
+            border: 3px solid #004c9b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: top-bottom 10px, left-right 50px;
+            font-weight: bold;
+            width: 450px;
+            margin-left: auto; /* This will push it to the right corner */
+        }
+        
+        .view-3d-container {
+            display: flex;
+            gap: 10px;
+            background-color: #004c9b; 
+            justify-content: left;
+            width: 100%;
+            justify-content: space-between;
+            padding-right: 20px;
+        }
+        .view-3d-container img {
+            width: 450px; /* Increased width */
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .image-box {
+            display: flex;
+            gap: 10px;
+            background-color: #004c9b;
+            border-radius: 12px;
+            padding: 10px;
+            border: 3px solid #004c9b;
+            position: relative;
+        }
+        
+        .view-3d-container.image-box {
+            width: 200px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .image-box .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            width: 100px;
+            height: 80px;
+        }
+        
+        
+        
+        .gallery-buttons {
+            margin-top: 10px;
+        }
+        
+        .btn.yellow {
+            background-color: yellow;
+            color: black;
+            margin: 5px;
+        }
+        
+        
+        
+        
+        .location-section {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            width: 1165px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .owner-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .owner-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #000000;
+        }
+        
+        .owner-details h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .owner-details p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .location-link {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .location-link:hover {
+            text-decoration: underline;
+        }
+        header {
+            background-color: #0b3a7e;
+            padding: 20px;
+            color: white;
+        }
+        
+        /* Flex container for header */
+        .header-container {
+            display: flex;
+            justify-content: space-between; /* Logo left, rest right */
+            align-items: flex-start; /* Align search bar at the top */
+        }
+        
+        /* Logo styling */
+        .logo img {
+            height: 80px; /* Adjust logo size */
+        }
+        
+        /* Right section (Search + Nav) */
+        .right-section {
+            display: flex;
+            flex-direction: column; /* Stack search bar on top */
+            align-items: flex-end; /* Align to the right */
+        }
+        
+        /* Search bar styling */
+        .search-bar {
+            margin-bottom: 10px; /* Space between search and nav */
+        }
+        
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .search-bar button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Navigation bar styling */
+        .nav-bar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* Space between links */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-bar ul li a:hover {
+            text-decoration: underline;
+        }
+        
+                .popular-cities {
+                    display: flex;
+                    justify-content: space-around;
+                    margin: 20px 0;
+                }
+                .city img {
+                    width: 150px;
+                    border-radius: 10px;
+                }
+                .recommended-properties {
+                    font-family: Arial, sans-serif;
+                }
+                .property {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid #ddd;
+                    padding-bottom: 10px;
+                }
+                .property img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 8px;
+                    margin-right: 10px;
+                }
+                .property h3 {
+                    margin: 0;
+                }
+                .property p {
+                    margin: 5px 0;
+                    color: #555;
+                }
+                .hidden { display: none; }
+                .heart {
+                    background: none;
+                    border: none;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                #viewAll {
+                    display: block;
+                    margin: 20px auto;
+                    padding: 10px 20px;
+                    background: #004080;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .feedback-carousel {
+                    width: 90%;
+                    margin: auto;
+                    margin-bottom: 50px; 
+                }
+            
+                .carousel-container {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                }
+        
+        
+        
+        
+                /* feature sections formation*/
+                .features-section {
+                    text-align: center;
+                    background-color: #0047ab; /* deep blue background */
+                    padding: 40px 20px;
+                }
+                
+                .features-section h2 {
+                    color: white;
+                    margin-bottom: 30px;
+                    font-size: 28px;
+                }
+                
+                .features {
+                    display: grid;
+                    grid-template-columns: repeat(2, auto);
+                    gap: 20px 40px;
+                    justify-content: center;
+                }
+                
+                .feature-item {
+                    background-color: #ffeb3b; /* bright yellow */
+                    color: #000;
+                    padding: 12px 24px;
+                    border-radius: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 16px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    cursor: pointer;
+                }
+                
+                .feature-item:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                }
+        
+                .info-features-container {
+                    display: flex;
+                    gap: 20px; /* Optional: space between the two sections */
+                    flex-wrap: wrap; /* Optional: makes it responsive on small screens */
+                    margin-top: 20px; /* Optional: space from other sections */
+                }
+        
+                @media (max-width: 768px) {
+                    .info-features-container {
+                        flex-direction: column;
+                    }
+                }
+                .footer {
+                    display: flex;
+                    justify-content: space-between;
+                    background-color: #004b9b; /* Match the blue background */
+                    color: white;
+                    padding: 40px 80px;
+                }
+                
+                .footer-left {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                
+                .social-icons a {
+                    margin-right: 15px;
+                    font-size: 24px;
+                    color: white;
+                    text-decoration: none;
+                }
+                
+                .footer-links {
+                    display: flex;
+                    gap: 100px; /* Space between columns */
+                }
+                
+                .footer-links h3 {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                }
+                
+                .footer-links a {
+                    display: block;
+                    color: white;
+                    text-decoration: none;
+                    margin-bottom: 8px;
+                }
+                
+                .footer-links a:hover {
+                    text-decoration: underline; /* Hover effect */
+                }
+                
+                
+                
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <!-- Logo on the left -->
+            <div class="logo">
+                <img src="./images/logo.png" alt="iNest Logo">
+            </div>
+
+            <div class="right-section">
+                <!-- Search bar above nav -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by City, Area, Landmark">
+                    <button>Search</button>
+                </div>
+
+                <!-- Nav bar on the right -->
+                <nav class="nav-bar">
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>                        <li><a href="./chat page.html">Chats</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#booking">View Booking</a></li>
+                        <li><a href="./login.html">Login / Sign-up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="navbar">
+            <div class="back-button"><a href="./home.html">←</a> House For Rent</div>
+        </nav>
+
+        <main>
+            <div class="property-header">
+                <div class="main-image">
+                    <img src="images/grand_tower.jpg" alt="House Front View">
+                </div>
+                <div class="header-content">
+                    <h1>ABC Individual House for rent</h1>
+                    <p class="description">This is the best location for getting beautiful night life and good weather. Located in a residential area, 
+                    this property offers modern amenities and a comfortable living space for families.</p>
+                    <div class="action-buttons">
+                        <button class="btn primary">Call</button>
+                        <button class="btn secondary">Contact Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-section">
+                <div class="gallery-container">
+                    <div class="image-box">
+                        <a href="house.html">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6" alt="House View">
+                        </a>
+                        <a href="living-room.html">
+                            <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6" alt="Living Room">
+                        </a>
+                        <a href="kitchen.html">
+                            <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc" alt="Kitchen">
+                        </a>
+                        <a href="gallery.html">
+                            <div class="overlay">+10</div>
+                        </a>
+                    </div>
+                    
+                    <div class="view-3d">
+                        <div class="view-3d-container">
+                            <div class="image-box">
+                                <a href="kitchen.html">
+                                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc" alt="3D Kitchen View">
+                                    <div class="overlay">3D VIEW</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                <div class="gallery-buttons">
+                    <button class="btn yellow">📷 Photos</button>
+                    <button class="btn yellow">▶ Videos</button>
+                    <button class="btn yellow">📦 3D View</button>
+                </div>
+            </div>
+
+
+            <div class="info-features-container">
+                <div class="info-section" style="background-color: #004c9b; color: white; padding: 20px; border-radius: 10px;">
+                    <h2>Info</h2>
+                    <div class="info-item"><span class="label">Type</span> <span class="value">House</span></div>
+                    <div class="info-item"><span class="label">Room Type</span> <span class="value">Private Room</span></div>
+                    <div class="info-item"><span class="label">Security Deposit</span> <span class="value">$500</span></div>
+                    <div class="info-item"><span class="label">Attached Bathroom</span> <span class="value">Yes</span></div>
+                    <div class="info-item"><span class="label">Updated</span> <span class="value">26th December 2023</span></div>
+                </div>
+            
+            
+                <div class="features-section">
+                    <h2>What You Will Get</h2>
+                    <div class="features">
+                        <div class="feature-item">🧺 Laundry</div>
+                        <div class="feature-item">🚌 Buses</div>
+                        <div class="feature-item">🍽️ Kitchen</div>
+                        <div class="feature-item">🛋️ Living Hall</div>
+                        <div class="feature-item">🛁 Bathroom</div>
+                        <div class="feature-item">🌆 Terrace</div>
+                        <div class="feature-item">🚗 Parking</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-section">
+                <div class="owner-info">
+                    <img src="./images/" alt="Owner" class="owner-avatar">
+                    <div class="owner-details">
+                        <h3>ABOUT</h3>
+                        <p>TVk manadhu mandhabam Individual House, Adyar, Chennai</p>
+                        <a href="https://www.google.com/maps/place/Chennai,+Tamil+Nadu" target="_blank" class="location-link">View on Map</a>
+
+
+                    </div>
+                </div>
+            </div>
+            
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248755.7945452739!2d80.04420474741899!3d13.047808027146823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1743620518604!5m2!1sen!2sin" 
+                        width="400" 
+                        height="200" 
+                        style="border:0; width: 100%; height: 100%;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+            </div>
+
+            <div class="action-buttons-bottom">
+                <button class="btn primary full-width"><a href="./fliter.html">Book now</a></button>
+                <button class="btn secondary full-width">Add to Favorite</button>
+            </div>
+            <footer class="footer">
+                <div class="footer-left">
+                    <p>Reach us through social media</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <img src="./images/logo.png" alt="INest Logo">
+                </div>
+            
+                <div class="footer-links">
+                    <div>
+                        <h3>Use cases</h3>
+                        <a href="#">Find PGs & Hostels</a>
+                        <a href="#">House Rentals</a>
+                        <a href="#">Home food service</a>
+                        <a href="#">Flats</a>
+                    </div>
+            
+                    <div>
+                        <h3>Explore</h3>
+                        <a href="#">About Inest</a>
+                        <a href="#">How it works</a>
+                        <a href="#">User Reviews</a>
+                        <a href="#">Safety & security</a>
+                        <a href="#">Partner with us</a>
+                    </div>
+            
+                    <div>
+                        <h3>Resources</h3>
+                        <a href="#">Blog & updates</a>
+                        <a href="#">Tenant guidelines</a>
+                        <a href="#">Landlord Resources</a>
+                        <a href="#">FAQs</a>
+                        <a href="#">Contact Support</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function showPhotos() {
+            // Write your logic to show photos
+            alert("Photos section clicked!");
+        }
+        
+        function showVideos() {
+            // Logic to show videos
+            alert("Videos section clicked!");
+        }
+        
+        function open3DView() {
+            // Logic to load/open 3D viewer
+            alert("3D view clicked!");
+        }
+                            
+    </script>
+</body>
+</html>

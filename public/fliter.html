@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Preferences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .header {
+            background-color: #004a99;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .modal {
+            background-color: #004a99;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .preferences {
+            list-style: none;
+            padding: 0;
+        }
+        .preferences li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            color: black;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .preferences li span {
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .preferences li .amount-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .apply-btn {
+            background-color: yellow;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 20px;
+        }
+        .confirm-btn {
+            background-color: #004a99;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+        /* Footer styling */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #004b9b; /* Match the blue background */
+    color: white;
+    padding: 40px 80px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 100px; /* Space between columns */
+}
+
+.footer-links h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Hover effect */
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Filter</h1>
+    </header>
+    <main>
+        <section class="modal">
+            <h2>Add Your Preference</h2>
+            <p>A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.</p>
+            <ul class="preferences">
+                <li><span>Food With Delivery</span> <div class="amount-checkbox"><span>Rs. 2500</span><input type="checkbox" checked></div></li>
+                <li><span>Wi-Fi Network</span> <div class="amount-checkbox"><span>Rs. 200</span><input type="checkbox" checked></div></li>
+                <li><span>AC Room</span> <div class="amount-checkbox"><span>Rs. 1000</span><input type="checkbox" checked></div></li>
+                <li><span>Shared House / Flat</span> <div class="amount-checkbox"><span>Discount - Rs. 500</span><input type="checkbox" checked></div></li>
+                <li><span>Parking for Two Wheeler</span> <div class="amount-checkbox"><span>Rs. 200</span><input type="checkbox" checked></div></li>
+                <li><span>Parking for Four Wheeler</span> <div class="amount-checkbox"><span>Rs. 400</span><input type="checkbox" checked></div></li>
+                <li><span>Laundry - Weekly once</span> <div class="amount-checkbox"><span>Rs. 100</span><input type="checkbox" checked></div></li>
+            </ul>
+            <button class="apply-btn">✔ Apply</button>
+        </section>
+        <button class="confirm-btn"><a href="./Booking_confirmation.html">Conform Booking</a></button>
+    </main>
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+           
+        </div>
+    
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+    
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+    
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

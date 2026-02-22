@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Room Booking Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .qr img {
+      display: block;
+      margin: 10px auto;
+      border: 1px solid #ddd;
+      padding: 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Room Booking Checkout</h2>
+
+    <div class="section">
+      <p><strong>Room Type:</strong> Deluxe AC Room</p>
+      <p><strong>Base Price:</strong> ₹3000</p>
+      <p><strong>GST (12%):</strong> ₹<span id="gst">0</span></p>
+      <p><strong>Service Fee:</strong> ₹<span id="service">200</span></p>
+    </div>
+
+    <div class="section">
+      <p><strong>Total Price:</strong> ₹<span id="total">0</span></p>
+    </div>
+
+    <div class="section">
+      <p><strong>Scan to Pay with GPay:</strong></p>
+      <div class="qr">
+        <img id="qrCode" alt="GPay QR" width="200" height="200">
+      </div>
+    </div>
+
+    <div class="section">
+      <p><strong>Paste GPay Transaction ID:</strong></p>
+      <input type="text" id="txnId" placeholder="Enter Transaction ID" />
+      <button onclick="submitTxn()">Confirm Payment</button>
+    </div>
+  </div>
+
+  <script>
+    const basePrice = 1;
+    const gstRate = 0;
+    const serviceFee = 0;
+
+    const gstAmount = basePrice * gstRate;
+    const totalAmount = basePrice + gstAmount + serviceFee;
+
+    document.getElementById("gst").innerText = gstAmount.toFixed(2);
+    document.getElementById("total").innerText = totalAmount.toFixed(2);
+    const upiId = "vasanthvnr31@oksbi";
+    const payeeName = "Hotel Room";
+    const note = "Room Booking";
+    const amount = totalAmount.toFixed(2);
+
+    const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${totalAmount.toFixed(2)}&cu=INR`;
+
+    // Use QRServer backup
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
+    document.getElementById("qrCode").src = qrCodeUrl;
+
+    function submitTxn() {
+      const txnId = document.getElementById("txnId").value.trim();
+    
+      if (txnId === "") {
+        alert("Please enter a valid transaction ID.");
+      } else {
+        console.log("Transaction ID submitted:", txnId);
+        alert("Thank you! Your room booking payment is being verified.");
+    
+        // Redirect to confirmation page (change to your actual file path)
+        window.location.href = "./index.html"; 
+      }
+    }
+    
+  </script>
+
+</body>
+</html>
