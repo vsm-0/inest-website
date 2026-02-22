@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - iNest</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>iNest API Configuration Test</h1>
+    
+    <div id="config-info" class="result info">
+        <strong>Current Configuration:</strong><br>
+        <span id="hostname">Hostname: Loading...</span><br>
+        <span id="api-base">API Base URL: Loading...</span><br>
+        <span id="protocol">Protocol: Loading...</span>
+    </div>
+    
+    <button onclick="testHealthEndpoint()">Test Health Endpoint</button>
+    <button onclick="testRegistration()">Test Registration</button>
+    <button onclick="clearStorage()">Clear LocalStorage</button>
+    
+    <div id="results"></div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/api.js"></script>
+    <script>
+        // Display current configuration
+        document.getElementById('hostname').textContent = `Hostname: ${window.location.hostname}`;
+        document.getElementById('api-base').textContent = `API Base URL: ${window.API_BASE || 'Not set'}`;
+        document.getElementById('protocol').textContent = `Protocol: ${window.location.protocol}`;
+        
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong>: ${message}`;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        async function testHealthEndpoint() {
+            addResult('Testing health endpoint...', 'info');
+            try {
+                addResult(`Making request to: ${api.getBaseURL()}/health`, 'info');
+                const response = await api.health();
+                addResult(`Health check successful: ${JSON.stringify(response)}`, 'success');
+            } catch (error) {
+                addResult(`Health check failed: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testRegistration() {
+            addResult('Testing registration endpoint...', 'info');
+            try {
+                const testUser = {
+                    name: 'Test User ' + Date.now(),
+                    email: 'test' + Date.now() + '@example.com',
+                    password: 'testpass123',
+                    role: 'student'
+                };
+                addResult(`Making request to: ${api.getBaseURL()}/users/register`, 'info');
+                const response = await api.register(testUser);
+                addResult(`Registration successful: User created with ID ${response.user._id}`, 'success');
+            } catch (error) {
+                addResult(`Registration failed: ${error.message}`, 'error');
+            }
+        }
+        
+        function clearStorage() {
+            localStorage.clear();
+            addResult('LocalStorage cleared', 'success');
+        }
+        
+        // Show the API instance's detected base URL
+        addResult(`API instance detected base URL: ${api.getBaseURL()}`, 'info');
+    </script>
+</body>
+</html>
