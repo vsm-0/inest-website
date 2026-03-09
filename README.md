@@ -2,14 +2,16 @@
 
 # Inest Backend API
 
-This is the backend API for the Inest project. It powers the platform features related to student housing and community services.
+This repository contains the backend API for the **Inest platform**, which provides services related to student housing and community management.
 
-The API currently includes four main service modules:
+The backend currently supports four main service modules:
 
 * Laundry Services
 * Home Baker Services
 * Medical Services
-* WhistleNest (an anonymous reporting system)
+* WhistleNest (anonymous reporting system)
+
+The API is built using **Node.js, Express.js, and MongoDB** and follows a modular architecture with models, controllers, and routes.
 
 ---
 
@@ -17,27 +19,32 @@ The API currently includes four main service modules:
 
 ```
 inest-backend/
+│
 ├── models/
 │   ├── User.js
 │   ├── Laundry.js
 │   ├── HomeBaker.js
 │   ├── Medical.js
 │   └── WhistleNest.js
+│
 ├── controllers/
 │   ├── userController.js
 │   ├── laundryController.js
 │   ├── bakerController.js
 │   ├── medicalController.js
 │   └── whistleNestController.js
+│
 ├── routes/
 │   ├── userRoutes.js
 │   ├── laundryRoutes.js
 │   ├── bakerRoutes.js
 │   ├── medicalRoutes.js
 │   └── whistleNestRoutes.js
+│
 ├── middleware/
 │   ├── auth.js
 │   └── role.js
+│
 ├── app.js
 ├── server.js
 ├── package.json
@@ -50,9 +57,9 @@ inest-backend/
 
 ## Prerequisites
 
-Before running the project, make sure the following are installed:
+Make sure the following tools are installed:
 
-* Node.js (version 14 or higher)
+* Node.js (v14 or higher)
 * MongoDB (local installation or MongoDB Atlas)
 * npm or yarn
 
@@ -60,21 +67,27 @@ Before running the project, make sure the following are installed:
 
 ## Installation Steps
 
-### 1. Clone or download the project
+### 1. Clone the repository
 
-Download the repository or clone it using Git.
+```
+git clone https://github.com/vsm-0/inest-website.git
+```
+
+Navigate to the backend directory.
+
+---
 
 ### 2. Install dependencies
 
-Run the following command in the project directory:
-
-```bash
+```
 npm install
 ```
 
-### 3. Configure environment variables
+---
 
-Create a `.env` file in the root directory and add the following:
+### 3. Create environment variables
+
+Create a `.env` file in the root folder and add:
 
 ```
 PORT=5000
@@ -82,27 +95,33 @@ MONGO_URI=mongodb://localhost:27017/inest
 JWT_SECRET=your_super_secret_jwt_key_here
 ```
 
+---
+
 ### 4. Start MongoDB
 
-Make sure MongoDB is running locally or connect using MongoDB Atlas.
+Make sure MongoDB is running locally or connect to MongoDB Atlas.
+
+---
 
 ### 5. Start the server
 
 Run the production server:
 
-```bash
+```
 npm start
 ```
 
 For development with automatic restart:
 
-```bash
+```
 npx nodemon server.js
 ```
 
+---
+
 ### 6. Verify the server
 
-If everything is set up correctly, the server will run at:
+The server should start at:
 
 ```
 http://localhost:5000
@@ -114,7 +133,7 @@ If you are using the deployed backend:
 https://inest-website.onrender.com
 ```
 
-You should see messages like:
+You should see messages such as:
 
 ```
 MongoDB connected
@@ -125,9 +144,9 @@ Server running on port 5000
 
 # Authentication and Authorization
 
-The system uses JWT (JSON Web Tokens) for authentication.
+The system uses **JWT (JSON Web Tokens)** for authentication.
 
-Tokens expire after 7 days.
+Tokens expire after **7 days**.
 
 Include the token in the request header like this:
 
@@ -139,19 +158,14 @@ Authorization: Bearer <your_token>
 
 # User Roles
 
-Different roles have different permissions in the system.
+Different roles control access to different features.
 
-student
-Basic user access
-
-owner
-Can manage laundry services
-
-cook
-Can manage home baker services
-
-admin
-Can manage medical services and view all WhistleNest reports
+| Role    | Permissions                                          |
+| ------- | ---------------------------------------------------- |
+| student | Basic user access                                    |
+| owner   | Manage laundry services                              |
+| cook    | Manage home baker services                           |
+| admin   | Manage medical services and view WhistleNest reports |
 
 ---
 
@@ -165,15 +179,15 @@ https://inest-website.onrender.com/api
 
 # User Management
 
-## Register a user
+## Register User
 
 ```
 POST /api/users/register
 ```
 
-Example request body:
+Example request:
 
-```json
+```
 {
   "name": "John Doe",
   "email": "john@example.com",
@@ -190,22 +204,22 @@ Example request body:
 POST /api/users/login
 ```
 
-Example request body:
+Example request:
 
-```json
+```
 {
   "email": "john@example.com",
   "password": "password123"
 }
 ```
 
-The response includes a JWT token which should be used for authenticated requests.
+The response returns a **JWT token** that should be used for authenticated requests.
 
 ---
 
 # Laundry Services
 
-Base route:
+Base route
 
 ```
 /api/laundry
@@ -217,21 +231,21 @@ Base route:
 GET /api/laundry
 ```
 
-This endpoint is public.
+Public endpoint.
 
 ---
 
-## Add a laundry service
+## Add laundry service
 
 ```
 POST /api/laundry
 ```
 
-Requires an **owner role**.
+Requires **owner role**.
 
 Example:
 
-```json
+```
 {
   "name": "QuickWash Laundry",
   "contact": "+1-555-0123",
@@ -243,7 +257,7 @@ Example:
 
 ---
 
-## Update a laundry service
+## Update laundry service
 
 ```
 PUT /api/laundry/:id
@@ -253,7 +267,7 @@ Requires owner role.
 
 ---
 
-## Delete a laundry service
+## Delete laundry service
 
 ```
 DELETE /api/laundry/:id
@@ -265,7 +279,7 @@ Requires owner role.
 
 # Home Baker Services
 
-Base route:
+Base route
 
 ```
 /api/bakers
@@ -281,7 +295,7 @@ Public endpoint.
 
 ---
 
-## Add a home baker
+## Add home baker
 
 ```
 POST /api/bakers
@@ -291,7 +305,7 @@ Requires **cook role**.
 
 Example:
 
-```json
+```
 {
   "name": "Sweet Home Bakery",
   "menu": ["Chocolate Cake", "Vanilla Cupcakes", "Bread Loaf", "Cookies"],
@@ -303,7 +317,7 @@ Example:
 
 ---
 
-## Update a home baker
+## Update home baker
 
 ```
 PUT /api/bakers/:id
@@ -313,7 +327,7 @@ Requires cook role.
 
 ---
 
-## Delete a home baker
+## Delete home baker
 
 ```
 DELETE /api/bakers/:id
@@ -325,7 +339,7 @@ Requires cook role.
 
 # Medical Services
 
-Base route:
+Base route
 
 ```
 /api/medicals
@@ -341,7 +355,7 @@ Public endpoint.
 
 ---
 
-## Add a medical service
+## Add medical service
 
 ```
 POST /api/medicals
@@ -351,7 +365,7 @@ Requires **admin role**.
 
 Example:
 
-```json
+```
 {
   "name": "City Pharmacy",
   "type": "pharmacy",
@@ -363,7 +377,7 @@ Example:
 
 ---
 
-## Update a medical service
+## Update medical service
 
 ```
 PUT /api/medicals/:id
@@ -373,7 +387,7 @@ Requires admin role.
 
 ---
 
-## Delete a medical service
+## Delete medical service
 
 ```
 DELETE /api/medicals/:id
@@ -385,19 +399,19 @@ Requires admin role.
 
 # WhistleNest (Anonymous Reporting)
 
-Base route:
+Base route
 
 ```
 /api/whistlenest
 ```
 
-This feature allows users to submit complaints, suggestions, or reports.
+This feature allows users to submit complaints, service issues, or suggestions.
 
 Reports can be submitted anonymously.
 
 ---
 
-## Submit an anonymous report
+## Submit anonymous report
 
 ```
 POST /api/whistlenest
@@ -405,21 +419,13 @@ POST /api/whistlenest
 
 Example:
 
-```json
+```
 {
   "subject": "Noise Complaint",
   "description": "Loud music playing at 2 AM from room 305",
   "type": "abuse"
 }
 ```
-
-No login required.
-
----
-
-## Submit a report with authentication
-
-If the user is logged in, their user ID will be attached to the report.
 
 ---
 
@@ -429,7 +435,7 @@ If the user is logged in, their user ID will be attached to the report.
 GET /api/whistlenest/user
 ```
 
-Requires login.
+Requires authentication.
 
 ---
 
@@ -451,81 +457,17 @@ PATCH /api/whistlenest/:id/status
 
 Example:
 
-```json
+```
 {
   "status": "under_review"
 }
 ```
 
-Requires admin role.
-
 ---
 
-# Data Models
+# Testing the API
 
-## User
-
-```
-name
-email (unique)
-password (hashed)
-role (student, owner, cook, admin)
-```
-
----
-
-## Laundry
-
-```
-name
-contact
-price
-pickupAvailable
-timing
-ownerId
-```
-
----
-
-## Home Baker
-
-```
-name
-menu
-delivery
-rating
-contact
-```
-
----
-
-## Medical
-
-```
-name
-type (emergency or pharmacy)
-address
-contact
-hasDelivery
-```
-
----
-
-## WhistleNest
-
-```
-subject
-description
-type (abuse, service issue, suggestion)
-status (pending, under_review, resolved)
-userId (optional)
-```
-
----
-
-# Testing Guide
-
-You can test the API using tools like:
+You can test the API using:
 
 * Postman
 * Thunder Client
@@ -535,34 +477,34 @@ Recommended testing flow:
 1. Register users with different roles.
 2. Save their JWT tokens.
 3. Test public endpoints.
-4. Test protected endpoints using the correct role tokens.
-5. Verify role-based access control.
+4. Test protected endpoints using the appropriate role tokens.
+5. Verify role-based access restrictions.
 
 ---
 
 # Common HTTP Status Codes
 
-200 – Success
-201 – Created
-400 – Bad Request
-401 – Unauthorized
-403 – Forbidden
-404 – Not Found
-500 – Internal Server Error
+| Code | Meaning      |
+| ---- | ------------ |
+| 200  | Success      |
+| 201  | Created      |
+| 400  | Bad request  |
+| 401  | Unauthorized |
+| 403  | Forbidden    |
+| 404  | Not found    |
+| 500  | Server error |
 
 ---
 
-# Development
+# Development Scripts
 
-## Available Scripts
-
-Start the server:
+Start the server
 
 ```
 npm start
 ```
 
-Run tests (not implemented yet):
+Run tests
 
 ```
 npm test
@@ -582,11 +524,11 @@ JWT_SECRET
 
 # Notes
 
-* Make sure MongoDB is running before starting the server.
-* Include the JWT token in the Authorization header for protected routes.
-* Each module has role-based access restrictions.
-* WhistleNest allows anonymous submissions.
-* Basic validation is applied to all endpoints.
+* MongoDB must be running before starting the server.
+* JWT tokens must be included for protected routes.
+* Each module uses role-based access control.
+* WhistleNest allows anonymous reports.
+* Basic validation is implemented in all endpoints.
 
 ---
 
@@ -594,7 +536,7 @@ JWT_SECRET
 
 1. Fork the repository
 2. Create a feature branch
-3. Implement your changes
+3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
 
@@ -602,7 +544,7 @@ JWT_SECRET
 
 # Support
 
-For issues or questions, contact the project maintainer.
+For questions or issues, contact the project maintainer.
 
 ---
 
