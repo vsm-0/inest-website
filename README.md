@@ -1,8 +1,19 @@
+---
+
 # Inest Backend API
 
-A comprehensive backend API for the Inest project, providing services for student housing and community management. This API includes four main modules: Laundry Services, Home Baker Services, Medical Services, and WhistleNest (anonymous reporting system).
+This is the backend API for the Inest project. It powers the platform features related to student housing and community services.
 
-## 📦 Project Structure
+The API currently includes four main service modules:
+
+* Laundry Services
+* Home Baker Services
+* Medical Services
+* WhistleNest (an anonymous reporting system)
+
+---
+
+# Project Structure
 
 ```
 inest-backend/
@@ -33,73 +44,136 @@ inest-backend/
 └── README.md
 ```
 
-## 🚀 Setup & Installation
+---
 
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or MongoDB Atlas)
-- npm or yarn
+# Setup and Installation
 
-### Installation Steps
+## Prerequisites
 
-1. **Clone or download the project**
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+Before running the project, make sure the following are installed:
 
-3. **Set up environment variables:**
-   Create a `.env` file in the root directory:
-   ```env
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/inest
-   JWT_SECRET=your_super_secret_jwt_key_here
-   ```
+* Node.js (version 14 or higher)
+* MongoDB (local installation or MongoDB Atlas)
+* npm or yarn
 
-4. **Start MongoDB** (locally or use MongoDB Atlas)
+---
 
-5. **Start the server:**
-   ```bash
-   npm start
-   ```
-   
-   For development with auto-restart:
-   ```bash
-   npx nodemon server.js
-   ```
+## Installation Steps
 
-6. **Verify the server is running:**
-   - Server should start on `http://localhost:5000`
-   - You should see "MongoDB connected" and "Server running on port 5000"
+### 1. Clone or download the project
 
-## 🔐 Authentication & Authorization
+Download the repository or clone it using Git.
 
-### User Roles
-- **student**: Basic user access
-- **owner**: Can manage laundry services
-- **cook**: Can manage home baker services
-- **admin**: Can manage medical services and view all WhistleNest reports
+### 2. Install dependencies
 
-### JWT Token
-- Tokens expire after 7 days
-- Include in headers: `Authorization: Bearer <your_token>`
+Run the following command in the project directory:
 
-## 📚 API Documentation
-
-### Base URL
+```bash
+npm install
 ```
-http://localhost:5000/api
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory and add the following:
+
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/inest
+JWT_SECRET=your_super_secret_jwt_key_here
+```
+
+### 4. Start MongoDB
+
+Make sure MongoDB is running locally or connect using MongoDB Atlas.
+
+### 5. Start the server
+
+Run the production server:
+
+```bash
+npm start
+```
+
+For development with automatic restart:
+
+```bash
+npx nodemon server.js
+```
+
+### 6. Verify the server
+
+If everything is set up correctly, the server will run at:
+
+```
+http://localhost:5000
+```
+
+If you are using the deployed backend:
+
+```
+https://inest-website.onrender.com
+```
+
+You should see messages like:
+
+```
+MongoDB connected
+Server running on port 5000
 ```
 
 ---
 
-## 👤 User Management
+# Authentication and Authorization
 
-### Register User
-```http
+The system uses JWT (JSON Web Tokens) for authentication.
+
+Tokens expire after 7 days.
+
+Include the token in the request header like this:
+
+```
+Authorization: Bearer <your_token>
+```
+
+---
+
+# User Roles
+
+Different roles have different permissions in the system.
+
+student
+Basic user access
+
+owner
+Can manage laundry services
+
+cook
+Can manage home baker services
+
+admin
+Can manage medical services and view all WhistleNest reports
+
+---
+
+# API Base URL
+
+```
+https://inest-website.onrender.com/api
+```
+
+---
+
+# User Management
+
+## Register a user
+
+```
 POST /api/users/register
-Content-Type: application/json
+```
 
+Example request body:
+
+```json
 {
   "name": "John Doe",
   "email": "john@example.com",
@@ -108,37 +182,56 @@ Content-Type: application/json
 }
 ```
 
-### Login
-```http
-POST /api/users/login
-Content-Type: application/json
+---
 
+## Login
+
+```
+POST /api/users/login
+```
+
+Example request body:
+
+```json
 {
   "email": "john@example.com",
   "password": "password123"
 }
 ```
 
-**Response includes JWT token for authenticated requests.**
+The response includes a JWT token which should be used for authenticated requests.
 
 ---
 
-## 🧺 Laundry Services
+# Laundry Services
 
-**Base URL:** `/api/laundry`
+Base route:
 
-### Get All Laundry Services
-```http
+```
+/api/laundry
+```
+
+## Get all laundry services
+
+```
 GET /api/laundry
 ```
-**Public endpoint - no authentication required**
 
-### Add New Laundry Service
-```http
+This endpoint is public.
+
+---
+
+## Add a laundry service
+
+```
 POST /api/laundry
-Authorization: Bearer <owner_token>
-Content-Type: application/json
+```
 
+Requires an **owner role**.
+
+Example:
+
+```json
 {
   "name": "QuickWash Laundry",
   "contact": "+1-555-0123",
@@ -147,46 +240,58 @@ Content-Type: application/json
   "timing": "8am-8pm"
 }
 ```
-**Requires: owner role**
-
-### Update Laundry Service
-```http
-PUT /api/laundry/:id
-Authorization: Bearer <owner_token>
-Content-Type: application/json
-
-{
-  "price": 200,
-  "pickupAvailable": false
-}
-```
-**Requires: owner role**
-
-### Delete Laundry Service
-```http
-DELETE /api/laundry/:id
-Authorization: Bearer <owner_token>
-```
-**Requires: owner role**
 
 ---
 
-## 🍰 Home Baker Services
+## Update a laundry service
 
-**Base URL:** `/api/bakers`
+```
+PUT /api/laundry/:id
+```
 
-### Get All Home Bakers
-```http
+Requires owner role.
+
+---
+
+## Delete a laundry service
+
+```
+DELETE /api/laundry/:id
+```
+
+Requires owner role.
+
+---
+
+# Home Baker Services
+
+Base route:
+
+```
+/api/bakers
+```
+
+## Get all home bakers
+
+```
 GET /api/bakers
 ```
-**Public endpoint - no authentication required**
 
-### Add New Home Baker
-```http
+Public endpoint.
+
+---
+
+## Add a home baker
+
+```
 POST /api/bakers
-Authorization: Bearer <cook_token>
-Content-Type: application/json
+```
 
+Requires **cook role**.
+
+Example:
+
+```json
 {
   "name": "Sweet Home Bakery",
   "menu": ["Chocolate Cake", "Vanilla Cupcakes", "Bread Loaf", "Cookies"],
@@ -195,46 +300,58 @@ Content-Type: application/json
   "contact": "+1-555-0456"
 }
 ```
-**Requires: cook role**
-
-### Update Home Baker
-```http
-PUT /api/bakers/:id
-Authorization: Bearer <cook_token>
-Content-Type: application/json
-
-{
-  "menu": ["Chocolate Cake", "Vanilla Cupcakes", "Bread Loaf", "Cookies", "Cheesecake"],
-  "rating": 4.7
-}
-```
-**Requires: cook role**
-
-### Delete Home Baker
-```http
-DELETE /api/bakers/:id
-Authorization: Bearer <cook_token>
-```
-**Requires: cook role**
 
 ---
 
-## 🏥 Medical Services
+## Update a home baker
 
-**Base URL:** `/api/medicals`
+```
+PUT /api/bakers/:id
+```
 
-### Get All Medical Services
-```http
+Requires cook role.
+
+---
+
+## Delete a home baker
+
+```
+DELETE /api/bakers/:id
+```
+
+Requires cook role.
+
+---
+
+# Medical Services
+
+Base route:
+
+```
+/api/medicals
+```
+
+## Get all medical services
+
+```
 GET /api/medicals
 ```
-**Public endpoint - no authentication required**
 
-### Add New Medical Service
-```http
+Public endpoint.
+
+---
+
+## Add a medical service
+
+```
 POST /api/medicals
-Authorization: Bearer <admin_token>
-Content-Type: application/json
+```
 
+Requires **admin role**.
+
+Example:
+
+```json
 {
   "name": "City Pharmacy",
   "type": "pharmacy",
@@ -243,259 +360,253 @@ Content-Type: application/json
   "hasDelivery": true
 }
 ```
-**Requires: admin role**
-
-### Update Medical Service
-```http
-PUT /api/medicals/:id
-Authorization: Bearer <admin_token>
-Content-Type: application/json
-
-{
-  "name": "Updated City Pharmacy",
-  "contact": "+1-555-9999",
-  "hasDelivery": false
-}
-```
-**Requires: admin role**
-
-### Delete Medical Service
-```http
-DELETE /api/medicals/:id
-Authorization: Bearer <admin_token>
-```
-**Requires: admin role**
 
 ---
 
-## 🐦 WhistleNest (Anonymous Reporting)
+## Update a medical service
 
-**Base URL:** `/api/whistlenest`
+```
+PUT /api/medicals/:id
+```
 
-### Submit Report (Anonymous)
-```http
+Requires admin role.
+
+---
+
+## Delete a medical service
+
+```
+DELETE /api/medicals/:id
+```
+
+Requires admin role.
+
+---
+
+# WhistleNest (Anonymous Reporting)
+
+Base route:
+
+```
+/api/whistlenest
+```
+
+This feature allows users to submit complaints, suggestions, or reports.
+
+Reports can be submitted anonymously.
+
+---
+
+## Submit an anonymous report
+
+```
 POST /api/whistlenest
-Content-Type: application/json
+```
 
+Example:
+
+```json
 {
   "subject": "Noise Complaint",
   "description": "Loud music playing at 2 AM from room 305",
   "type": "abuse"
 }
 ```
-**No authentication required - anonymous submissions allowed**
 
-### Submit Report (Authenticated)
-```http
-POST /api/whistlenest
-Authorization: Bearer <user_token>
-Content-Type: application/json
+No login required.
 
-{
-  "subject": "Suggestion for Study Room",
-  "description": "Please add more study tables in the common area",
-  "type": "suggestion"
-}
+---
+
+## Submit a report with authentication
+
+If the user is logged in, their user ID will be attached to the report.
+
+---
+
+## Get user's reports
+
 ```
-**Optional authentication - includes userId in report**
-
-### Get User's Own Reports
-```http
 GET /api/whistlenest/user
-Authorization: Bearer <user_token>
 ```
-**Requires: authenticated user**
 
-### Get All Reports (Admin)
-```http
+Requires login.
+
+---
+
+## Get all reports (admin)
+
+```
 GET /api/whistlenest/admin
-Authorization: Bearer <admin_token>
 ```
-**Requires: admin role**
 
-### Update Report Status (Admin)
-```http
+Requires admin role.
+
+---
+
+## Update report status
+
+```
 PATCH /api/whistlenest/:id/status
-Authorization: Bearer <admin_token>
-Content-Type: application/json
+```
 
+Example:
+
+```json
 {
   "status": "under_review"
 }
 ```
-**Requires: admin role**
+
+Requires admin role.
 
 ---
 
-## 📋 Data Models
+# Data Models
 
-### User
-```javascript
-{
-  name: String,
-  email: String (unique),
-  password: String (hashed),
-  role: String (enum: ['student', 'owner', 'cook', 'admin'])
-}
+## User
+
 ```
-
-### Laundry
-```javascript
-{
-  name: String (required),
-  contact: String (required),
-  price: Number (required),
-  pickupAvailable: Boolean (default: false),
-  timing: String,
-  ownerId: ObjectId (ref: 'User', required)
-}
-```
-
-### HomeBaker
-```javascript
-{
-  name: String (required),
-  menu: [String] (array),
-  delivery: Boolean (default: false),
-  rating: Number (default: 0),
-  contact: String (required)
-}
-```
-
-### Medical
-```javascript
-{
-  name: String (required),
-  type: String (enum: ['emergency', 'pharmacy'], required),
-  address: String (required),
-  contact: String (required),
-  hasDelivery: Boolean (default: false)
-}
-```
-
-### WhistleNest
-```javascript
-{
-  subject: String (required),
-  description: String (required),
-  type: String (enum: ['abuse', 'service issue', 'suggestion'], required),
-  status: String (enum: ['pending', 'under_review', 'resolved'], default: 'pending'),
-  userId: ObjectId (ref: 'User', nullable)
-}
+name
+email (unique)
+password (hashed)
+role (student, owner, cook, admin)
 ```
 
 ---
 
-## 🧪 Testing Guide
+## Laundry
 
-### Using Postman/Thunder Client
-
-1. **Start with User Registration:**
-   - Register users with different roles (student, owner, cook, admin)
-   - Save the JWT tokens for each role
-
-2. **Test Public Endpoints:**
-   - GET all services (laundry, bakers, medicals)
-   - POST anonymous WhistleNest reports
-
-3. **Test Protected Endpoints:**
-   - Use appropriate role tokens for each module
-   - Test unauthorized access (should return 401/403)
-
-4. **Test CRUD Operations:**
-   - Create, read, update, delete for each module
-   - Verify role-based restrictions
-
-### Sample Test Data
-
-#### Register Different Users
-```json
-// Owner
-{
-  "name": "Laundry Owner",
-  "email": "owner@test.com",
-  "password": "password123",
-  "role": "owner"
-}
-
-// Cook
-{
-  "name": "Home Baker",
-  "email": "baker@test.com",
-  "password": "password123",
-  "role": "cook"
-}
-
-// Admin
-{
-  "name": "System Admin",
-  "email": "admin@test.com",
-  "password": "password123",
-  "role": "admin"
-}
+```
+name
+contact
+price
+pickupAvailable
+timing
+ownerId
 ```
 
 ---
 
-## 🔧 Error Handling
+## Home Baker
 
-### Common HTTP Status Codes
-- **200**: Success
-- **201**: Created
-- **400**: Bad Request (validation error)
-- **401**: Unauthorized (missing/invalid token)
-- **403**: Forbidden (insufficient role)
-- **404**: Not Found
-- **500**: Internal Server Error
-
-### Error Response Format
-```json
-{
-  "message": "Error description"
-}
+```
+name
+menu
+delivery
+rating
+contact
 ```
 
 ---
 
-## 🛠️ Development
+## Medical
 
-### Available Scripts
-- `npm start`: Start production server
-- `npm test`: Run tests (not implemented yet)
-
-### Environment Variables
-- `PORT`: Server port (default: 5000)
-- `MONGO_URI`: MongoDB connection string
-- `JWT_SECRET`: Secret key for JWT tokens
-
----
-
-## 📝 Notes
-
-- **MongoDB**: Ensure MongoDB is running before starting the server
-- **JWT Tokens**: Include in Authorization header for protected routes
-- **Role-Based Access**: Each module has specific role requirements
-- **Anonymous Reporting**: WhistleNest allows submissions without authentication
-- **Data Validation**: All endpoints include basic validation
-- **Timestamps**: All models include createdAt and updatedAt fields
+```
+name
+type (emergency or pharmacy)
+address
+contact
+hasDelivery
+```
 
 ---
 
-## 🤝 Contributing
+## WhistleNest
+
+```
+subject
+description
+type (abuse, service issue, suggestion)
+status (pending, under_review, resolved)
+userId (optional)
+```
+
+---
+
+# Testing Guide
+
+You can test the API using tools like:
+
+* Postman
+* Thunder Client
+
+Recommended testing flow:
+
+1. Register users with different roles.
+2. Save their JWT tokens.
+3. Test public endpoints.
+4. Test protected endpoints using the correct role tokens.
+5. Verify role-based access control.
+
+---
+
+# Common HTTP Status Codes
+
+200 – Success
+201 – Created
+400 – Bad Request
+401 – Unauthorized
+403 – Forbidden
+404 – Not Found
+500 – Internal Server Error
+
+---
+
+# Development
+
+## Available Scripts
+
+Start the server:
+
+```
+npm start
+```
+
+Run tests (not implemented yet):
+
+```
+npm test
+```
+
+---
+
+# Environment Variables
+
+```
+PORT
+MONGO_URI
+JWT_SECRET
+```
+
+---
+
+# Notes
+
+* Make sure MongoDB is running before starting the server.
+* Include the JWT token in the Authorization header for protected routes.
+* Each module has role-based access restrictions.
+* WhistleNest allows anonymous submissions.
+* Basic validation is applied to all endpoints.
+
+---
+
+# Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
+3. Implement your changes
 4. Test thoroughly
 5. Submit a pull request
 
 ---
 
-## 📞 Support
+# Support
 
-For issues or questions, please contact the project maintainer.
+For issues or questions, contact the project maintainer.
 
 ---
 
-**Version:** 1.0.0  
-**Last Updated:** 2024 
+Version: 1.0.0
+Last Updated: 2024
+
+---
