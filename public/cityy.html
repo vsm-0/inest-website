@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
         .city-selection-container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             max-width: 1200px;
             width: 100%;
             overflow: hidden;
@@ -133,7 +134,7 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             cursor: pointer;
             border: 3px solid transparent;
@@ -141,7 +142,7 @@
 
         .city-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             border-color: #004080;
         }
 
@@ -176,7 +177,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             color: #004080;
             padding: 5px 15px;
             border-radius: 20px;
@@ -281,7 +282,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -309,9 +310,9 @@
         }
 
         .quick-city-btn {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 12px 25px;
             border-radius: 25px;
             cursor: pointer;
@@ -383,8 +384,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .pulse {
@@ -392,12 +400,21 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="city-selection-container">
         <div class="header">
@@ -407,7 +424,8 @@
 
         <div class="search-section">
             <div class="search-container">
-                <input type="text" class="search-input" id="citySearch" placeholder="Search for your city..." onkeyup="searchCities()">
+                <input type="text" class="search-input" id="citySearch" placeholder="Search for your city..."
+                    onkeyup="searchCities()">
                 <button class="search-btn">
                     <i class="fas fa-search"></i>
                 </button>
@@ -451,7 +469,8 @@
                     <div class="timeline-city">Ahmedabad & Jaipur</div>
                 </div>
             </div>
-            <p>Don't see your city? <a href="mailto:support@inest.com" style="color: #004080;">Request expansion</a> to your area!</p>
+            <p>Don't see your city? <a href="mailto:support@inest.com" style="color: #004080;">Request expansion</a> to
+                your area!</p>
         </div>
     </div>
 
@@ -564,7 +583,7 @@
             cities.forEach(city => {
                 const cityCard = document.createElement('div');
                 cityCard.className = `city-card ${city.available ? 'available' : 'coming-soon'} fade-in`;
-                
+
                 cityCard.innerHTML = `
                     <div class="city-image ${!city.available ? 'coming-soon-overlay' : ''}">
                         <div style="font-size: 4em;">${city.icon}</div>
@@ -618,8 +637,8 @@
 
         function searchCities() {
             const searchTerm = document.getElementById('citySearch').value.toLowerCase();
-            filteredCities = citiesData.filter(city => 
-                city.name.toLowerCase().includes(searchTerm) || 
+            filteredCities = citiesData.filter(city =>
+                city.name.toLowerCase().includes(searchTerm) ||
                 city.state.toLowerCase().includes(searchTerm) ||
                 city.features.some(feature => feature.toLowerCase().includes(searchTerm))
             );
@@ -628,7 +647,7 @@
 
         function selectCity(cityId) {
             const city = citiesData.find(c => c.id === cityId);
-            
+
             if (!city) {
                 showNotification('City not found!', 'error');
                 return;
@@ -669,10 +688,10 @@
             navigator.geolocation.getCurrentPosition(
                 position => {
                     const { latitude, longitude } = position.coords;
-                    
+
                     // Simple city detection based on coordinates
                     const detectedCity = detectCityFromCoordinates(latitude, longitude);
-                    
+
                     if (detectedCity) {
                         showNotification(`Detected: ${detectedCity.name}`, 'success');
                         setTimeout(() => selectCity(detectedCity.id), 1000);
@@ -696,7 +715,7 @@
             };
 
             for (const [cityId, bounds] of Object.entries(cityBounds)) {
-                if (lat >= bounds.lat[0] && lat <= bounds.lat[1] && 
+                if (lat >= bounds.lat[0] && lat <= bounds.lat[1] &&
                     lon >= bounds.lon[0] && lon <= bounds.lon[1]) {
                     return citiesData.find(city => city.id === cityId);
                 }
@@ -744,18 +763,9 @@
         }
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             renderCities();
 
-            // Check if user has already selected a city
-            const savedCity = localStorage.getItem('selectedCity');
-            if (savedCity) {
-                const city = JSON.parse(savedCity);
-                const confirmed = confirm(`Continue with ${city.name}? Or select a different city?`);
-                if (confirmed) {
-                    window.location.href = `./cities.html?city=${city.id}`;
-                }
-            }
 
             // Add pulse animation to available cities
             setTimeout(() => {
@@ -777,9 +787,5 @@
         document.head.appendChild(style);
     </script>
 </body>
+
 </html>
-
-
-On clicking hyderabad, banglore, newdelhi, mumbai
-the pages are blank
-what to do
