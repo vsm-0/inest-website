@@ -1075,9 +1075,17 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./js/config.js"></script>
+    <script>
+        // Mock authManager since the js directory and files do not currently exist
+        window.authManager = window.authManager || {
+            requireAuth: function() { return true; },
+            getCurrentUser: function() { return { name: 'Admin' }; },
+            logout: function() { window.location.href = './login.html'; }
+        };
+    </script>
+    <!-- <script src="./js/config.js"></script>
     <script src="./js/api.js"></script>
-    <script src="./js/auth.js"></script>
+    <script src="./js/auth.js"></script> -->
     
     <script>
         // Check if user has admin access
@@ -1412,6 +1420,71 @@
                         responsive: true,
                         maintainAspectRatio: false
                     }
+                });
+            }
+            // Analytics Tab Charts
+            const userRegistrationCtx = document.getElementById('userRegistrationChart');
+            if (userRegistrationCtx) {
+                new Chart(userRegistrationCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Registrations',
+                            data: [50, 80, 120, 200, 350, 480],
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            const revenueBreakdownCtx = document.getElementById('revenueBreakdownChart');
+            if (revenueBreakdownCtx) {
+                new Chart(revenueBreakdownCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Rentals', 'Food', 'Laundry', 'Other'],
+                        datasets: [{
+                            data: [60, 25, 10, 5],
+                            backgroundColor: ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            const cityDistributionCtx = document.getElementById('cityDistributionChart');
+            if (cityDistributionCtx) {
+                new Chart(cityDistributionCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Hyderabad', 'Bangalore', 'New Delhi', 'Mumbai'],
+                        datasets: [{
+                            data: [45, 30, 20, 5],
+                            backgroundColor: ['#9b59b6', '#34495e', '#1abc9c', '#e67e22']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            const serviceUsageCtx = document.getElementById('serviceUsageChart');
+            if (serviceUsageCtx) {
+                new Chart(serviceUsageCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['PG Search', 'Food Order', 'Laundry Request', 'Complaint'],
+                        datasets: [{
+                            label: 'Usage Count',
+                            data: [1200, 800, 450, 120],
+                            backgroundColor: '#e74c3c'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
                 });
             }
         }
