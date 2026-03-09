@@ -1,5 +1,3 @@
----
-
 # Inest Backend API
 
 This repository contains the backend API for the **Inest platform**, which provides services related to student housing and community management.
@@ -552,3 +550,4 @@ Version: 1.0.0
 Last Updated: 2024
 
 ---
+
