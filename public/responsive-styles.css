@@ -25,74 +25,78 @@ body header {
 body .header-container {
     display: flex !important;
     justify-content: space-between !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
 }
 
 body .logo img {
-    height: 80px !important;
-    max-width: 200px !important;
+    height: 55px !important;
+    max-width: 180px !important;
 }
 
 body .right-section {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
 }
 
 body .search-bar {
-    margin-bottom: 10px !important;
+    margin-bottom: 0 !important;
     display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
 }
 
 body .search-bar input {
-    padding: 10px !important;
-    width: 300px !important;
+    padding: 8px 12px !important;
+    width: 220px !important;
     border: none !important;
     border-radius: 5px !important;
     flex: 1 !important;
-    min-width: 200px !important;
+    min-width: 150px !important;
+    font-size: 13px !important;
 }
 
 body .search-bar button {
-    padding: 10px 20px !important;
+    padding: 8px 16px !important;
     background-color: #1a73e8 !important;
     color: white !important;
     border: none !important;
     border-radius: 5px !important;
     cursor: pointer !important;
     white-space: nowrap !important;
+    font-size: 13px !important;
 }
 
 .nav-bar ul {
     list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    flex-wrap: wrap;
+    display: flex !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
 }
 
 .nav-bar ul li {
     position: relative;
 }
 
-.nav-bar ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 14px;
-    white-space: nowrap;
+.nav-bar ul > li > a {
+    color: white !important;
+    text-decoration: none !important;
+    padding: 6px 8px !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
 }
 
-.nav-bar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.nav-bar ul > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Dropdown styles */
@@ -132,17 +136,19 @@ body .search-bar button {
 
 /* Auth buttons */
 .auth-buttons {
-    display: flex;
-    gap: 10px;
-    margin-left: 20px;
-    flex-wrap: wrap;
+    display: flex !important;
+    gap: 8px !important;
+    margin-left: 5px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
 }
 
 .auth-buttons a {
-    padding: 6px 12px !important;
-    border: 1px solid white;
-    border-radius: 4px;
+    padding: 6px 10px !important;
+    border: 1px solid white !important;
+    border-radius: 4px !important;
     font-size: 13px !important;
+    white-space: nowrap !important;
 }
 
 .auth-buttons .login-btn:hover {
