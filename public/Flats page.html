@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flats Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        </style>
+  <link rel="stylesheet" href="./navbar.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+
+
+            <div class="logo">
+          <a href="./index.html"><img src="./images/logo.png" alt="iNest Logo"></a>
+        </div>
+
+            
+      
+      
+      
+      
+      
+      <div class="right-section">
+        <!-- Desktop Nav -->
+        <nav class="nav-bar" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Housing</a>
+              <div class="dropdown-content">
+                <a href="./PG page.html"><i class="fas fa-bed"></i> PG & Hostels</a>
+                <a href="./House.html"><i class="fas fa-home"></i> Houses</a>
+                <a href="./Flats page.html"><i class="fas fa-building"></i> Flats</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Services</a>
+              <div class="dropdown-content">
+                <a href="./home-foods.html"><i class="fas fa-utensils"></i> Home Foods</a>
+                <a href="./laundry.html"><i class="fas fa-tshirt"></i> Laundry</a>
+                <a href="./medical-support.html"><i class="fas fa-stethoscope"></i> Medical Support</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="./cityy.html" class="dropdown-trigger">📍 Cities</a>
+              <div class="dropdown-content">
+                <a href="./cityy.html">Hyderabad</a>
+                <a href="./cityy.html">Chennai</a>
+                <a href="./cityy.html">Bangalore</a>
+                <a href="./cityy.html">New Delhi</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Community</a>
+              <div class="dropdown-content">
+                <a href="./chat page.html"><i class="fas fa-comments"></i> Chat & Connect</a>
+                <a href="./community.html"><i class="fas fa-users"></i> Community Hub</a>
+                <a href="./report-box.html"><i class="fas fa-flag"></i> Report Issues</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">More</a>
+              <div class="dropdown-content">
+                <a href="./payment.html"><i class="fas fa-credit-card"></i> Payment</a>
+                <a href="./Booking_confirmation.html"><i class="fas fa-check-circle"></i> Booking Status</a>
+                <a href="./qr.html"><i class="fas fa-qrcode"></i> QR Code</a>
+                <a href="./admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+              </div>
+            </li>
+
+            <li class="dropdown search-dropdown-container">
+              <a href="#" class="dropdown-trigger" aria-label="Search"><i class="fas fa-search"></i></a>
+              <div class="dropdown-content search-dropdown">
+                <div class="search-bar-dropdown">
+                  <input type="text" placeholder="Search by City, Area, Landmark">
+                  <button>Search</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="dropdown get-nest-container" id="nav-auth-section">
+              <a href="#" class="dropdown-trigger get-nest-btn">Get Nest</a>
+              <div class="dropdown-content">
+                <a href="./login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="./register.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+              </div>
+            </li>
+
+            <li id="nav-user" style="display: none;"></li>
+          </ul>
+        </nav>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+
+        </div>
+    </header>
+    <section class="banner">
+        <div class="banner-container">
+            <img src="./images/flat1.webp" alt="Green Flats">
+            <div class="banner-text">
+                <h2>Green Flats</h2>
+                <button>Add to my wishlist</button>
+                <button>10.7 km from your location</button>
+            </div>
+        </div>
+        <div class="banner-info">
+            <h2>Showing 10 Houses for rent</h2>
+            <p>Within 5km </p>
+        </div>
+    </section>
+
+<div class="sort-button-container">
+    <button onclick="sortHousesByDistance()">Sort by Distance</button>
+</div>
+
+<section class="house-listing">
+    <div class="listing-header">
+        <h2>PG Listings</h2>
+    </div>
+
+    <section class="recommended-properties">
+        <h2>Recommended properties across Chennai &rarr;</h2>
+        
+        <div class="property" onclick="navigateTo('abe_villa.html')">
+            <img src="./images/flat2.jpeg" alt="AbE Apartments">
+            <div>
+                <h3>AbE Apartments</h3>
+                <p>Category: Garden view - 1.2 km away<br>Luxury stay with premium amenities.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('bc_house.html')">
+            <img src="./images/flat3.jpeg" alt="XYS High-Rise">
+            <div>
+                <h3>XYS High-Rise</h3>
+                <p>Category: Modern Duplex - 3.4 km away<br>Spacious room with indoor stairs.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('cd_house.html')">
+            <img src="./images/flat4.jpeg" alt="PQR Modern Apartments">
+            <div>
+                <h3>PQR Modern Apartments</h3>
+                <p>Category: Water front view - 2.0 km away<br>Best price with modern technology.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('ijk_house.html')">
+            <img src="./images/flat5.jpeg" alt="IJK Hostel">
+            <div>
+                <h3>IJK Loft Apartment</h3>
+                <p>Category:  Duplex - 4.1 km away<br>Spacious room with parking.</p>
+            </div>
+            <span>★★★☆☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('de_house.html')">
+            <img src="./images/pg3.jpeg" alt="Mno Luxurious triplex apartment">
+            <div>
+                <h3>Mno Luxurious triplex apartment</h3>
+                <p>Category:Luxurious Triplex  - 1.7 km away<br>5 bhk.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('fgh_house.html')">
+            <img src="./images/fgh_house.jpg" alt="UK studio">
+            <div>
+                <h3>UK studio</h3>
+                <p>Category: Rental Studio - 2.5 km away<br>Affordable and well-connected location.</p>
+            </div>
+            <span>★★★☆☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('grand_tower_house.html')">
+            <img src="./images/grand_tower.jpg" alt="SDE Penthouse">
+            <div>
+                <h3>SDE Penthouse</h3>
+                <p>Category: Families - 5.2 km away<br>Food Availabel.</p>
+            </div>
+            <span>★★★★★</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('green_valley_house.html')">
+            <img src="./images/green_valley.jpg" alt="House B">
+            <div>
+                <h3>Green Valley </h3>
+                <p>Category: Rental  - 6.1 km away<br>Perfect for families  with nearby parks.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('leela_palace.html')">
+            <img src="./images/leela_palace.jpg" alt="Leela Palace">
+            <div>
+                <h3>Leela apartment</h3>
+                <p>Category: Garden apartment - 1.2 km away<br>Lift and Atech.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('rent_my_stay_html')">
+            <img src="./images/rentmystay.jpg" alt="Rent My Stay">
+            <div>
+                <h3>LK Duplex</h3>
+                <p>Category: Rental duplex - 8.0 km away<br>Elegant House with Proper Interiors.</p>
+            </div>
+            <span>★★★★★</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <button id="viewAll" onclick="showAll()">View All</button>
+    </section>    
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const propertiesContainer = document.querySelector(".recommended-properties");
+    const viewAllButton = document.getElementById("viewAll");
+    const sortButton = document.querySelector(".sort-button-container button");
+
+    let allVisible = false; // Track if all houses are visible
+
+    function sortHousesByDistance() {
+        let propertyElements = Array.from(propertiesContainer.querySelectorAll(".property")); // Get all properties
+
+        propertyElements.sort((a, b) => {
+            const distanceA = parseFloat(a.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+            const distanceB = parseFloat(b.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+            return distanceA - distanceB;
+        });
+
+        // Clear container and append sorted elements
+        propertiesContainer.innerHTML = '<h2>Recommended properties across Chennai &rarr;</h2>';
+        propertyElements.forEach(property => {
+            propertiesContainer.appendChild(property);
+        });
+
+        // If user has clicked "View All" before, show everything
+        if (allVisible) {
+            propertyElements.forEach(property => property.classList.remove("hidden"));
+            viewAllButton.style.display = "none"; // Hide "View All"
+        } else {
+            // Show only first 4, hide the rest
+            propertyElements.forEach((property, index) => {
+                if (index >= 4) {
+                    property.classList.add("hidden");
+                } else {
+                    property.classList.remove("hidden");
+                }
+            });
+            viewAllButton.style.display = "block"; // Show "View All"
+        }
+
+        propertiesContainer.appendChild(viewAllButton);
+    }
+
+    function showAll() {
+        document.querySelectorAll(".property").forEach(property => property.classList.remove("hidden"));
+        viewAllButton.style.display = "none"; // Hide "View All"
+        allVisible = true; // Mark that all houses are visible
+    }
+
+    function toggleHeart(event) {
+        event.stopPropagation();
+        let heart = event.target;
+        heart.textContent = heart.textContent === "♡" ? "❤️" : "♡";
+    }
+
+    function navigateTo(event) {
+        let property = event.currentTarget;
+        let pageUrl = property.getAttribute("onclick")?.match(/'(.+?)'/)?.[1];
+        if (pageUrl) {
+            window.location.href = pageUrl;
+        }
+    }
+
+    if (sortButton) {
+        sortButton.addEventListener("click", sortHousesByDistance);
+    }
+    if (viewAllButton) {
+        viewAllButton.addEventListener("click", showAll);
+    }
+
+    document.querySelectorAll(".heart").forEach(heart => {
+        heart.addEventListener("click", toggleHeart);
+    });
+
+    document.querySelectorAll(".property").forEach(property => {
+        property.addEventListener("click", navigateTo);
+    });
+
+    // Initially hide extra properties
+    document.querySelectorAll(".property").forEach((property, index) => {
+        if (index >= 4) {
+            property.classList.add("hidden");
+        }
+    });
+});
+
+
+</script>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+            <p>FIND YOUR PERFECT NEST</p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="./navbar.js"></script>
+</body>
+
+</html>

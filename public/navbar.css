@@ -1,0 +1,486 @@
+/* ==================== INEST NAVBAR STYLES ==================== */
+body header {
+    background-color: #0b3a7e !important;
+    padding: 20px !important;
+    color: white !important;
+    margin: 0 !important;
+}
+
+body .header-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+body .logo img {
+    height: 55px !important;
+    max-width: 180px !important;
+}
+
+body .right-section {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+}
+
+body .search-bar input {
+    padding: 8px 12px !important;
+    width: 220px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    flex: 1 !important;
+    min-width: 150px !important;
+    font-size: 13px !important;
+}
+
+body .search-bar button {
+    padding: 8px 16px !important;
+    background-color: #1a73e8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+}
+
+.nav-bar ul li {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-bar ul > li > a {
+    color: white !important;
+    text-decoration: none !important;
+    padding: 6px 8px !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+
+.nav-bar ul > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
+    z-index: 1000 !important;
+    border-radius: 5px !important;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    pointer-events: none;
+    padding: 0 !important;
+}
+
+.dropdown.active .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Disable existing hover rule globally */
+body .dropdown:hover .dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+body .dropdown.active:hover .dropdown-content, 
+body .dropdown.active .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-content a {
+    color: #333 !important;
+    padding: 12px 16px !important;
+    text-decoration: none !important;
+    display: block !important;
+    border-radius: 0 !important;
+    transition: background-color 0.3s !important;
+    font-size: 14px !important;
+    border: none !important;
+}
+
+.dropdown-content a i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+    color: #1a73e8 !important;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1 !important;
+}
+
+/* Search Dropdown Specific */
+.search-dropdown-container {
+    position: relative;
+}
+
+.search-dropdown {
+    min-width: 320px !important;
+    padding: 15px !important;
+    right: 0 !important;
+    left: auto !important;
+}
+
+.search-bar-dropdown {
+    display: flex !important;
+    gap: 10px !important;
+    margin: 0 !important;
+}
+
+.search-bar-dropdown input {
+    flex: 1 !important;
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+}
+
+.search-bar-dropdown button {
+    padding: 10px 20px !important;
+    background-color: #1a73e8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+}
+
+/* Get Nest Button Specific */
+.get-nest-btn {
+    background-color: #FFD700 !important;
+    color: #0b3a7e !important;
+    font-weight: bold !important;
+    padding: 8px 16px !important;
+    border-radius: 5px !important;
+    border: 1px solid #FFD700 !important;
+}
+
+.get-nest-btn:hover {
+    background-color: #FFC107 !important;
+}
+
+.get-nest-container .dropdown-content {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* Auth buttons */
+.auth-buttons {
+    display: flex !important;
+    gap: 8px !important;
+    margin-left: 5px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+}
+
+.auth-buttons a {
+    padding: 6px 10px !important;
+    border: 1px solid white !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+}
+
+.auth-buttons .login-btn:hover {
+    background-color: white !important;
+    color: #0b3a7e !important;
+}
+
+.auth-buttons .register-btn {
+    background-color: #FFD700 !important;
+    color: #333 !important;
+    border-color: #FFD700 !important;
+}
+
+.auth-buttons .register-btn:hover {
+    background-color: #FFC107 !important;
+}
+
+/* Mobile Toggle */
+.mobile-menu-toggle {
+    display: none !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 10px !important;
+}
+
+.hamburger {
+    display: block !important;
+    width: 25px !important;
+    height: 20px !important;
+    position: relative !important;
+}
+
+.hamburger span {
+    display: block !important;
+    position: absolute !important;
+    height: 3px !important;
+    width: 100% !important;
+    background: white !important;
+    border-radius: 3px !important;
+    opacity: 1 !important;
+    left: 0 !important;
+    transform: rotate(0deg) !important;
+    transition: .25s ease-in-out !important;
+}
+
+.hamburger span:nth-child(1) { top: 0px !important; }
+.hamburger span:nth-child(2) { top: 8px !important; }
+.hamburger span:nth-child(3) { top: 16px !important; }
+
+/* ==================== RESPONSIVE MEDIA QUERIES ==================== */
+
+/* Large Tablets (1024px and below) */
+@media (max-width: 1024px) {
+    body .header-container {
+        padding: 0 20px !important;
+    }
+    .nav-bar ul {
+        gap: 10px !important;
+    }
+    .nav-bar ul li a {
+        font-size: 13px !important;
+        padding: 6px 10px !important;
+    }
+}
+
+/* ==================== CLEAN MOBILE NAVBAR (768px and below) ==================== */
+@media screen and (max-width: 768px) {
+    /* Override index.html inline responsive styles */
+    html body header {
+        padding: 10px 15px !important;
+    }
+    
+    html body header .header-container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+    
+    html body header .logo {
+        order: 1 !important;
+        text-align: left !important;
+        padding: 5px 0 !important;
+    }
+    
+    html body header .logo img {
+        height: 45px !important;
+        max-height: 45px !important;
+    }
+
+    html body header .right-section {
+        order: 2 !important;
+        width: auto !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .mobile-menu-toggle {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 5px !important;
+        cursor: pointer !important;
+        order: 2 !important;
+    }
+
+    /* Hamburger Animation setup */
+    .hamburger span {
+        transition: all 0.3s ease-in-out !important;
+        background: white !important;
+    }
+    
+    .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+        top: 8px !important;
+        transform: rotate(135deg) !important;
+    }
+    .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+        opacity: 0 !important;
+        left: -60px !important;
+    }
+    .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+        top: 8px !important;
+        transform: rotate(-135deg) !important;
+    }
+
+    /* Fixed sidebar menu */
+    html body header .nav-bar {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important; /* Start offscreen */
+        width: 80% !important;
+        max-width: 300px !important;
+        height: 100vh !important;
+        background-color: #0b3a7e !important;
+        z-index: 999 !important;
+        display: block !important;
+        transition: right 0.3s ease-in-out !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        padding: 80px 20px 20px !important;
+        overflow-y: auto !important;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5) !important;
+    }
+
+    /* Bring nav-bar into view when mobile-open is active */
+    html body header .nav-bar.mobile-open {
+        right: 0 !important;
+    }
+
+    /* Keep the hamburger button fixed and above the sidebar */
+    .mobile-menu-toggle {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 5px !important;
+        cursor: pointer !important;
+        z-index: 1000 !important;
+        position: relative !important;
+    }
+
+    html body header .nav-bar ul {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+    }
+
+    html body header .nav-bar ul li {
+        width: 100% !important;
+        text-align: left !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        padding: 5px 0 !important;
+    }
+
+    html body header .nav-bar ul li:last-child {
+        border-bottom: none !important;
+    }
+
+    html body header .nav-bar ul li a {
+        display: block !important;
+        width: 100% !important;
+        padding: 12px 10px !important;
+        font-size: 16px !important;
+        text-align: left !important;
+        border-radius: 4px !important;
+    }
+
+    /* Dropdowns in mobile flow natively down instead of popping over */
+    .dropdown-content, html body header .search-dropdown {
+        position: static !important;
+        display: none !important; /* Hide initially */
+        background: rgba(0,0,0,0.2) !important;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+        margin: 5px 0 0 !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 0 !important; 
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        border-radius: 5px !important;
+    }
+
+    .dropdown.active .dropdown-content, .dropdown.active .search-dropdown {
+        display: block !important;
+    }
+
+    .dropdown-content a {
+        color: white !important;
+        padding: 12px 25px !important; /* Indent sub-links */
+        font-size: 14px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgba(255,255,255,0.1) !important;
+    }
+
+    /* specific fixes for Get Nest and Search */
+    .get-nest-btn {
+        margin: 10px 0 !important;
+        text-align: center !important;
+        background-color: #FFD700 !important;
+        color: #0b3a7e !important;
+        display: inline-block !important; /* Prevent from taking 100% width if wrapped */
+    }
+    
+    .nav-bar ul li.get-nest-container {
+        border-bottom: none !important;
+    }
+
+    html body header .search-bar-dropdown {
+        flex-direction: row !important;
+        padding: 10px 0 !important;
+    }
+    
+    html body header .search-bar-dropdown input {
+        width: 70% !important;
+        flex: 1 !important;
+        max-width: none !important;
+    }
+    
+    html body header .search-bar-dropdown button {
+        width: 30% !important;
+        max-width: none !important;
+    }
+}
+
+/* Extra Small Phones (360px and below) */
+@media screen and (max-width: 360px) {
+    html body header .logo img {
+        height: 35px !important;
+        max-height: 35px !important;
+    }
+    .hamburger {
+        width: 20px !important;
+    }
+    html body header .nav-bar ul li a {
+        font-size: 14px !important;
+    }
+}

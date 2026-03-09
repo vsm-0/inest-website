@@ -1,0 +1,166 @@
+/* ==================== CRITICAL MOBILE RESPONSIVE CSS ==================== */
+/* Add this to the <style> section of each page until responsive-styles.css is uploaded */
+
+/* Force mobile responsive behavior for all screens 768px and below */
+@media screen and (max-width: 768px) {
+    /* Force header to be responsive */
+    html body header .header-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    html body header .right-section {
+        width: 100% !important;
+        align-items: center !important;
+        flex-direction: column !important;
+    }
+    
+    html body header .search-bar {
+        width: 100% !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+    
+    html body header .search-bar input {
+        width: 70% !important;
+        max-width: 250px !important;
+        flex: 1 !important;
+        min-width: 150px !important;
+    }
+    
+    html body header .search-bar button {
+        width: 25% !important;
+        max-width: 80px !important;
+        margin-left: 5px !important;
+    }
+    
+    html body header .nav-bar ul {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: 100% !important;
+    }
+    
+    html body header .nav-bar ul li a {
+        font-size: 12px !important;
+        padding: 5px 8px !important;
+    }
+    
+    /* Force content to be responsive */
+    html body .house-listing,
+    html body .content-section,
+    html body .filter-section {
+        width: 95% !important;
+        padding: 15px !important;
+        margin: 15px auto !important;
+    }
+    
+    html body .property,
+    html body .pg-card,
+    html body .house-card {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 15px !important;
+    }
+    
+    html body .property img,
+    html body .pg-card img,
+    html body .house-card img {
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 auto 15px !important;
+    }
+    
+    html body .banner-container {
+        width: 95% !important;
+    }
+}
+
+/* Force mobile responsive behavior for small screens 480px and below */
+@media screen and (max-width: 480px) {
+    html body header {
+        padding: 10px !important;
+    }
+    
+    html body header .logo img {
+        height: 50px !important;
+    }
+    
+    html body header .search-bar {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    html body header .search-bar input {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+    
+    html body header .search-bar button {
+        width: 100% !important;
+    }
+    
+    html body header .nav-bar ul {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 5px !important;
+    }
+    
+    html body header .nav-bar ul li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    html body header .nav-bar ul li a {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px !important;
+        text-align: center !important;
+    }
+    
+    html body .house-listing,
+    html body .content-section,
+    html body .filter-section {
+        width: 95% !important;
+        padding: 10px !important;
+    }
+    
+    html body .property img,
+    html body .pg-card img,
+    html body .house-card img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    html body .banner {
+        padding: 10px !important;
+    }
+    
+    html body .banner-info {
+        padding: 10px !important;
+    }
+    
+    html body .banner-info h2 {
+        font-size: 16px !important;
+    }
+    
+    html body .banner-info p {
+        font-size: 12px !important;
+    }
+}
+
+/* Ultra-high priority overrides for very small screens */
+@media screen and (max-width: 360px) {
+    html body header .logo img {
+        height: 40px !important;
+    }
+    
+    html body .property img,
+    html body .pg-card img,
+    html body .house-card img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+}

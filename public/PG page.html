@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inest - Verified PG Stays</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./responsive-styles.css">
+    <style>
+        </style>
+  <link rel="stylesheet" href="./navbar.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+
+
+            <div class="logo">
+          <a href="./index.html"><img src="./images/logo.png" alt="iNest Logo"></a>
+        </div>
+
+            
+      
+      
+      
+      
+      
+      <div class="right-section">
+        <!-- Desktop Nav -->
+        <nav class="nav-bar" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Housing</a>
+              <div class="dropdown-content">
+                <a href="./PG page.html"><i class="fas fa-bed"></i> PG & Hostels</a>
+                <a href="./House.html"><i class="fas fa-home"></i> Houses</a>
+                <a href="./Flats page.html"><i class="fas fa-building"></i> Flats</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Services</a>
+              <div class="dropdown-content">
+                <a href="./home-foods.html"><i class="fas fa-utensils"></i> Home Foods</a>
+                <a href="./laundry.html"><i class="fas fa-tshirt"></i> Laundry</a>
+                <a href="./medical-support.html"><i class="fas fa-stethoscope"></i> Medical Support</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="./cityy.html" class="dropdown-trigger">📍 Cities</a>
+              <div class="dropdown-content">
+                <a href="./cityy.html">Hyderabad</a>
+                <a href="./cityy.html">Chennai</a>
+                <a href="./cityy.html">Bangalore</a>
+                <a href="./cityy.html">New Delhi</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">Community</a>
+              <div class="dropdown-content">
+                <a href="./chat page.html"><i class="fas fa-comments"></i> Chat & Connect</a>
+                <a href="./community.html"><i class="fas fa-users"></i> Community Hub</a>
+                <a href="./report-box.html"><i class="fas fa-flag"></i> Report Issues</a>
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-trigger">More</a>
+              <div class="dropdown-content">
+                <a href="./payment.html"><i class="fas fa-credit-card"></i> Payment</a>
+                <a href="./Booking_confirmation.html"><i class="fas fa-check-circle"></i> Booking Status</a>
+                <a href="./qr.html"><i class="fas fa-qrcode"></i> QR Code</a>
+                <a href="./admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+              </div>
+            </li>
+
+            <li class="dropdown search-dropdown-container">
+              <a href="#" class="dropdown-trigger" aria-label="Search"><i class="fas fa-search"></i></a>
+              <div class="dropdown-content search-dropdown">
+                <div class="search-bar-dropdown">
+                  <input type="text" placeholder="Search by City, Area, Landmark">
+                  <button>Search</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="dropdown get-nest-container" id="nav-auth-section">
+              <a href="#" class="dropdown-trigger get-nest-btn">Get Nest</a>
+              <div class="dropdown-content">
+                <a href="./login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="./register.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+              </div>
+            </li>
+
+            <li id="nav-user" style="display: none;"></li>
+          </ul>
+        </nav>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+
+        </div>
+    </header>
+    <section class="banner">
+        <div class="banner-container">
+            <img src="./images/image 1.webp" alt="Hostel for Boys">
+            <div class="banner-text">
+                <h2>Hostel for Boys</h2>
+                <button>Add to my wishlist</button>
+                <button>1.7 km from your location</button>
+            </div>
+        </div>
+        <div class="banner-info">
+            <h2>Showing 10 Houses for rent</h2>
+            <p>Within 5km </p>
+        </div>
+    </section>
+
+<div class="sort-button-container">
+    <button onclick="sortHousesByDistance()">Sort by Distance</button>
+</div>
+
+<section class="house-listing">
+    <div class="listing-header">
+        <h2>PG Listings</h2>
+    </div>
+
+    <!-- Filters Section -->
+    <div style="background: white; padding: 20px; margin: 20px auto; width: 80%; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h3 style="color: #004080; margin-bottom: 15px;">Filters / Labels:</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+            <div>
+                <label for="location-filter" style="font-weight: bold; margin-right: 5px;">Location / City:</label>
+                <select id="location-filter" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="all">All Locations</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="delhi">New Delhi</option>
+                    <option value="nagpur">Nagpur</option>
+                    <option value="chennai">Chennai</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="price-filter" style="font-weight: bold; margin-right: 5px;">Price Range:</label>
+                <select id="price-filter" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="all">All Prices</option>
+                    <option value="low">₹5,000 - ₹10,000</option>
+                    <option value="medium">₹10,000 - ₹20,000</option>
+                    <option value="high">₹20,000+</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="amenities-filter" style="font-weight: bold; margin-right: 5px;">Amenities:</label>
+                <select id="amenities-filter" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="all">All Amenities</option>
+                    <option value="wifi">Wi-Fi</option>
+                    <option value="ac">AC</option>
+                    <option value="meals">Meals</option>
+                    <option value="laundry">Laundry</option>
+                </select>
+            </div>
+            
+            <div style="background: #e8f5e8; padding: 8px 15px; border-radius: 20px; border: 2px solid #388e3c;">
+                <i class="fas fa-shield-alt" style="color: #388e3c; margin-right: 5px;"></i>
+                <span style="color: #388e3c; font-weight: bold;">Verified Property</span>
+            </div>
+            
+            <div>
+                <button style="background: #004080; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">View Details</button>
+                <button style="background: #1976d2; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-left: 10px;">Book Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <section class="recommended-properties">
+        <h2 style="color: #004080; font-size: 32px; margin-bottom: 20px;">Verified Stays Near You</h2>
+        
+        <div class="property" onclick="navigateTo('abe_villa.html')">
+            <img src="./images/Pg1.jpeg" alt="AbE Rooms">
+            <div>
+                <h3>AbE Rooms<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></h3>
+                <p>Category: Pg - 1.2 km away<br>Luxury stay with premium amenities.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('bc_house.html')">
+            <img src="./images/pg2.webp" alt="XYS Hostel for girls">
+            <div>
+                <h3>XYS Hostel for girls</h3>
+                <p>Category: 5 Member pg - 3.4 km away<br>Spacious room.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('cd_house.html')">
+            <img src="./images/pg.jpeg" alt="PQR Paying Guest for Boys">
+            <div>
+                <h3>PQR Paying Guest for Boys</h3>
+                <p>Category: Individual Member- 2.0 km away<br>Single Bed.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('ijk_house.html')">
+            <img src="./images/pg3.webp" alt="IJK Hostel">
+            <div>
+                <h3>IJK Hostel</h3>
+                <p>Category:  members pg - 4.1 km away<br>Spacious room with parking.</p>
+            </div>
+            <span>★★★☆☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('de_house.html')">
+            <img src="./images/pg3.jpeg" alt="Mno Hostel for girls">
+            <div>
+                <h3>Mno Hostel for girls</h3>
+                <p>Category: Students PG - 1.7 km away<br>3 beds.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property" onclick="navigateTo('fgh_house.html')">
+            <img src="./images/fgh_house.jpg" alt="UK Hostel">
+            <div>
+                <h3>UK Hostel</h3>
+                <p>Category: Rental House - 2.5 km away<br>Affordable and well-connected location.</p>
+            </div>
+            <span>★★★☆☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('grand_tower_house.html')">
+            <img src="./images/grand_tower.jpg" alt="House A">
+            <div>
+                <h3>SDE hostel</h3>
+                <p>Category: Working Mens - 5.2 km away<br>Food Availabel.</p>
+            </div>
+            <span>★★★★★</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('green_valley_house.html')">
+            <img src="./images/green_valley.jpg" alt="House B">
+            <div>
+                <h3>Green Valley hostel</h3>
+                <p>Category: Rental pg - 6.1 km away<br>Perfect for friend with nearby parks.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('leela_palace.html')">
+            <img src="./images/leela_palace.jpg" alt="Leela Palace">
+            <div>
+                <h3>Leela girls hostel</h3>
+                <p>Category: Hostel for disabilites - 1.2 km away<br>All disable people can accomodate.</p>
+            </div>
+            <span>★★★★☆</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <div class="property hidden" onclick="navigateTo('rent_my_stay_html')">
+            <img src="./images/rentmystay.jpg" alt="Rent My Stay">
+            <div>
+                <h3>LK House</h3>
+                <p>Category: Rental House - 8.0 km away<br>Elegant House with Proper Interiors.</p>
+            </div>
+            <span>★★★★★</span>
+            <button class="heart" onclick="toggleHeart(this, event)">♡</button>
+        </div>
+        
+        <button id="viewAll" onclick="showAll()">View All</button>
+    </section>    
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const propertiesContainer = document.querySelector(".recommended-properties");
+    const viewAllButton = document.getElementById("viewAll");
+    const sortButton = document.querySelector(".sort-button-container button");
+
+    let allVisible = false; // Track if all houses are visible
+
+    function sortHousesByDistance() {
+        let propertyElements = Array.from(propertiesContainer.querySelectorAll(".property")); // Get all properties
+
+        propertyElements.sort((a, b) => {
+            const distanceA = parseFloat(a.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+            const distanceB = parseFloat(b.querySelector("p").textContent.match(/(\d+(\.\d+)?)\s*km/)?.[1] || 0);
+            return distanceA - distanceB;
+        });
+
+        // Clear container and append sorted elements
+        propertiesContainer.innerHTML = '<h2>Recommended properties across Chennai &rarr;</h2>';
+        propertyElements.forEach(property => {
+            propertiesContainer.appendChild(property);
+        });
+
+        // If user has clicked "View All" before, show everything
+        if (allVisible) {
+            propertyElements.forEach(property => property.classList.remove("hidden"));
+            viewAllButton.style.display = "none"; // Hide "View All"
+        } else {
+            // Show only first 4, hide the rest
+            propertyElements.forEach((property, index) => {
+                if (index >= 4) {
+                    property.classList.add("hidden");
+                } else {
+                    property.classList.remove("hidden");
+                }
+            });
+            viewAllButton.style.display = "block"; // Show "View All"
+        }
+
+        propertiesContainer.appendChild(viewAllButton);
+    }
+
+    function showAll() {
+        document.querySelectorAll(".property").forEach(property => property.classList.remove("hidden"));
+        viewAllButton.style.display = "none"; // Hide "View All"
+        allVisible = true; // Mark that all houses are visible
+    }
+
+    function toggleHeart(event) {
+        event.stopPropagation();
+        let heart = event.target;
+        heart.textContent = heart.textContent === "♡" ? "❤️" : "♡";
+    }
+
+    function navigateTo(event) {
+        let property = event.currentTarget;
+        let pageUrl = property.getAttribute("onclick")?.match(/'(.+?)'/)?.[1];
+        if (pageUrl) {
+            window.location.href = pageUrl;
+        }
+    }
+
+    if (sortButton) {
+        sortButton.addEventListener("click", sortHousesByDistance);
+    }
+    if (viewAllButton) {
+        viewAllButton.addEventListener("click", showAll);
+    }
+
+    document.querySelectorAll(".heart").forEach(heart => {
+        heart.addEventListener("click", toggleHeart);
+    });
+
+    document.querySelectorAll(".property").forEach(property => {
+        property.addEventListener("click", navigateTo);
+    });
+
+    // Initially hide extra properties
+    document.querySelectorAll(".property").forEach((property, index) => {
+        if (index >= 4) {
+            property.classList.add("hidden");
+        }
+    });
+});
+
+
+</script>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <p>Reach us through social media</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <img src="./images/logo.png" alt="INest Logo">
+            <p>FIND YOUR PERFECT NEST</p>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h3>Use cases</h3>
+                <a href="#">Find PGs & Hostels</a>
+                <a href="#">House Rentals</a>
+                <a href="#">Home food service</a>
+                <a href="#">Flats</a>
+            </div>
+
+            <div>
+                <h3>Explore</h3>
+                <a href="#">About Inest</a>
+                <a href="#">How it works</a>
+                <a href="#">User Reviews</a>
+                <a href="#">Safety & security</a>
+                <a href="#">Partner with us</a>
+            </div>
+
+            <div>
+                <h3>Resources</h3>
+                <a href="#">Blog & updates</a>
+                <a href="#">Tenant guidelines</a>
+                <a href="#">Landlord Resources</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="./navbar.js"></script>
+</body>
+
+</html>
